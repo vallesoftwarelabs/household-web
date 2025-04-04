@@ -73,10 +73,10 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <TextContent>
-        <h1>Shop Groceries Smarter with webClean</h1>
+        <h1>Stop Wasting Time at the Grocery Store. Get Fresh Food Delivered.</h1>
         <p>
-          Get fresh groceries delivered to your doorstep. Save time and enjoy
-          premium quality products.
+          Tired of crowded aisles and long checkout lines? Reclaim your weekends
+          and enjoy delicious, high-quality groceries brought right to your door.
         </p>
         <Button>Start Shopping Now</Button>
       </TextContent>

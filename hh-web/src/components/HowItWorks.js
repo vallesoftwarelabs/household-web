@@ -11,7 +11,16 @@ const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: bold;
   color: #333;
+  margin-bottom: 1.5rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.1rem;
+  color: #666;
   margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const StepsContainer = styled.div`
@@ -58,27 +67,33 @@ const ReceiveIcon = () => <span className="icon">🏠</span>;
 const HowItWorks = () => {
   return (
     <HowItWorksWrapper>
-      <SectionTitle>How It Works</SectionTitle>
+      <SectionTitle>Getting Started is Easy</SectionTitle>
+      <Subtitle>
+        Enjoy fresh groceries delivered in just 3 simple steps:
+      </Subtitle>
       <StepsContainer>
         <StepCard>
           <BrowseIcon />
-          <h3>Browse & Select</h3>
+          <h3>1. Browse & Select</h3>
           <p>
-            Browse through our wide selection of products and add items to your
-            cart
+            Explore our wide selection and easily add your favorite items to the
+            cart.
           </p>
         </StepCard>
         <StepCard>
           <ScheduleIcon />
-          <h3>Schedule Delivery</h3>
+          <h3>2. Schedule Delivery</h3>
           <p>
-            Choose your preferred delivery time slot that works best for you
+            Pick a convenient delivery time slot that fits perfectly into your
+            schedule.
           </p>
         </StepCard>
         <StepCard>
           <ReceiveIcon />
-          <h3>Receive Groceries</h3>
-          <p>Get your fresh groceries delivered right to your doorstep</p>
+          <h3>3. Receive Groceries</h3>
+          <p>
+            Relax while we deliver your fresh groceries right to your doorstep.
+          </p>
         </StepCard>
       </StepsContainer>
     </HowItWorksWrapper>

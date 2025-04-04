@@ -67,26 +67,26 @@ const Features = () => {
       <CardsContainer>
         <FeatureCard>
           <TimeIcon />
-          <h3>Time-saving Shopping</h3>
+          <h3>Save Precious Time</h3>
           <p>
-            Skip the lines and shop from anywhere. Save hours every week with
-            our efficient online platform.
+            We know your time is valuable. Skip the lines and shop from anywhere.
+            Get hours back every week with our efficient online platform.
           </p>
         </FeatureCard>
         <FeatureCard>
           <QualityIcon />
-          <h3>Fresh Quality Guaranteed</h3>
+          <h3>Get Guaranteed Freshness</h3>
           <p>
-            We source the freshest products daily. Quality and freshness
-            guaranteed or your money back.
+            You deserve the best. We source the freshest products daily.
+            Enjoy top quality and freshness, guaranteed or your money back.
           </p>
         </FeatureCard>
         <FeatureCard>
           <DeliveryIcon />
-          <h3>Convenient Delivery</h3>
+          <h3>Enjoy Convenient Delivery</h3>
           <p>
-            Choose your delivery time and we'll bring your groceries right to
-            your door.
+            Let us handle the hassle. Choose your preferred delivery time, and
+            we'll bring your groceries right to your door.
           </p>
         </FeatureCard>
       </CardsContainer>

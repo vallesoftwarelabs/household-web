@@ -84,10 +84,11 @@ const DownloadApp = () => {
   return (
     <DownloadWrapper>
       <TextContent>
-        <h2>Download Our Mobile App</h2>
+        <h2>Shop Smarter, Live Easier</h2>
         <p>
-          Shop on the go with our mobile app. Get exclusive app-only offers and
-          track your delivery in real-time.
+          Get our app for exclusive offers, real-time delivery tracking, and the
+          easiest way to manage your weekly grocery shopping. Spend less time
+          shopping, more time living!
         </p>
         <ButtonsContainer>
           {/* Replace # with actual store links */}

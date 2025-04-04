@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 // Basic Button Style (can be moved to a common components file later)
 const Button = styled.button`
@@ -32,6 +33,12 @@ const Logo = styled.div`
   font-size: 1.5rem; // Make logo text slightly larger
   color: #6a11cb; // Placeholder purple color like the logo image
   /* We'll replace this with the actual SVG/image later */
+
+  /* Style the link within the logo */
+  a {
+    color: inherit; /* Inherit the purple color */
+    text-decoration: none; /* Remove underline */
+  }
 `;
 
 const NavLinks = styled.nav`
@@ -57,7 +64,10 @@ const ActionButtons = styled.div`
 const Header = () => {
   return (
     <HeaderWrapper>
-      <Logo>LOGO</Logo> {/* Placeholder Logo Text */}
+      <Logo>
+        {/* Wrap logo text in Link and use correct text */}
+        <Link to="/">Household</Link>
+      </Logo>
       <NavLinks>
         <a href="#">How It Works</a>
         <a href="#">Categories</a>
