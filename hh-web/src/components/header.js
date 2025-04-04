@@ -22,10 +22,16 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem; // Adjust padding
+  padding: 1rem 3rem;
   background-color: #fff; // White background
   color: #333; // Dark text color for contrast
   border-bottom: 1px solid #eee; // Subtle bottom border
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 1.5rem; // Reduce padding on smaller screens
+    flex-wrap: wrap; // Allow wrapping if needed
+    justify-content: space-between; // Keep space-between for logo/button
+  }
 `;
 
 const Logo = styled.div`
@@ -38,6 +44,11 @@ const Logo = styled.div`
   a {
     color: inherit; /* Inherit the purple color */
     text-decoration: none; /* Remove underline */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem; // Slightly smaller logo text
+    margin-bottom: 0.5rem; // Add margin if wrapping occurs
   }
 `;
 
@@ -55,10 +66,27 @@ const NavLinks = styled.nav`
       color: #000;
     }
   }
+
+  @media (max-width: 768px) {
+    gap: 1rem; // Reduce gap
+    font-size: 0.9rem; // Smaller nav links
+    order: 3; // Move nav below logo/button if wrapped
+    width: 100%; // Take full width when wrapped
+    justify-content: center; // Center links when wrapped
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.75rem; // Even smaller gap
+  }
 `;
 
 const ActionButtons = styled.div`
   // Only one button now
+  @media (max-width: 768px) {
+    // Button itself will inherit size, just ensure alignment
+    margin-bottom: 0.5rem; // Add margin if wrapping occurs
+  }
 `;
 
 const Header = () => {

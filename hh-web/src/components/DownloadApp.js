@@ -7,6 +7,12 @@ const DownloadWrapper = styled.section`
   justify-content: space-between;
   padding: 5rem 3rem;
   background-color: #f9f9f9; // Light grey background
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse; // Stack (image above text)
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
 `;
 
 const TextContent = styled.div`
@@ -14,12 +20,25 @@ const TextContent = styled.div`
   max-width: 45%;
   padding-right: 3rem;
 
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding-right: 0;
+    margin-top: 2rem; // Add space above text when stacked
+  }
+
   h2 {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     line-height: 1.2;
     color: #222;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+     @media (max-width: 480px) {
+      font-size: 1.6rem;
+    }
   }
 
   p {
@@ -27,12 +46,20 @@ const TextContent = styled.div`
     color: #666;
     margin-bottom: 2rem;
     line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 
 const ButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    justify-content: center; // Center buttons when stacked
+  }
 `;
 
 // Basic structure for Store Buttons (styling needed)
@@ -64,6 +91,15 @@ const ImageContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    max-width: 60%; // Adjust image size
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 70%;
+  }
 
   // Placeholder for the phone image
   div {

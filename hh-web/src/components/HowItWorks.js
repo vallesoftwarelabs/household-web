@@ -5,6 +5,14 @@ const HowItWorksWrapper = styled.section`
   padding: 4rem 3rem;
   background-color: #fff; // White background for this section
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem; // Reduce padding
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem; // Further reduce padding
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -12,6 +20,13 @@ const SectionTitle = styled.h2`
   font-weight: bold;
   color: #333;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`

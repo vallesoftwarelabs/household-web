@@ -4,6 +4,14 @@ import styled from 'styled-components';
 const FeaturesWrapper = styled.section`
   padding: 4rem 3rem;
   background-color: #f9f9f9; // Light grey background
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem; // Reduce padding
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem; // Further reduce padding
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -15,6 +23,13 @@ const SectionTitle = styled.h2`
   // This title isn't explicitly in the screenshot for this section,
   // but adding it for structure. Can be removed if not desired.
   // Or we can add the "How It Works" title here later.
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const CardsContainer = styled.div`

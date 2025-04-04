@@ -25,6 +25,12 @@ const HeroWrapper = styled.section`
   justify-content: space-between;
   padding: 4rem 3rem; // Generous padding for the hero section
   background-color: #fff; // White background
+
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack columns
+    text-align: center; // Center text when stacked
+    padding: 3rem 1.5rem; // Adjust padding
+  }
 `;
 
 const TextContent = styled.div`
@@ -32,12 +38,24 @@ const TextContent = styled.div`
   max-width: 50%; // Limit width
   padding-right: 3rem; // Space between text and image
 
+  @media (max-width: 768px) {
+    max-width: 100%; // Full width when stacked
+    padding-right: 0;
+    margin-bottom: 2rem; // Space between text and image when stacked
+  }
+
   h1 {
     font-size: 3rem; // Large heading
     font-weight: bold;
     margin-bottom: 1rem;
     line-height: 1.2;
     color: #222;
+    @media (max-width: 768px) {
+      font-size: 2.2rem; // Smaller heading
+    }
+    @media (max-width: 480px) {
+      font-size: 1.8rem; // Even smaller heading
+    }
   }
 
   p {
@@ -45,6 +63,9 @@ const TextContent = styled.div`
     color: #666;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -54,6 +75,15 @@ const ImageContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    max-width: 80%; // Adjust image width when stacked
+    margin: 0 auto; // Center image container
+  }
+
+  @media (max-width: 480px) {
+    max-width: 95%; // Larger image on very small screens
+  }
 
   // Placeholder for the image
   div {

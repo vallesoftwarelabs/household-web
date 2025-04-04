@@ -37,13 +37,26 @@ const BarWrapper = styled.div`
   gap: 1.5rem; // Space between buttons
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Shadow on top edge
   z-index: 1000; // Ensure it's above other content
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1rem; // Reduce padding
+    gap: 1rem; // Reduce gap
+  }
+`;
+
+const InfoText = styled.span`
+  margin-right: 1.5rem;
+  color: #555;
+
+  @media (max-width: 480px) {
+    display: none; // Hide text on very small screens
+  }
 `;
 
 const StickyFooterBar = () => {
   return (
     <BarWrapper>
-      {/* Placeholder message - can be removed or customized */}
-      <span style={{ marginRight: '1.5rem', color: '#555' }}>Get the App:</span>
+      <InfoText>Get the App:</InfoText>
       {/* Replace # with actual store links */}
       <StoreButton href="#">
         <span className="icon"></span> App Store
