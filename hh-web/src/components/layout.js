@@ -8,7 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Header from "./Header"
+import Header from "./header"
 import StickyFooterBar from "./StickyFooterBar"
 import "./layout.css"
 
