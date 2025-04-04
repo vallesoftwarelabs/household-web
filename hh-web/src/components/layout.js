@@ -36,16 +36,24 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
+          // Keep default for smaller screens, increase for larger
           maxWidth: `var(--size-content)`,
           padding: `var(--size-gutter)`,
-          // Adjust minHeight based on header, sticky bar, and footer
           minHeight: `calc(100vh - ${approxHeaderHeight + approxFooterPadding}px)`,
           display: `flex`,
           flexDirection: `column`,
-          // Add paddingBottom to prevent overlap with sticky bar
           paddingBottom: stickyBarPaddingBottom,
+          // Apply larger max-width using a style tag for media query
         }}
       >
+        {/* Add style tag to override max-width on larger screens */}
+        <style>{`
+          @media (min-width: 1360px) { /* Adjust breakpoint as needed */
+            div[style*="--size-content"] {
+              max-width: 1280px !important; /* Increase max-width */
+            }
+          }
+        `}</style>
         <main style={{ flexGrow: 1 }}>{children}</main>
         <footer
           style={{

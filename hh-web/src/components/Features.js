@@ -34,9 +34,18 @@ const SectionTitle = styled.h2`
 
 const CardsContainer = styled.div`
   display: flex;
-  justify-content: space-around; // Distribute space
-  gap: 2rem; // Space between cards
-  flex-wrap: wrap; // Allow wrapping on smaller screens
+  justify-content: space-around; // Keep for smaller screens
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  // Add max-width and center for larger screens
+  max-width: 1100px; // Adjust this value based on card size + gap
+  margin: 0 auto; // Center the container
+
+  // Optionally, change justify-content on larger screens if needed
+  @media (min-width: 769px) { // Apply when cards are likely side-by-side
+     justify-content: center; // Center cards instead of space-around
+  }
 `;
 
 const FeatureCard = styled.div`
