@@ -100,40 +100,38 @@ const StepCard = styled.div`
 `;
 
 // Placeholder Icons (replace with actual icons later)
-const BrowseIcon = () => <span className="icon">🛒</span>;
-const ScheduleIcon = () => <span className="icon">📅</span>;
-const ReceiveIcon = () => <span className="icon">🏠</span>;
+const BrowseIcon = () => <span className="icon">💭</span>;
+const ScheduleIcon = () => <span className="icon">🚗</span>;
+const ReceiveIcon = () => <span className="icon">🛒</span>;
 
 const HowItWorks = () => {
   return (
     <HowItWorksWrapper>
       <HowItWorksInner>
-        <SectionTitle>Getting Started is Easy</SectionTitle>
+        <SectionTitle>Getting started is easy</SectionTitle>
         <Subtitle>
-          Enjoy fresh groceries delivered in just 3 simple steps:
+          Enjoy simpler shopping in just 3 simple steps:
         </Subtitle>
         <StepsContainer>
           <StepCard>
             <BrowseIcon />
-            <h3>1. Browse & Select</h3>
+            <h3>1. Plan</h3>
             <p>
-              Explore our wide selection and easily add your favorite items to the
-              cart.
+              Create a shopping list based on your needs and frequently purchased items.
             </p>
           </StepCard>
           <StepCard>
             <ScheduleIcon />
-            <h3>2. Schedule Delivery</h3>
+            <h3>2. Travel</h3>
             <p>
-              Pick a convenient delivery time slot that fits perfectly into your
-              schedule.
+              Approach one of your local stores, and we'll optimize the route.
             </p>
           </StepCard>
           <StepCard>
             <ReceiveIcon />
-            <h3>3. Receive Groceries</h3>
+            <h3>3. Shop</h3>
             <p>
-              Relax while we deliver your fresh groceries right to your doorstep.
+              Enjoy a faster shopping experience, save time, and take control of your budget.
             </p>
           </StepCard>
         </StepsContainer>

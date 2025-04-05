@@ -114,10 +114,10 @@ const FeatureCard = styled.div`
   }
 `;
 
-// Placeholder Icons (replace with actual icons later)
+// Update the icon components to better match new descriptions
 const TimeIcon = () => <span className="icon">⏰</span>;
-const QualityIcon = () => <span className="icon">🌿</span>;
-const DeliveryIcon = () => <span className="icon">🚚</span>;
+const AIIcon = () => <span className="icon">🧠</span>; // Changed to brain emoji for AI
+const BudgetIcon = () => <span className="icon">💰</span>; // Changed to money bag for budget
 
 const Features = () => {
   return (
@@ -127,26 +127,26 @@ const Features = () => {
         <CardsContainer>
           <FeatureCard>
             <TimeIcon />
-            <h3>Save Precious Time</h3>
+            <h3>Save time</h3>
             <p>
-              We know your time is valuable. Skip the lines and shop from anywhere.
-              Get hours back every week with our efficient online platform.
+              Our optimized shopping paths eliminate backtracking and wandering.
+              The list will always be sorted to follow each individual stores layout.
             </p>
           </FeatureCard>
           <FeatureCard>
-            <QualityIcon />
-            <h3>Get Guaranteed Freshness</h3>
+            <AIIcon />
+            <h3>Store-specific learning</h3>
             <p>
-              You deserve the best. We source the freshest products daily.
-              Enjoy top quality and freshness, guaranteed or your money back.
+              Our AI adapts to each unique store you visit, learning item locations and your preferences.
+              The more you shop, the smarter and more personalized your routes become.
             </p>
           </FeatureCard>
           <FeatureCard>
-            <DeliveryIcon />
-            <h3>Enjoy Convenient Delivery</h3>
+            <BudgetIcon />
+            <h3>Control costs</h3>
             <p>
-              Let us handle the hassle. Choose your preferred delivery time, and
-              we'll bring your groceries right to your door.
+              All items from your receipts are categorized, so you can track your spending in real-time.
+              Make informed decisions and avoid unexpected checkout surprises.
             </p>
           </FeatureCard>
         </CardsContainer>

@@ -103,12 +103,11 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <TextContent>
-        <h1>Stop Wasting Time at the Grocery Store. Get Fresh Food Delivered.</h1>
+        <h1>Stop wasting time at the grocery store.</h1>
         <p>
-          Tired of crowded aisles and long checkout lines? Reclaim your weekends
-          and enjoy delicious, high-quality groceries brought right to your door.
+          Tired of zigzagging through the store and constantly backtracking? Our app optimizes your shopping experience, and continiously learns your pattern in each individual grocery store.
         </p>
-        <Button>Start Shopping Now</Button>
+        <Button>Try now!</Button>
       </TextContent>
       <ImageContent>
         {/* Placeholder for image */}
