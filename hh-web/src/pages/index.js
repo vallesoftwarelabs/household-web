@@ -10,7 +10,6 @@ import Features from "../components/Features"; // Import the new Features compon
 import HowItWorks from "../components/HowItWorks"; // Import the HowItWorks component
 import FeaturedCategories from "../components/FeaturedCategories"; // Import FeaturedCategories
 // Removed SpecialOffers import
-import DownloadApp from "../components/DownloadApp"; // Import DownloadApp
 // import * as styles from "../components/index.module.css"
 
 // Remove default starter content (links, samplePageLinks, moreLinks)
@@ -23,7 +22,6 @@ const IndexPage = () => (
     <HowItWorks /> {/* Render the HowItWorks component */}
     <FeaturedCategories /> {/* Render FeaturedCategories */}
     {/* Removed SpecialOffers component */}
-    <DownloadApp /> {/* Render DownloadApp */}
     {/* Remove all default starter JSX */}
   </Layout>
 )
