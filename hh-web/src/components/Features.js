@@ -115,7 +115,7 @@ const FeatureCard = styled.div`
 `;
 
 // Update the icon components to better match new descriptions
-const TimeIcon = () => <span className="icon">⏰</span>;
+const TimeIcon = () => <span className="icon">⌚</span>;
 const AIIcon = () => <span className="icon">🧠</span>; // Changed to brain emoji for AI
 const BudgetIcon = () => <span className="icon">💰</span>; // Changed to money bag for budget
 
