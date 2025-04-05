@@ -9,7 +9,7 @@ import Hero from "../components/Hero" // Import the new Hero component
 import Features from "../components/Features"; // Import the new Features component
 import HowItWorks from "../components/HowItWorks"; // Import the HowItWorks component
 import FeaturedCategories from "../components/FeaturedCategories"; // Import FeaturedCategories
-import SpecialOffers from "../components/SpecialOffers"; // Import SpecialOffers
+// Removed SpecialOffers import
 import DownloadApp from "../components/DownloadApp"; // Import DownloadApp
 // import * as styles from "../components/index.module.css"
 
@@ -22,7 +22,7 @@ const IndexPage = () => (
     <Features /> {/* Render the Features component */}
     <HowItWorks /> {/* Render the HowItWorks component */}
     <FeaturedCategories /> {/* Render FeaturedCategories */}
-    <SpecialOffers /> {/* Render SpecialOffers */}
+    {/* Removed SpecialOffers component */}
     <DownloadApp /> {/* Render DownloadApp */}
     {/* Remove all default starter JSX */}
   </Layout>
