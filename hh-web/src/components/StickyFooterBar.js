@@ -106,6 +106,10 @@ const StickyFooterBar = () => {
         <Link to="/privacy-policy">
           Privacy policy
         </Link>
+        {` · `}
+        <Link to="/terms-and-conditions">
+          Terms & Conditions
+        </Link>
       </FooterInfo>
       
       <AppButtons>
