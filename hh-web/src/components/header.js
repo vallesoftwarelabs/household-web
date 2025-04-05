@@ -2,108 +2,56 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-// Basic Button Style (can be moved to a common components file later)
-const Button = styled.button`
-  background-color: #000; // Black background
-  color: #fff; // White text
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: #333; // Darker shade on hover
-  }
-`;
+// Removing the Button component since we won't use it
 
 const HeaderWrapper = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; // Changed to left alignment
   align-items: center;
   padding: 1rem 3rem;
-  background-color: #fff; // White background
-  color: #333; // Dark text color for contrast
-  border-bottom: 1px solid #eee; // Subtle bottom border
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1px solid #eee;
 
   @media (max-width: 768px) {
-    padding: 0.75rem 1.5rem; // Reduce padding on smaller screens
-    flex-wrap: wrap; // Allow wrapping if needed
-    justify-content: space-between; // Keep space-between for logo/button
+    padding: 0.75rem 1.5rem;
   }
 `;
 
 const Logo = styled.div`
   font-weight: bold;
-  font-size: 1.5rem; // Make logo text slightly larger
-  color: #6a11cb; // Placeholder purple color like the logo image
-  /* We'll replace this with the actual SVG/image later */
-
+  font-size: 1.6rem; // Slightly larger
+  color: #6a11cb;
+  font-family: 'Poppins', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; // Nicer font stack
+  letter-spacing: -0.02em; // Tighter letter spacing for modern look
+  
   /* Style the link within the logo */
   a {
-    color: inherit; /* Inherit the purple color */
-    text-decoration: none; /* Remove underline */
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.3rem; // Slightly smaller logo text
-    margin-bottom: 0.5rem; // Add margin if wrapping occurs
-  }
-`;
-
-const NavLinks = styled.nav`
-  display: flex;
-  gap: 2rem; // Adjust space between links
-
-  a {
-    color: #555; // Standard link color
+    color: inherit;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease-in-out;
-
+    display: inline-block; // Better for padding/margin
+    padding: 0.2rem 0; // Slight padding for better touch target
+    position: relative; // For potential hover effects
+    
     &:hover {
-      color: #000;
+      opacity: 0.9; // Subtle hover effect
     }
   }
 
   @media (max-width: 768px) {
-    gap: 1rem; // Reduce gap
-    font-size: 0.9rem; // Smaller nav links
-    order: 3; // Move nav below logo/button if wrapped
-    width: 100%; // Take full width when wrapped
-    justify-content: center; // Center links when wrapped
-    margin-top: 0.5rem;
-  }
-
-  @media (max-width: 480px) {
-    gap: 0.75rem; // Even smaller gap
+    font-size: 1.4rem;
   }
 `;
 
-const ActionButtons = styled.div`
-  // Only one button now
-  @media (max-width: 768px) {
-    // Button itself will inherit size, just ensure alignment
-    margin-bottom: 0.5rem; // Add margin if wrapping occurs
-  }
-`;
+// Removing NavLinks and ActionButtons components
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <Logo>
-        {/* Wrap logo text in Link and use correct text */}
         <Link to="/">Household</Link>
       </Logo>
-      <NavLinks>
-        <a href="#">How It Works</a>
-        <a href="#">Categories</a>
-        <a href="#">Offers</a>
-      </NavLinks>
-      <ActionButtons>
-        <Button>Start Shopping</Button>
-      </ActionButtons>
+      {/* Navigation links and Start Shopping button removed */}
     </HeaderWrapper>
   );
 };
