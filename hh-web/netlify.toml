@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "https://yagaapp.lol/*"
+  to = "https://yetanothergroceryapp.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yetanothergrocery.app/*"
+  to = "https://yetanothergroceryapp.com/:splat"
+  status = 301
+  force = true 
