@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticImage } from 'gatsby-plugin-image';
 
 // Re-using the Button style from Header (consider moving to a shared file later)
 const Button = styled.button`
@@ -84,19 +85,6 @@ const ImageContent = styled.div`
   @media (max-width: 480px) {
     max-width: 95%; // Larger image on very small screens
   }
-
-  // Placeholder for the image
-  div {
-    width: 100%;
-    height: 350px; // Adjust height as needed
-    background-color: #f0e6d2; // Placeholder background color similar to image
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #aaa;
-    font-size: 1.5rem;
-  }
 `;
 
 const Hero = () => {
@@ -110,8 +98,13 @@ const Hero = () => {
         <Button>Try now!</Button>
       </TextContent>
       <ImageContent>
-        {/* Placeholder for image */}
-        <div>Image Placeholder</div>
+        <StaticImage
+          src="../images/iphonemockup.png"
+          alt="App screenshot on iPhone mockup"
+          placeholder="blurred"
+          layout="constrained"
+          style={{ borderRadius: '8px' }}
+        />
       </ImageContent>
     </HeroWrapper>
   );
