@@ -10,7 +10,7 @@ const HeaderWrapper = styled.header`
   justify-content: flex-start; // Changed to left alignment
   align-content: center;
   padding: 1rem 3rem;
-  background-color: #fff;
+  background-color: #F4F8F1; // Changed background color
   color: #333;
   border-bottom: 1px solid #eee;
 

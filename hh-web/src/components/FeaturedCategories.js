@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Extend wrapper to full width
 const CategoriesWrapper = styled.section`
   padding: 4rem 0; // Remove horizontal padding
-  background-color: #f9f9f9; // Match the Features background
+  background-color: #F4F8F1; // Changed background color
   text-align: center;
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
@@ -37,7 +37,7 @@ const CategoriesInner = styled.div`
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: #333; // Changed text color back to dark
   margin-bottom: 2.5rem; // Slightly reduced margin
 
   @media (max-width: 768px) {

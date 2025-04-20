@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Modified to extend full width
 const FeaturesWrapper = styled.section`
   padding: 4rem 0; // Remove horizontal padding
-  background-color: #f9f9f9; // Light grey background
+  background-color: #F4F8F1; // Changed background color
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
   position: relative; // Ensure proper stacking context
