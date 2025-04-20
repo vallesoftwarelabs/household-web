@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import logoImage from '../images/logo.svg'; // Import the logo image
 
 // Removing the Button component since we won't use it
 
 const HeaderWrapper = styled.header`
   display: flex;
   justify-content: flex-start; // Changed to left alignment
-  align-items: center;
+  align-content: center;
   padding: 1rem 3rem;
   background-color: #fff;
   color: #333;
@@ -19,28 +20,36 @@ const HeaderWrapper = styled.header`
 `;
 
 const Logo = styled.div`
-  font-weight: bold;
-  font-size: 1.6rem; // Slightly larger
-  color: #6a11cb;
-  font-family: 'Poppins', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; // Nicer font stack
-  letter-spacing: -0.02em; // Tighter letter spacing for modern look
-  
-  /* Style the link within the logo */
+  display: flex; /* Align items horizontally */
+  align-content: center; /* Vertically center items */
+
   a {
-    color: inherit;
+    /* Inherit color or set explicitly if needed */
+    color: #333;
     text-decoration: none;
-    display: inline-block; // Better for padding/margin
-    padding: 0.2rem 0; // Slight padding for better touch target
-    position: relative; // For potential hover effects
-    
+    display: flex; /* Make link also a flex container */
+    align-items: center; /* Align items within the link */
+    font-family: 'Georgia', serif; // Keep the font for the text
+    font-size: 1.1rem; // Adjust text size if needed
+
     &:hover {
-      opacity: 0.9; // Subtle hover effect
+      opacity: 0.9;
+    }
+
+    /* Styles for the text span inside the link */
+    span {
+      line-height: 1;
+      display: inline-block;
     }
   }
+`;
 
-  @media (max-width: 768px) {
-    font-size: 1.4rem;
-  }
+// Styled component for the image
+const LogoImage = styled.img`
+  height: 35px; /* Adjust height as needed */
+  margin-right: 10px; /* Space between logo and text */
+  border-radius: 6px; /* Rounded corners */
+  margin-bottom: 0 !important; /* Override potential global margin */
 `;
 
 // Removing NavLinks and ActionButtons components
@@ -48,8 +57,13 @@ const Logo = styled.div`
 const Header = () => {
   return (
     <HeaderWrapper>
+      {/* Restored Logo wrapper */}
       <Logo>
-        <Link to="/">Household</Link>
+        {/* Restored correct Link structure */}
+        <Link to="/">
+          <LogoImage src={logoImage} alt="Grocery App Logo" />
+          <span>yet another grocery app</span> {/* Keep text in a span */}
+        </Link>
       </Logo>
       {/* Navigation links and Start Shopping button removed */}
     </HeaderWrapper>
