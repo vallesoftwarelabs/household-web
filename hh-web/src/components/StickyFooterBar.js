@@ -26,17 +26,14 @@ const StoreButton = styled.a`
 `;
 
 const BarWrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.95); // Slightly transparent white
+  background-color: rgba(255, 255, 255, 0.98);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between; // Changed to space-between for footer layout
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Shadow on top edge
-  z-index: 1000; // Ensure it's above other content
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #eee;
+  margin-top: auto; // Push to bottom if content is short
 
   @media (max-width: 768px) {
     flex-direction: column;

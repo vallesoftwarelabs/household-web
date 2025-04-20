@@ -23,12 +23,9 @@ const Layout = ({ children }) => {
     }
   `)
 
-  // Calculate approximate height of header + sticky bar + footer padding for minHeight
+  // Simplified height calculations
   const approxHeaderHeight = 70; // Estimate header height
-  const approxStickyBarHeight = 70; // Estimate sticky bar height
-  const approxFooterPadding = 30; // Reduced padding since footer content moved to sticky bar
-  const totalOffset = approxHeaderHeight + approxStickyBarHeight + approxFooterPadding;
-  const stickyBarPaddingBottom = `calc(${approxStickyBarHeight}px + 2rem)`; // Add extra space
+  const approxFooterPadding = 30; // Footer padding (can be adjusted or removed if StickyFooterBar has own padding)
 
   return (
     <>
@@ -36,14 +33,11 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          // Keep default for smaller screens, increase for larger
           maxWidth: `var(--size-content)`,
           padding: `var(--size-gutter)`,
-          minHeight: `calc(100vh - ${approxHeaderHeight + approxFooterPadding}px)`,
+          minHeight: `calc(100vh - ${approxHeaderHeight}px)`,
           display: `flex`,
           flexDirection: `column`,
-          paddingBottom: stickyBarPaddingBottom,
-          // Apply larger max-width using a style tag for media query
         }}
       >
         {/* Add style tag to override max-width on larger screens */}
@@ -55,7 +49,7 @@ const Layout = ({ children }) => {
           }
         `}</style>
         <main style={{ flexGrow: 1 }}>{children}</main>
-        {/* Footer content moved to StickyFooterBar */}
+        {/* Footer is now part of the flex column flow */}
       </div>
       <StickyFooterBar />
     </>
