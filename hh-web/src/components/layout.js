@@ -8,8 +8,9 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import Header from "./Header"
 import StickyFooterBar from "./StickyFooterBar"
+import { ThemeProvider } from "../context/ThemeContext"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -28,8 +29,8 @@ const Layout = ({ children }) => {
   const approxFooterPadding = 30; // Footer padding (can be adjusted or removed if StickyFooterBar has own padding)
 
   return (
-    <>
-      <Header />
+    <ThemeProvider>
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
           margin: `0 auto`,
@@ -52,7 +53,7 @@ const Layout = ({ children }) => {
         {/* Footer is now part of the flex column flow */}
       </div>
       <StickyFooterBar />
-    </>
+    </ThemeProvider>
   )
 }
 

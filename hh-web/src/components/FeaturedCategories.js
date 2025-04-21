@@ -4,11 +4,12 @@ import styled from 'styled-components';
 // Extend wrapper to full width
 const CategoriesWrapper = styled.section`
   padding: 4rem 0; // Remove horizontal padding
-  background-color: #F4F8F1; // Changed background color
+  background-color: var(--color-features-bg); // Use features background color
   text-align: center;
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
   position: relative; // Ensure proper stacking context
+  transition: background-color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     padding: 3rem 0; // Keep vertical padding, remove horizontal
@@ -37,8 +38,9 @@ const CategoriesInner = styled.div`
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: bold;
-  color: #333; // Changed text color back to dark
+  color: var(--color-text); // Use theme text
   margin-bottom: 2.5rem; // Slightly reduced margin
+  transition: color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -60,48 +62,50 @@ const CategoriesContainer = styled.div`
 
 // Redesigned cards to be smaller, tag-like, with horizontal layout
 const CategoryCard = styled.div`
-  background-color: #fff;
+  background-color: var(--color-card-bg); // Use card background variable
   padding: 0.7rem 1.2rem; // Smaller padding
   border-radius: 2rem; // Rounded pill shape
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); // Lighter shadow
+  box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: center;
   display: inline-flex; // Make contents inline
   align-items: center; // Vertically center icon and text
-  border: 1px solid rgba(0, 0, 0, 0.05); // Subtle border
-  transition: all 0.2s ease;
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.05)); // Use border var with fallback
+  transition: all 0.2s ease, background-color 0.3s ease, border-color 0.3s ease; // Add transitions
   
   &:hover {
     transform: translateY(-2px); // Slight lift on hover
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Enhanced shadow on hover
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Keep hover shadow simple or create variable later
   }
 
   // Redesigned icon
   .icon {
     font-size: 1.2rem; // Smaller icon
     margin-right: 0.6rem; // Space between icon and text
-    color: #333;
+    color: var(--color-text); // Use theme text for emoji/icon holder
+    // Emoji color itself won't change
   }
 
   h3 {
     font-size: 0.95rem; // Smaller text
     font-weight: 600; // Slightly lighter weight
-    color: #333;
+    color: var(--color-text); // Use theme text
     margin: 0; // Remove default margins
+    transition: color 0.3s ease; // Add transition
   }
 `;
 
 // Add a new styled component for the "more" tag
 const MoreCategoriesTag = styled(CategoryCard)`
-  background-color: #f0f0f0; // Slightly different background
+  background-color: var(--color-tag-more-bg); // Use specific variable
   font-style: italic; // Italicize text
   
   h3 {
     font-weight: 500; // Lighter weight
-    color: #555; // Slightly different color
+    color: var(--color-text-secondary); // Use secondary text color
   }
   
   // Optional: add slight dash-like border
-  border: 1px dashed rgba(0, 0, 0, 0.1);
+  border: 1px dashed var(--color-border, rgba(0, 0, 0, 0.1)); // Use border var with fallback
 `;
 
 // Add a more icon

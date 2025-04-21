@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const HowItWorksWrapper = styled.section`
   padding: 4rem 0;
-  background-color: #fff; // White background for this section
+  background-color: var(--color-background); // Use theme background variable
   text-align: center;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   position: relative;
+  transition: background-color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     padding: 3rem 0;
@@ -35,8 +36,9 @@ const HowItWorksInner = styled.div`
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text); // Use theme text variable
   margin-bottom: 1.5rem;
+  transition: color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -48,11 +50,12 @@ const SectionTitle = styled.h2`
 
 const Subtitle = styled.p`
   font-size: 1.1rem;
-  color: #666;
+  color: var(--color-text-secondary); // Use secondary text variable
   margin-bottom: 3rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  transition: color 0.3s ease; // Add transition
 `;
 
 const StepsContainer = styled.div`
@@ -81,21 +84,24 @@ const StepCard = styled.div`
   .icon {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #6a11cb;
+    color: var(--color-primary); // Use primary theme color
     display: inline-block;
+    transition: color 0.3s ease; // Add transition
   }
 
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #333;
+    color: var(--color-text); // Use theme text variable
     margin-bottom: 0.75rem;
+    transition: color 0.3s ease; // Add transition
   }
 
   p {
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-secondary); // Use secondary text variable
     line-height: 1.6;
+    transition: color 0.3s ease; // Add transition
   }
 `;
 

@@ -1,31 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from '../context/ThemeContext';
 import './layout.css'; // Assuming layout.css contains necessary styles
 
 const ThemeSwitch = () => {
-  // Use state to manage the theme mode
-  const [isDarkMode, setIsDarkMode] = useState(false); 
-
-  // Function to toggle the theme
-  const toggleTheme = () => {
-    setIsDarkMode(prevMode => !prevMode);
-    // In a real application, you would also trigger theme changes here
-    // (e.g., updating CSS variables, saving preference)
-  };
+  // Get theme state and toggle function from context
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    // Add onClick handler to the main div
+    // onClick still uses toggleTheme, now from context
     <div 
       className={`theme-switch ${isDarkMode ? 'dark' : 'light'}`} 
-      onClick={toggleTheme} // Attach the handler
-      role="switch" // Add role for accessibility
-      aria-checked={isDarkMode} // Indicate the state for screen readers
-      tabIndex={0} // Make it focusable
-      onKeyDown={(e) => e.key === 'Enter' || e.key === ' ' ? toggleTheme() : null} // Allow toggling with Enter/Space
+      onClick={toggleTheme}
+      role="switch"
+      aria-checked={isDarkMode}
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' || e.key === ' ' ? toggleTheme() : null}
     >
       <div className="theme-switch-track">
         <div className="theme-switch-thumb">
+          {/* Icon depends on isDarkMode from context */}
           <FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} />
         </div>
         {/* Icons inside the track for visual representation */}

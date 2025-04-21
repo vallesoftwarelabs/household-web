@@ -3,37 +3,40 @@ import styled from 'styled-components';
 import { Link } from 'gatsby'; // Add import for Link
 
 // Re-using StoreButton styling (consider consolidating styles)
+// Hardcode colors for footer
 const StoreButton = styled.a`
   display: inline-flex;
   align-items: center;
-  background-color: #000;
-  color: #fff;
+  background-color: #000; // Always black background
+  color: #fff; // Always white text
   padding: 0.6rem 1.2rem; // Slightly smaller padding
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9rem; // Slightly smaller font size
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease; // Only transition background
 
   .icon {
     margin-right: 0.5rem;
     font-size: 1.1rem;
+    // Emoji color won't change
   }
 
   &:hover {
-    background-color: #333;
+    background-color: #333; // Always dark grey hover
   }
 `;
 
 const BarWrapper = styled.div`
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: var(--color-features-bg); // Keep themed background
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Keep shadow simple or make variable later
+  border-top: 1px solid var(--color-border, #eee); // Keep themed border
   margin-top: auto; // Push to bottom if content is short
+  transition: background-color 0.3s ease, border-color 0.3s ease; // Add transitions
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -50,11 +53,12 @@ const BarWrapper = styled.div`
 const FooterInfo = styled.div`
   display: flex;
   align-items: center;
-  color: #666;
+  color: #333; // Changed to darker grey/black
   font-size: 0.85rem;
+  // Removed color transition
 
   a {
-    color: #666;
+    color: #333; // Changed to darker grey/black
     text-decoration: none;
     margin-left: 0.5rem;
     
@@ -87,7 +91,8 @@ const AppButtons = styled.div`
 
 const InfoText = styled.span`
   margin-right: 1.5rem;
-  color: #555;
+  color: #000000; // Changed to darker grey/black
+  // Removed color transition
 
   @media (max-width: 480px) {
     display: none; // Hide text on very small screens

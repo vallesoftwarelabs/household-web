@@ -1,7 +1,10 @@
 :root {
   --border-radius: 4px;
   --color-text: #333;
+  --color-text-secondary: #555; /* Added secondary text color for light mode */
   --color-primary: #7026b9;
+  --color-background: #fff; /* Changed background for light theme to white */
+  --color-header-bg: #F4F8F1; /* Keep header slightly off-white for contrast */
   --color-code-bg: #fff4db;
   --color-code: #8a6534;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
@@ -24,7 +27,55 @@
   --size-content: 54rem;
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
+
+  /* Button Variables */
+  --button-primary-bg: #000;
+  --button-primary-text: #fff;
+  --button-primary-bg-hover: #333;
+
+  /* Card Variables */
+  --color-card-bg: #fff;
+  --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+
+  /* Section Backgrounds */
+  --color-features-bg: #E8F5E9; /* Lighter green for light mode */
+
+  /* Tag Variables */
+  --color-tag-more-bg: #f0f0f0;
 }
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --color-text: #e0e0e0;
+  --color-text-secondary: #b0b0b0; /* Added secondary text color for dark mode */
+  --color-primary: #bb86fc;
+  --color-background: #121212; /* Dark background */
+  --color-header-bg: #1e1e1e; /* Slightly lighter dark for header */
+  --color-code-bg: #2a2a2a;
+  --color-code: #bdbdbd;
+  --color-border: #333; /* Added border color for dark mode */
+
+  /* Example: Adjusting theme switch colors */
+  --theme-switch-track-bg: #333;
+  --theme-switch-track-bg-light: #E0E0E0; /* Keep light track bg for reference */
+  --theme-switch-icon-color: #757575;
+
+  /* Button Variables (Dark Mode) */
+  --button-primary-bg: #e0e0e0; /* Light background for dark mode */
+  --button-primary-text: #121212; /* Dark text for dark mode */
+  --button-primary-bg-hover: #bdbdbd;
+
+  /* Card Variables (Dark Mode) */
+  --color-card-bg: #1e1e1e; /* Same as header bg for consistency */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adjusted shadow for dark */
+
+  /* Section Backgrounds (Dark Mode) */
+  --color-features-bg: #748865; /* Darker green for dark mode */
+
+  /* Tag Variables (Dark Mode) */
+  --color-tag-more-bg: #2a2a2a; /* Darker grey for dark mode */
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
@@ -37,11 +88,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
+  background-color: var(--color-background);
   font-family: sans-serif;
   font-family: var(--font-sans);
   font-weight: normal;
   margin: 0;
   word-wrap: break-word;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 a {
   background-color: transparent;
@@ -233,7 +286,7 @@ pre tt:after {
   position: relative;
   width: 60px;
   height: 30px;
-  background-color: #E0E0E0; /* Light mode track background */
+  background-color: var(--theme-switch-track-bg-light);
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -243,7 +296,7 @@ pre tt:after {
 }
 
 .theme-switch.dark .theme-switch-track {
-  background-color: #333; /* Dark mode track background */
+  background-color: var(--theme-switch-track-bg);
 }
 
 .theme-switch-thumb {
@@ -277,7 +330,7 @@ pre tt:after {
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  color: #A0A0A0; /* Default icon color (dimmed) */
+  color: var(--theme-switch-icon-color, #A0A0A0);
   transition: color 0.3s ease;
 }
 

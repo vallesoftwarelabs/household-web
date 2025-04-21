@@ -4,10 +4,11 @@ import styled from 'styled-components';
 // Modified to extend full width
 const FeaturesWrapper = styled.section`
   padding: 4rem 0; // Remove horizontal padding
-  background-color: #F4F8F1; // Changed background color
+  background-color: var(--color-features-bg); // Use specific features background
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
   position: relative; // Ensure proper stacking context
+  transition: background-color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     padding: 3rem 0; // Keep vertical padding, remove horizontal
@@ -37,8 +38,9 @@ const SectionTitle = styled.h2`
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text); // Use theme text
   margin-bottom: 3rem;
+  transition: color 0.3s ease; // Add transition
   // This title isn't explicitly in the screenshot for this section,
   // but adding it for structure. Can be removed if not desired.
   // Or we can add the "How It Works" title here later.
@@ -67,10 +69,10 @@ const CardsContainer = styled.div`
 
 // Adjust FeatureCard to be more squared
 const FeatureCard = styled.div`
-  background-color: #fff;
+  background-color: var(--color-card-bg); // Use card background variable
   padding: 2.5rem; // Reduce padding to make more compact
   border-radius: 10px; // Slightly smaller radius
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07); // Slightly reduced shadow
+  box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: left;
   
   // Make cards more square-like on larger screens
@@ -78,6 +80,7 @@ const FeatureCard = styled.div`
   
   // Width adjustments
   min-width: 320px; // Slightly reduce min width
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Add transitions
   
   // On larger screens, set aspect ratio close to 1:1
   @media (min-width: 1200px) {
@@ -97,20 +100,23 @@ const FeatureCard = styled.div`
   .icon {
     font-size: 2.25rem; // Slightly reduced
     margin-bottom: 1.25rem;
+    // Emojis don't take color variable, keep as is
   }
 
   // Text sizing
   h3 {
     font-size: 1.4rem; // Slightly reduced
     font-weight: bold;
-    color: #333;
+    color: var(--color-text); // Use theme text
     margin-bottom: 0.9rem;
+    transition: color 0.3s ease; // Add transition
   }
 
   p {
     font-size: 1.1rem; // Slightly reduced
-    color: #666;
+    color: var(--color-text-secondary); // Use secondary theme text
     line-height: 1.6;
+    transition: color 0.3s ease; // Add transition
   }
 `;
 

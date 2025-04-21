@@ -4,19 +4,19 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 // Re-using the Button style from Header (consider moving to a shared file later)
 const Button = styled.button`
-  background-color: #000; // Black background
-  color: #fff; // White text
+  background-color: var(--button-primary-bg); // Use CSS variable
+  color: var(--button-primary-text); // Use CSS variable
   padding: 0.85rem 1.75rem; // Slightly larger padding for hero button
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; // Added color transition
   margin-top: 1.5rem; // Space above the button
 
   &:hover {
-    background-color: #333; // Darker shade on hover
+    background-color: var(--button-primary-bg-hover); // Use CSS variable for hover
   }
 `;
 
@@ -25,7 +25,8 @@ const HeroWrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   padding: 4rem 3rem; // Generous padding for the hero section
-  background-color: #fff; // White background
+  background-color: var(--color-background); // Use theme background variable
+  transition: background-color 0.3s ease; // Add transition
 
   @media (max-width: 768px) {
     flex-direction: column; // Stack columns
@@ -50,7 +51,8 @@ const TextContent = styled.div`
     font-weight: bold;
     margin-bottom: 1rem;
     line-height: 1.2;
-    color: #222;
+    color: var(--color-text); // Use theme text variable
+    transition: color 0.3s ease; // Add transition
     @media (max-width: 768px) {
       font-size: 2.2rem; // Smaller heading
     }
@@ -61,9 +63,10 @@ const TextContent = styled.div`
 
   p {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--color-text-secondary, #666); // Use secondary text variable with fallback
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    transition: color 0.3s ease; // Add transition
     @media (max-width: 768px) {
       font-size: 1rem;
     }

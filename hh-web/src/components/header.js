@@ -11,9 +11,10 @@ const HeaderWrapper = styled.header`
   justify-content: space-between; // Changed to space-between
   align-items: center; // Changed to center alignment vertically
   padding: 1rem 3rem;
-  background-color: #F4F8F1; // Changed background color
-  color: #333;
-  border-bottom: 1px solid #eee;
+  background-color: var(--color-features-bg); /* Use features background */
+  color: var(--color-text); /* Use CSS variable for text too */
+  border-bottom: 1px solid var(--color-border, #eee); /* Use variable with fallback */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Add transitions */
 
   @media (max-width: 768px) {
     padding: 0.75rem 1.5rem;
