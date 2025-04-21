@@ -35,7 +35,10 @@ const Layout = ({ children }) => {
         style={{
           margin: `0 auto`,
           maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
+          paddingTop: `var(--size-gutter)`,
+          paddingLeft: `var(--size-gutter)`,
+          paddingRight: `var(--size-gutter)`,
+          paddingBottom: 0,
           minHeight: `calc(100vh - ${approxHeaderHeight}px)`,
           display: `flex`,
           flexDirection: `column`,
