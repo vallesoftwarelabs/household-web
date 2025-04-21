@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import logoImage from '../images/logo.svg'; // Import the logo image
+import logoDarkImage from '../images/logo-dark.svg'; // Import the dark mode logo image
+import { useTheme } from '../context/ThemeContext'; // Import useTheme hook
 import ThemeSwitch from './ThemeSwitch'; // Import the ThemeSwitch component
 
 // Removing the Button component since we won't use it
@@ -57,13 +59,16 @@ const LogoImage = styled.img`
 // Removing NavLinks and ActionButtons components
 
 const Header = () => {
+  const { isDarkMode } = useTheme(); // Get theme state
+
   return (
     <HeaderWrapper>
       {/* Restored Logo wrapper */}
       <Logo>
         {/* Restored correct Link structure */}
         <Link to="/">
-          <LogoImage src={logoImage} alt="Grocery App Logo" />
+          {/* Conditionally render logo based on theme */}
+          <LogoImage src={isDarkMode ? logoDarkImage : logoImage} alt="Grocery App Logo" />
           <span>yet another grocery app</span> {/* Keep text in a span */}
         </Link>
       </Logo>
