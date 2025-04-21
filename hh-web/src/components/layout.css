@@ -42,6 +42,10 @@
 
   /* Tag Variables */
   --color-tag-more-bg: #f0f0f0;
+
+  /* Theme Switch Variables (Additions for Light Mode) */
+  --theme-switch-track-bg-light: #E0E0E0; /* Light grey track for light mode */
+  --theme-switch-icon-color: #757575; /* Icon color for light mode */
 }
 
 /* Dark Mode Variables */
@@ -303,7 +307,7 @@ pre tt:after {
   position: absolute;
   width: 24px;
   height: 24px;
-  background-color: #0052cc; /* Blue thumb */
+  background-color: #667C55; /* Blue thumb */
   border-radius: 50%;
   display: flex;
   justify-content: center;
