@@ -8,7 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./Header"
+import Header from "./header"
 import StickyFooterBar from "./StickyFooterBar"
 import { ThemeProvider } from "../context/ThemeContext"
 import "./layout.css"
