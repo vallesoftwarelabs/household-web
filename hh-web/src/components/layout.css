@@ -222,3 +222,91 @@ pre tt:before,
 pre tt:after {
   content: none;
 }
+
+/* Theme Switch Styles */
+.theme-switch {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.theme-switch-track {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #E0E0E0; /* Light mode track background */
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.theme-switch.dark .theme-switch-track {
+  background-color: #333; /* Dark mode track background */
+}
+
+.theme-switch-thumb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #0052cc; /* Blue thumb */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  left: 3px;
+  color: white;
+  font-size: 14px;
+  z-index: 1; /* Ensure thumb is above track icons */
+}
+
+.theme-switch.light .theme-switch-thumb {
+  transform: translateX(0);
+}
+
+.theme-switch.dark .theme-switch-thumb {
+  transform: translateX(30px); /* Move thumb to the right in dark mode */
+}
+
+/* Icons inside the track - positioned absolutely */
+.theme-switch-track .sun-icon,
+.theme-switch-track .moon-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #A0A0A0; /* Default icon color (dimmed) */
+  transition: color 0.3s ease;
+}
+
+.theme-switch-track .sun-icon {
+  left: 7px;
+}
+
+.theme-switch-track .moon-icon {
+  right: 7px;
+}
+
+/* Active icon colors based on theme */
+.theme-switch.light .theme-switch-track .sun-icon {
+  /* Color will be handled by thumb */
+}
+
+.theme-switch.dark .theme-switch-track .moon-icon {
+   /* Color will be handled by thumb */
+}
+
+/* Hide the icon that is currently covered by the thumb */
+.theme-switch.light .theme-switch-track .moon-icon {
+  /* Keep visible */
+}
+.theme-switch.dark .theme-switch-track .sun-icon {
+ /* Keep visible */
+}
+
+/* Ensure FontAwesome icons inside thumb are white */
+.theme-switch-thumb .svg-inline--fa {
+ color: white;
+}

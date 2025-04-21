@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import logoImage from '../images/logo.svg'; // Import the logo image
+import ThemeSwitch from './ThemeSwitch'; // Import the ThemeSwitch component
 
 // Removing the Button component since we won't use it
 
 const HeaderWrapper = styled.header`
   display: flex;
-  justify-content: flex-start; // Changed to left alignment
-  align-content: center;
+  justify-content: space-between; // Changed to space-between
+  align-items: center; // Changed to center alignment vertically
   padding: 1rem 3rem;
   background-color: #F4F8F1; // Changed background color
   color: #333;
@@ -66,6 +67,7 @@ const Header = () => {
         </Link>
       </Logo>
       {/* Navigation links and Start Shopping button removed */}
+      <ThemeSwitch /> {/* Add the theme switch component */}
     </HeaderWrapper>
   );
 };
