@@ -3,32 +3,66 @@ import styled from 'styled-components';
 import { Link } from 'gatsby'; // Add import for Link
 
 // Re-using StoreButton styling (consider consolidating styles)
-// Hardcode colors for footer
+// Hardcode colors for footer - REMOVED
 const StoreButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  background-color: #000; // Always black background
-  color: #fff; // Always white text
-  padding: 0.6rem 1.2rem; // Slightly smaller padding
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.9rem; // Slightly smaller font size
-  transition: background-color 0.2s ease; // Only transition background
+  // Base styles from CategoryCard
+  background-color: var(--color-card-bg); // Use card background variable
+  border-radius: 2rem; // Rounded pill shape
+  box-shadow: var(--card-shadow); // Use card shadow variable
+  text-align: center;
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.05)); // Use border var with fallback
+  position: relative; // Needed for pseudo-element positioning
+  overflow: hidden; // Ensure gradient clipping with large radius
+  transition: all 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; // Adjusted transitions
 
+  // Layout styles from CategoryCardContentWrapper applied directly
+  display: inline-flex; // Make contents inline
+  align-items: center; // Vertically center icon and text
+  padding: 0.7rem 1.2rem; // Smaller padding from CategoryCard
+  z-index: 2; // Ensure content is above potential pseudo-element
+  
+  // Text & Link styles
+  color: var(--color-text); // Use theme text (overrides footer's white text)
+  text-decoration: none;
+  font-size: 0.95rem; // Smaller text from CategoryCard h3
+  font-weight: 600; // Slightly lighter weight from CategoryCard h3
+
+  // Dark mode gradient border from CategoryCard
+  body.dark-mode & {
+    border: none; // Remove default border in dark mode
+    padding: calc(0.7rem + 2px) calc(1.2rem + 2px); // Add 2px to padding for border space
+    background: linear-gradient(to right, #FCA46D, #C76D52);
+    color: var(--color-text); // Ensure text color uses theme variable in dark mode
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--color-card-bg);
+        border-radius: calc(2rem - 2px); /* Original radius - inset */
+        z-index: -1; // Sit behind the gradient background acting as border
+    }
+  }
+
+  // Icon styles from CategoryCard
   .icon {
-    margin-right: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem; // Smaller icon from CategoryCard
+    margin-right: 0.6rem; // Space between icon and text from CategoryCard
     // Emoji color won't change
   }
 
+  // Hover styles from CategoryCard
   &:hover {
-    background-color: #333; // Always dark grey hover
+    transform: translateY(-2px); // Slight lift on hover
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    // Remove default link hover styles if needed
+    text-decoration: none;
+    color: var(--color-text); // Ensure hover text color matches theme
   }
 `;
 
 const BarWrapper = styled.div`
-  background-color: var(--color-features-bg); // Keep themed background
+  background-color: #000000; // Set black background
+  color: #ffffff; // Set default text color to white
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -36,7 +70,7 @@ const BarWrapper = styled.div`
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Keep shadow simple or make variable later
   border-top: 1px solid var(--color-border, #eee); // Keep themed border
   margin-top: auto; // Push to bottom if content is short
-  transition: background-color 0.3s ease, border-color 0.3s ease; // Add transitions
+  transition: border-color 0.3s ease; // Adjust transitions
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -53,12 +87,11 @@ const BarWrapper = styled.div`
 const FooterInfo = styled.div`
   display: flex;
   align-items: center;
-  color: #333; // Changed to darker grey/black
   font-size: 0.85rem;
   // Removed color transition
 
   a {
-    color: #333; // Changed to darker grey/black
+    color: inherit; // Inherit color from parent
     text-decoration: none;
     margin-left: 0.5rem;
     
@@ -91,7 +124,7 @@ const AppButtons = styled.div`
 
 const InfoText = styled.span`
   margin-right: 1.5rem;
-  color: #000000; // Changed to darker grey/black
+  color: #ffffff; // Set text to white
   // Removed color transition
 
   @media (max-width: 480px) {

@@ -74,7 +74,7 @@ body.dark-mode {
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adjusted shadow for dark */
 
   /* Section Backgrounds (Dark Mode) */
-  --color-features-bg: #667C55; /* Darker green for dark mode */
+  --color-features-bg: #EDA54A; /* Darker green for dark mode */
 
   /* Tag Variables (Dark Mode) */
   --color-tag-more-bg: #2a2a2a; /* Darker grey for dark mode */
@@ -307,7 +307,7 @@ pre tt:after {
   position: absolute;
   width: 24px;
   height: 24px;
-  background-color: #667C55; /* Blue thumb */
+  background-color: #EDA54A; /* Blue thumb */
   border-radius: 50%;
   display: flex;
   justify-content: center;

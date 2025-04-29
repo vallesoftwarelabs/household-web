@@ -8,8 +8,22 @@ const CategoriesWrapper = styled.section`
   text-align: center;
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
-  position: relative; // Ensure proper stacking context
-  transition: background-color 0.3s ease; // Add transition
+  position: relative; // Ensure proper stacking context for pseudo-element
+  overflow: hidden; // Contain the blurred pseudo-element
+  transition: background-color 0.3s ease; // Adjust transition
+
+  body.dark-mode & {
+    background-color: transparent; /* Override light mode bg */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 60% 80% at top right, #EDA54A 0%, #333333 75%);
+      filter: blur(20px);
+      z-index: -1;
+      transform: scale(1.1);
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 3rem 0; // Keep vertical padding, remove horizontal
@@ -63,14 +77,30 @@ const CategoriesContainer = styled.div`
 // Redesigned cards to be smaller, tag-like, with horizontal layout
 const CategoryCard = styled.div`
   background-color: var(--color-card-bg); // Use card background variable
-  padding: 0.7rem 1.2rem; // Smaller padding
+  // padding: 0.7rem 1.2rem; // Padding moved to inner wrapper
   border-radius: 2rem; // Rounded pill shape
   box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: center;
-  display: inline-flex; // Make contents inline
-  align-items: center; // Vertically center icon and text
+  // display: inline-flex; // Moved to inner wrapper
+  // align-items: center; // Moved to inner wrapper
   border: 1px solid var(--color-border, rgba(0, 0, 0, 0.05)); // Use border var with fallback
-  transition: all 0.2s ease, background-color 0.3s ease, border-color 0.3s ease; // Add transitions
+  position: relative; // Needed for pseudo-element positioning
+  overflow: hidden; // Ensure gradient clipping with large radius
+  transition: all 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; // Adjusted transitions
+
+  body.dark-mode & {
+    border: none; // Remove default border in dark mode
+    padding: 2px; // Create space for the 2px gradient border
+    background: linear-gradient(to right, #FCA46D, #C76D52);
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--color-card-bg);
+        border-radius: calc(2rem - 2px); /* Original radius - inset */
+        z-index: 1;
+    }
+  }
   
   &:hover {
     transform: translateY(-2px); // Slight lift on hover
@@ -92,6 +122,15 @@ const CategoryCard = styled.div`
     margin: 0; // Remove default margins
     transition: color 0.3s ease; // Add transition
   }
+`;
+
+// Inner wrapper for CategoryCard content
+const CategoryCardContentWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+  padding: 0.7rem 1.2rem; // Original padding
+  display: inline-flex; // Original layout styles
+  align-items: center; // Original layout styles
 `;
 
 // Add a new styled component for the "more" tag
@@ -128,40 +167,58 @@ const FeaturedCategories = () => {
         <SectionTitle>Categories</SectionTitle>
         <CategoriesContainer>
           <CategoryCard>
-            <ProduceIcon />
-            <h3>Fresh produce</h3>
+            <CategoryCardContentWrapper>
+              <ProduceIcon />
+              <h3>Fresh produce</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <DairyIcon />
-            <h3>Dairy & eggs</h3>
+            <CategoryCardContentWrapper>
+              <DairyIcon />
+              <h3>Dairy & eggs</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <MeatIcon />
-            <h3>Meat</h3>
+            <CategoryCardContentWrapper>
+              <MeatIcon />
+              <h3>Meat</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <HerbsIcon />
-            <h3>Fresh herbs</h3>
+            <CategoryCardContentWrapper>
+              <HerbsIcon />
+              <h3>Fresh herbs</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <BakeryIcon />
-            <h3>Bakery</h3>
+            <CategoryCardContentWrapper>
+              <BakeryIcon />
+              <h3>Bakery</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <FrozenIcon />
-            <h3>Frozen meals</h3>
+            <CategoryCardContentWrapper>
+              <FrozenIcon />
+              <h3>Frozen meals</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <BeveragesIcon />
-            <h3>Beverages</h3>
+            <CategoryCardContentWrapper>
+              <BeveragesIcon />
+              <h3>Beverages</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <CategoryCard>
-            <SnacksIcon />
-            <h3>Snacks</h3>
+            <CategoryCardContentWrapper>
+              <SnacksIcon />
+              <h3>Snacks</h3>
+            </CategoryCardContentWrapper>
           </CategoryCard>
           <MoreCategoriesTag>
-            <MoreIcon />
-            <h3>...and a lot more!</h3>
+            <CategoryCardContentWrapper>
+              <MoreIcon />
+              <h3>...and a lot more!</h3>
+            </CategoryCardContentWrapper>
           </MoreCategoriesTag>
         </CategoriesContainer>
       </CategoriesInner>

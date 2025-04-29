@@ -7,8 +7,22 @@ const FeaturesWrapper = styled.section`
   background-color: var(--color-features-bg); // Use specific features background
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
-  position: relative; // Ensure proper stacking context
-  transition: background-color 0.3s ease; // Add transition
+  position: relative; // Ensure proper stacking context for pseudo-element
+  overflow: hidden; // Contain the blurred pseudo-element
+  transition: background-color 0.3s ease; // Adjust transition (image is now on pseudo-element)
+
+  body.dark-mode & {
+    background-color: transparent; /* Override light mode bg */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 60% 80% at top right, #EDA54A 0%, #333333 75%);
+      filter: blur(20px);
+      z-index: -1; // Place behind content
+      transform: scale(1.1); // Ensure blur covers edges
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 3rem 0; // Keep vertical padding, remove horizontal
@@ -70,17 +84,33 @@ const CardsContainer = styled.div`
 // Adjust FeatureCard to be more squared
 const FeatureCard = styled.div`
   background-color: var(--color-card-bg); // Use card background variable
-  padding: 2.5rem; // Reduce padding to make more compact
+  // padding: 2.5rem; // Padding moved to inner wrapper
   border-radius: 10px; // Slightly smaller radius
   box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.05); // Default light mode border
+  position: relative; // Needed for pseudo-element positioning
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Adjusted transitions
+
+  body.dark-mode & {
+    border: none; // Remove default border in dark mode
+    padding: 2px; // Create space for the 2px gradient border
+    background: linear-gradient(to right, #FCA46D, #C76D52);
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 2px; // Position 2px from each edge
+        background: var(--color-card-bg);
+        border-radius: 8px; /* 10px (card radius) - 2px (inset) */
+        z-index: 1;
+    }
+  }
   
   // Make cards more square-like on larger screens
   flex: 1 1 0;
   
   // Width adjustments
   min-width: 320px; // Slightly reduce min width
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Add transitions
   
   // On larger screens, set aspect ratio close to 1:1
   @media (min-width: 1200px) {
@@ -120,6 +150,15 @@ const FeatureCard = styled.div`
   }
 `;
 
+// Wrapper for content inside FeatureCard to sit above the pseudo-element bg
+const CardContentWrapper = styled.div`
+  position: relative;
+  z-index: 2; // Ensure content is above the ::before pseudo-element
+  padding: 2.5rem; // Apply the original padding here
+  // Inherit text align or set explicitly if needed
+  text-align: left;
+`;
+
 // Update the icon components to better match new descriptions
 const TimeIcon = () => <span className="icon">⌚</span>;
 const AIIcon = () => <span className="icon">🧠</span>; // Changed to brain emoji for AI
@@ -132,28 +171,34 @@ const Features = () => {
         {/* <SectionTitle>Why Choose Us?</SectionTitle> */}
         <CardsContainer>
           <FeatureCard>
-            <TimeIcon />
-            <h3>Save time</h3>
-            <p>
-              Our optimized shopping paths eliminate backtracking and wandering.
-              The list will always be sorted to follow each individual stores layout.
-            </p>
+            <CardContentWrapper>
+              <TimeIcon />
+              <h3>Save time</h3>
+              <p>
+                Our optimized shopping paths eliminate backtracking and wandering.
+                The list will always be sorted to follow each individual stores layout.
+              </p>
+            </CardContentWrapper>
           </FeatureCard>
           <FeatureCard>
-            <AIIcon />
-            <h3>Store-specific learning</h3>
-            <p>
-              Our AI adapts to each unique store you visit, learning item locations and your preferences.
-              The more you shop, the smarter and more personalized your routes become.
-            </p>
+            <CardContentWrapper>
+              <AIIcon />
+              <h3>Store-specific learning</h3>
+              <p>
+                Our AI adapts to each unique store you visit, learning item locations and your preferences.
+                The more you shop, the smarter and more personalized your routes become.
+              </p>
+            </CardContentWrapper>
           </FeatureCard>
           <FeatureCard>
-            <BudgetIcon />
-            <h3>Control costs</h3>
-            <p>
-              All items from your receipts are categorized, so you can track your spending in real-time.
-              Make informed decisions and avoid unexpected checkout surprises.
-            </p>
+            <CardContentWrapper>
+              <BudgetIcon />
+              <h3>Control costs</h3>
+              <p>
+                All items from your receipts are categorized, so you can track your spending in real-time.
+                Make informed decisions and avoid unexpected checkout surprises.
+              </p>
+            </CardContentWrapper>
           </FeatureCard>
         </CardsContainer>
       </FeaturesInner>

@@ -16,7 +16,22 @@ const HeaderWrapper = styled.header`
   background-color: var(--color-features-bg); /* Use features background */
   color: var(--color-text); /* Use CSS variable for text too */
   border-bottom: 1px solid var(--color-border, #eee); /* Use variable with fallback */
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Add transitions */
+  position: relative; // For pseudo-element
+  overflow: hidden; // Contain blur
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Adjust transitions */
+
+  body.dark-mode & {
+    background-color: transparent; /* Override light mode bg */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 60% 80% at top right, #EDA54A 0%, #333333 75%);
+      filter: blur(20px);
+      z-index: -1;
+      transform: scale(1.1);
+    }
+  }
 
   @media (max-width: 768px) {
     padding: 0.75rem 1.5rem;
