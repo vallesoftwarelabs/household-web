@@ -12,17 +12,27 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between; // Changed to space-between
   align-items: center; // Changed to center alignment vertically
-  padding: 1rem 3rem;
-  background-color: var(--color-features-bg); /* Use features background */
+  // padding: 1rem 3rem; // Padding moved to inner content wrapper
+  background-color: #e0e0e0; /* Darker light mode base background */
   color: var(--color-text); /* Use CSS variable for text too */
   border-bottom: 1px solid var(--color-border, #eee); /* Use variable with fallback */
-  position: relative; // For pseudo-element
-  overflow: hidden; // Contain blur
+  position: relative; // For pseudo-elements
+  overflow: hidden; // Contain pseudo-elements
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Adjust transitions */
 
-  body.dark-mode & {
-    background-color: transparent; /* Override light mode bg */
-    &::before {
+  // Light mode gradient pseudo-element
+  &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 60% 80% at 100% 0%, #E89031 0%, rgba(232, 144, 49, 0) 70%);
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      opacity: 1;
+  }
+
+  // Dark mode gradient pseudo-element
+  &::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -30,8 +40,30 @@ const HeaderWrapper = styled.header`
       filter: blur(20px);
       z-index: -1;
       transform: scale(1.1);
-    }
+      opacity: 0;
+      transition: opacity 0.3s ease;
   }
+
+  body.dark-mode & {
+    background-color: transparent; /* Override light mode bg */
+    &::before { opacity: 0; }
+    &::after { opacity: 1; z-index: 0; }
+  }
+
+  @media (max-width: 768px) {
+    // padding: 0.75rem 1.5rem; // Padding moved to inner content wrapper
+  }
+`;
+
+// Create inner wrapper for content
+const HeaderInner = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem; // Apply original padding
+  position: relative;
+  z-index: 1;
 
   @media (max-width: 768px) {
     padding: 0.75rem 1.5rem;
@@ -78,17 +110,15 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      {/* Restored Logo wrapper */}
-      <Logo>
-        {/* Restored correct Link structure */}
-        <Link to="/">
-          {/* Conditionally render logo based on theme */}
-          <LogoImage src={isDarkMode ? logoDarkImage : logoImage} alt="Grocery App Logo" />
-          <span>yet another grocery app</span> {/* Keep text in a span */}
-        </Link>
-      </Logo>
-      {/* Navigation links and Start Shopping button removed */}
-      <ThemeSwitch /> {/* Add the theme switch component */}
+      <HeaderInner> {/* Add inner wrapper */} 
+        <Logo>
+          <Link to="/">
+            <LogoImage src={isDarkMode ? logoDarkImage : logoImage} alt="Grocery App Logo" />
+            <span>yet another grocery app</span>
+          </Link>
+        </Logo>
+        <ThemeSwitch />
+      </HeaderInner> {/* Close inner wrapper */} 
     </HeaderWrapper>
   );
 };

@@ -6,19 +6,32 @@ import { Link } from 'gatsby'; // Add import for Link
 // Hardcode colors for footer - REMOVED
 const StoreButton = styled.a`
   // Base styles from CategoryCard
-  background-color: var(--color-card-bg); // Use card background variable
+  // background-color: var(--color-card-bg); // Replaced by gradient background
   border-radius: 2rem; // Rounded pill shape
   box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: center;
-  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.05)); // Use border var with fallback
+  // border: 1px solid var(--color-border, rgba(0, 0, 0, 0.05)); // Replaced by gradient border
   position: relative; // Needed for pseudo-element positioning
   overflow: hidden; // Ensure gradient clipping with large radius
-  transition: all 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; // Adjusted transitions
+  transition: all 0.2s ease, box-shadow 0.3s ease; // Adjusted transitions
+  padding: calc(0.7rem + 2px) calc(1.2rem + 2px); // Add 2px to padding for border space
+  background: linear-gradient(to right, #FCA46D, #C76D52); // Gradient applied directly
+  
+  // Pseudo-element for inner background (both modes)
+  &::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: var(--color-card-bg); // Use theme variable for inner bg
+      border-radius: calc(2rem - 2px); /* Original radius - inset */
+      z-index: -1; // Sit behind the gradient background acting as border
+      transition: background-color 0.3s ease; // Transition inner background
+  }
 
   // Layout styles from CategoryCardContentWrapper applied directly
   display: inline-flex; // Make contents inline
   align-items: center; // Vertically center icon and text
-  padding: 0.7rem 1.2rem; // Smaller padding from CategoryCard
+  // padding: 0.7rem 1.2rem; // Padding is now handled by the border space logic
   z-index: 2; // Ensure content is above potential pseudo-element
   
   // Text & Link styles
@@ -27,7 +40,8 @@ const StoreButton = styled.a`
   font-size: 0.95rem; // Smaller text from CategoryCard h3
   font-weight: 600; // Slightly lighter weight from CategoryCard h3
 
-  // Dark mode gradient border from CategoryCard
+  // Dark mode gradient border from CategoryCard - REMOVED (applied directly now)
+  /*
   body.dark-mode & {
     border: none; // Remove default border in dark mode
     padding: calc(0.7rem + 2px) calc(1.2rem + 2px); // Add 2px to padding for border space
@@ -38,10 +52,11 @@ const StoreButton = styled.a`
         position: absolute;
         inset: 2px;
         background: var(--color-card-bg);
-        border-radius: calc(2rem - 2px); /* Original radius - inset */
-        z-index: -1; // Sit behind the gradient background acting as border
+        border-radius: calc(2rem - 2px);
+        z-index: -1;
     }
   }
+  */
 
   // Icon styles from CategoryCard
   .icon {
@@ -61,8 +76,8 @@ const StoreButton = styled.a`
 `;
 
 const BarWrapper = styled.div`
-  background-color: #000000; // Set black background
-  color: #ffffff; // Set default text color to white
+  background-color: #FFFFFF; // Default light mode background
+  color: #000000; // Default light mode text color
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -70,7 +85,12 @@ const BarWrapper = styled.div`
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Keep shadow simple or make variable later
   border-top: 1px solid var(--color-border, #eee); // Keep themed border
   margin-top: auto; // Push to bottom if content is short
-  transition: border-color 0.3s ease; // Adjust transitions
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; // Adjust transitions
+
+  body.dark-mode & {
+    background-color: #000000; // Dark mode background
+    color: #FFFFFF; // Dark mode text color
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -87,8 +107,9 @@ const BarWrapper = styled.div`
 const FooterInfo = styled.div`
   display: flex;
   align-items: center;
+  // Color is inherited from BarWrapper
   font-size: 0.85rem;
-  // Removed color transition
+  transition: color 0.3s ease; // Add transition for color inheritance
 
   a {
     color: inherit; // Inherit color from parent
@@ -124,8 +145,12 @@ const AppButtons = styled.div`
 
 const InfoText = styled.span`
   margin-right: 1.5rem;
-  color: #ffffff; // Set text to white
-  // Removed color transition
+  color: #000000; // Default light mode text color
+  transition: color 0.3s ease; // Add transition
+
+  body.dark-mode & {
+    color: #FFFFFF; // Dark mode text color
+  }
 
   @media (max-width: 480px) {
     display: none; // Hide text on very small screens

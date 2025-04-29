@@ -3,48 +3,68 @@ import styled from 'styled-components';
 
 // Modified to extend full width
 const FeaturesWrapper = styled.section`
-  padding: 4rem 0; // Remove horizontal padding
-  background-color: var(--color-features-bg); // Use specific features background
+  // padding: 4rem 0; // Padding moved to inner content wrapper
+  background-color: #e0e0e0; // Darker light mode base background
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
-  position: relative; // Ensure proper stacking context for pseudo-element
-  overflow: hidden; // Contain the blurred pseudo-element
-  transition: background-color 0.3s ease; // Adjust transition (image is now on pseudo-element)
+  position: relative; // Ensure proper stacking context for pseudo-elements
+  overflow: hidden; // Contain the pseudo-elements
+  transition: background-color 0.3s ease; // Adjust transition
 
-  body.dark-mode & {
-    background-color: transparent; /* Override light mode bg */
-    &::before {
+  // Light mode gradient pseudo-element
+  &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 60% 80% at 100% 0%, #E89031 0%, rgba(232, 144, 49, 0) 70%);
+      z-index: 0; // Behind content but above dark mode pseudo-element
+      transition: opacity 0.3s ease;
+      opacity: 1;
+  }
+
+  // Dark mode gradient pseudo-element (now needs higher z-index to be visible)
+  &::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image: radial-gradient(ellipse 60% 80% at top right, #EDA54A 0%, #333333 75%);
       filter: blur(20px);
-      z-index: -1; // Place behind content
+      z-index: -1; // Place behind content and light mode pseudo-element
       transform: scale(1.1); // Ensure blur covers edges
-    }
+      opacity: 0; // Hidden by default
+      transition: opacity 0.3s ease;
+  }
+
+  body.dark-mode & {
+    background-color: transparent; /* Override light mode bg */
+    // Hide light mode gradient, show dark mode gradient
+    &::before { opacity: 0; }
+    &::after { opacity: 1; z-index: 0; } // Bring dark mode gradient forward
   }
 
   @media (max-width: 768px) {
-    padding: 3rem 0; // Keep vertical padding, remove horizontal
+    // padding: 3rem 0; // Padding moved to inner content wrapper
   }
 
   @media (max-width: 480px) {
-    padding: 2rem 0; // Keep vertical padding, remove horizontal
+    // padding: 2rem 0; // Padding moved to inner content wrapper
   }
 `;
 
-// Update FeaturesInner for more space
+// Padding now applied here
 const FeaturesInner = styled.div`
   max-width: 1600px; // Significantly wider container
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 4rem 2rem; // Apply original padding here
+  position: relative; // Ensure content is above pseudo-elements
+  z-index: 1;
 
   @media (max-width: 768px) {
-    padding: 0 1.5rem;
+    padding: 3rem 1.5rem; // Adjust padding
   }
 
   @media (max-width: 480px) {
-    padding: 0 1rem;
+    padding: 2rem 1rem; // Adjust padding
   }
 `;
 
@@ -83,28 +103,30 @@ const CardsContainer = styled.div`
 
 // Adjust FeatureCard to be more squared
 const FeatureCard = styled.div`
-  background-color: var(--color-card-bg); // Use card background variable
-  // padding: 2.5rem; // Padding moved to inner wrapper
+  // background-color: var(--color-card-bg); // Replaced by gradient background
   border-radius: 10px; // Slightly smaller radius
   box-shadow: var(--card-shadow); // Use card shadow variable
   text-align: left;
-  border: 1px solid rgba(0, 0, 0, 0.05); // Default light mode border
+  // border: 1px solid rgba(0, 0, 0, 0.05); // Replaced by gradient border
   position: relative; // Needed for pseudo-element positioning
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Adjusted transitions
+  overflow: hidden; // Ensure gradient clipping
+  transition: box-shadow 0.3s ease; // Adjusted transitions
+  padding: 2px; // Create space for the 2px gradient border
+  background: linear-gradient(to right, #FCA46D, #C76D52); // Gradient applied directly
 
-  body.dark-mode & {
-    border: none; // Remove default border in dark mode
-    padding: 2px; // Create space for the 2px gradient border
-    background: linear-gradient(to right, #FCA46D, #C76D52);
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 2px; // Position 2px from each edge
-        background: var(--color-card-bg);
-        border-radius: 8px; /* 10px (card radius) - 2px (inset) */
-        z-index: 1;
-    }
+  // Pseudo-element for inner background (both modes)
+  &::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: var(--color-card-bg);
+      border-radius: 8px; /* 10px (card radius) - 2px (inset) */
+      z-index: 1; // Sits behind content wrapper
+      transition: background-color 0.3s ease; // Transition inner background
   }
+
+  // Remove dark mode block
+  // body.dark-mode & { ... }
   
   // Make cards more square-like on larger screens
   flex: 1 1 0;
