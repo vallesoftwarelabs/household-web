@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useTheme } from '../context/ThemeContext'; // Import useTheme hook
+import GooglePlayBadge from '../images/googleplay.png'; // Import Google Play badge
+import AppStoreBadge from '../images/appstore_black.svg'; // Import App Store badge
 
 // Re-using the Button style from Header (consider moving to a shared file later)
 const Button = styled.button`
@@ -18,6 +20,28 @@ const Button = styled.button`
 
   &:hover {
     background-color: var(--button-primary-bg-hover); // Use CSS variable for hover
+  }
+`;
+
+// New styled component for the badges container
+const BadgesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem; // Space between badges
+  margin-top: 1.5rem; // Same top margin as the button had
+
+  @media (max-width: 768px) {
+    justify-content: center; // Center badges when stacked
+  }
+`;
+
+// New styled component for individual badges
+const BadgeLink = styled.a`
+  display: inline-block; // Allows setting height/width if needed
+  img {
+    height: 40px; // Standard height for store badges
+    width: auto; // Maintain aspect ratio
+    display: block; // Remove extra space below img
   }
 `;
 
@@ -101,7 +125,14 @@ const Hero = () => {
         <p>
           Tired of zigzagging through the store and constantly backtracking? Our app optimizes your shopping experience, and continiously learns your pattern in each individual grocery store.
         </p>
-        <Button>Try now!</Button>
+        <BadgesContainer>
+          <BadgeLink href="#" target="_blank" rel="noopener noreferrer">
+            <img src={AppStoreBadge} alt="Download on the App Store" />
+          </BadgeLink>
+          <BadgeLink href="#" target="_blank" rel="noopener noreferrer">
+            <img src={GooglePlayBadge} alt="Get it on Google Play" />
+          </BadgeLink>
+        </BadgesContainer>
       </TextContent>
       <ImageContent>
         {isDarkMode ? (
