@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Extend wrapper to full width
 const CategoriesWrapper = styled.section`
   // padding: 4rem 0; // Padding moved to inner content wrapper
-  background-color: #e0e0e0; // Darker light mode base background
+  background-color: var(--color-header-bg); // Use header background variable
   text-align: center;
   width: 100vw; // Full viewport width
   margin-left: calc(-50vw + 50%); // Negative margin trick to extend full width
@@ -20,7 +20,7 @@ const CategoriesWrapper = styled.section`
       background-image: radial-gradient(ellipse 60% 80% at 100% 0%, #E89031 0%, rgba(232, 144, 49, 0) 70%);
       z-index: 0;
       transition: opacity 0.3s ease;
-      opacity: 1;
+      opacity: 0; /* Hide in light mode */
   }
 
   // Dark mode gradient pseudo-element

@@ -13,7 +13,7 @@ const HeaderWrapper = styled.header`
   justify-content: space-between; // Changed to space-between
   align-items: center; // Changed to center alignment vertically
   // padding: 1rem 3rem; // Padding moved to inner content wrapper
-  background-color: #e0e0e0; /* Darker light mode base background */
+  background-color: var(--color-header-bg); /* Use CSS variable */
   color: var(--color-text); /* Use CSS variable for text too */
   border-bottom: 1px solid var(--color-border, #eee); /* Use variable with fallback */
   position: relative; // For pseudo-elements
@@ -28,7 +28,7 @@ const HeaderWrapper = styled.header`
       background-image: radial-gradient(ellipse 60% 80% at 100% 0%, #E89031 0%, rgba(232, 144, 49, 0) 70%);
       z-index: 0;
       transition: opacity 0.3s ease;
-      opacity: 1;
+      opacity: 0; /* Hide in light mode */
   }
 
   // Dark mode gradient pseudo-element
@@ -46,7 +46,7 @@ const HeaderWrapper = styled.header`
 
   body.dark-mode & {
     background-color: transparent; /* Override light mode bg */
-    &::before { opacity: 0; }
+    &::before { opacity: 0; } /* Ensure it stays hidden in dark mode too if needed */
     &::after { opacity: 1; z-index: 0; }
   }
 

@@ -4,7 +4,7 @@
   --color-text-secondary: #555; /* Added secondary text color for light mode */
   --color-primary: #7026b9;
   --color-background: #fff; /* Changed background for light theme to white */
-  --color-header-bg: #F4F8F1; /* Keep header slightly off-white for contrast */
+  --color-header-bg: #FEFAF5; /* New light mode header background */
   --color-code-bg: #fff4db;
   --color-code: #8a6534;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
