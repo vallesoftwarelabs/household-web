@@ -76,7 +76,7 @@ const Logo = styled.div`
 
   a {
     /* Inherit color or set explicitly if needed */
-    color: #333;
+    color: var(--color-text); // Use theme variable
     text-decoration: none;
     display: flex; /* Make link also a flex container */
     align-items: center; /* Align items within the link */
@@ -91,7 +91,13 @@ const Logo = styled.div`
     span {
       line-height: 1;
       display: inline-block;
+      transition: color 0.3s ease; // Add transition
     }
+  }
+
+  /* Apply white color to the span in dark mode */
+  body.dark-mode & a span {
+    color: #FFFFFF;
   }
 `;
 
