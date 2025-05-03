@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
+import { useTheme } from '../context/ThemeContext'; // Import useTheme hook
 
 // Re-using the Button style from Header (consider moving to a shared file later)
 const Button = styled.button`
@@ -91,6 +92,8 @@ const ImageContent = styled.div`
 `;
 
 const Hero = () => {
+  const { isDarkMode } = useTheme(); // Get theme state
+
   return (
     <HeroWrapper>
       <TextContent>
@@ -101,13 +104,23 @@ const Hero = () => {
         <Button>Try now!</Button>
       </TextContent>
       <ImageContent>
-        <StaticImage
-          src="../images/iphonemockup.png"
-          alt="App screenshot on iPhone mockup"
-          placeholder="blurred"
-          layout="constrained"
-          style={{ borderRadius: '8px' }}
-        />
+        {isDarkMode ? (
+          <StaticImage
+            src="../images/iphonemockup-dark.png" // Dark mode image path
+            alt="App screenshot on iPhone mockup (Dark Mode)"
+            placeholder="blurred"
+            layout="constrained"
+            style={{ borderRadius: '8px' }}
+          />
+        ) : (
+          <StaticImage
+            src="../images/iphonemockup.png" // Light mode image path
+            alt="App screenshot on iPhone mockup (Light Mode)"
+            placeholder="blurred"
+            layout="constrained"
+            style={{ borderRadius: '8px' }}
+          />
+        )}
       </ImageContent>
     </HeroWrapper>
   );
