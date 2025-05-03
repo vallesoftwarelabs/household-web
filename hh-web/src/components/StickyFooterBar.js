@@ -78,9 +78,9 @@ const StoreButton = styled.a`
 const BarWrapper = styled.div`
   background-color: #FFFFFF; // Default light mode background
   color: #000000; // Default light mode text color
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem; // Increased vertical padding
   display: flex;
-  justify-content: space-between;
+  justify-content: center; // Keep centered from potential previous state or adjust if needed
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Keep shadow simple or make variable later
   border-top: 1px solid var(--color-border, #eee); // Keep themed border
@@ -128,35 +128,6 @@ const FooterInfo = styled.div`
   }
 `;
 
-// Right section with app store buttons
-const AppButtons = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-
-  @media (max-width: 768px) {
-    order: 1; // Move to top on mobile
-  }
-
-  @media (max-width: 480px) {
-    gap: 1rem;
-  }
-`;
-
-const InfoText = styled.span`
-  margin-right: 1.5rem;
-  color: #000000; // Default light mode text color
-  transition: color 0.3s ease; // Add transition
-
-  body.dark-mode & {
-    color: #FFFFFF; // Dark mode text color
-  }
-
-  @media (max-width: 480px) {
-    display: none; // Hide text on very small screens
-  }
-`;
-
 const StickyFooterBar = () => {
   return (
     <BarWrapper>
@@ -172,16 +143,6 @@ const StickyFooterBar = () => {
         </Link>
       </FooterInfo>
       
-      <AppButtons>
-        <InfoText>Get the app:</InfoText>
-        {/* Replace # with actual store links */}
-        <StoreButton href="#">
-          <span className="icon">🍎</span> App Store
-        </StoreButton>
-        <StoreButton href="#">
-          <span className="icon">▶</span> Play Store
-        </StoreButton>
-      </AppButtons>
     </BarWrapper>
   );
 };
