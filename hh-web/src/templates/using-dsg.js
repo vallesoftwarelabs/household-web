@@ -21,6 +21,6 @@ const UsingDSG = () => (
   </Layout>
 )
 
-export const Head = () => <Seo title="Using DSG" />
+export const Head = () => <Seo title="YAGA" />
 
 export default UsingDSG

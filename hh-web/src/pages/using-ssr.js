@@ -32,7 +32,7 @@ const UsingSSR = ({ serverData }) => {
   )
 }
 
-export const Head = () => <Seo title="Using SSR" />
+export const Head = () => <Seo title="YAGA" />
 
 export default UsingSSR
 

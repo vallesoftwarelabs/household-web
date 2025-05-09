@@ -125,6 +125,6 @@ const TermsAndConditionsPage = () => {
 };
 
 // Add SEO Head export
-export const Head = () => <Seo title="Terms and Conditions" />;
+export const Head = () => <Seo title="YAGA" />;
 
 export default TermsAndConditionsPage; 
