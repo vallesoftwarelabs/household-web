@@ -89,6 +89,7 @@ const Logo = styled.div`
 
     /* Styles for the text span inside the link */
     span {
+      font-family: 'Sniglet', cursive; /* Apply Sniglet font */
       line-height: 1;
       display: inline-block;
       transition: color 0.3s ease; // Add transition
