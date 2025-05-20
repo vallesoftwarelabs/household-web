@@ -8,11 +8,11 @@ const TermsAndConditionsPage = () => {
   return (
     <Layout>
       <PolicyContainer>
-        <h1>Terms and Conditions for VSL Household App</h1>
+        <h1>Terms and Conditions for YAGA - Yet Another Grocery App</h1>
         <p><strong>Effective Date: April 5, 2025</strong></p>
 
         <p>
-          Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the VSL Household mobile application (the "Service", "App") operated by Valle Software Labs AS ("us", "we", or "our").
+          Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the YAGA - Yet Another Grocery App mobile application (the "Service", "App") operated by Valle Software Labs AS ("us", "we", or "our").
         </p>
         <p>
           Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you do not have permission to access the Service.

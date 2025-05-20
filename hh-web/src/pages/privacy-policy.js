@@ -7,11 +7,11 @@ const PrivacyPolicyPage = () => {
   return (
     <Layout>
       <PolicyContainer>
-        <h1>Privacy Policy for VSL Household App</h1>
+        <h1>Privacy Policy for YAGA - Yet Another Grocery App</h1>
         <p><strong>Effective Date: April 5, 2025</strong></p>
 
         <p>
-          Welcome to the VSL Household App (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.
+          Welcome to the YAGA - Yet Another Grocery App (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.
         </p>
 
         <p>
