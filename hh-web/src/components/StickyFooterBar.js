@@ -141,6 +141,10 @@ const StickyFooterBar = () => {
         <Link to="/terms-and-conditions">
           Terms & Conditions
         </Link>
+        {` · `}
+        <Link to="/contact/">
+          Contact Us
+        </Link>
       </FooterInfo>
       
     </BarWrapper>

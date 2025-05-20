@@ -109,6 +109,8 @@ const LogoImage = styled.img`
   margin-bottom: 0 !important; /* Override potential global margin */
 `;
 
+// Removing NavLinks styled component as it's no longer used here
+
 // Removing NavLinks and ActionButtons components
 
 const Header = () => {
@@ -123,6 +125,7 @@ const Header = () => {
             <span>yet another grocery app</span>
           </Link>
         </Logo>
+        {/* Removed NavLinks from here */}
         <ThemeSwitch />
       </HeaderInner> {/* Close inner wrapper */} 
     </HeaderWrapper>
