@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Reorder } from 'framer-motion';
 import { ShoppingCart, MapPin } from 'lucide-react';
 import { 
   FeatureSection, 
@@ -103,7 +103,7 @@ const ListSubtitle = styled.p`
   font-size: 20px;
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
+  margin: 0 0 4px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,15 +111,29 @@ const ListSubtitle = styled.p`
   letter-spacing: -0.3px;
 `;
 
-const ListItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
+const StoreAddress = styled.p`
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-align: center;
+  opacity: 0.8;
 `;
 
-const ListItem = styled(motion.div)`
+const ListItemsContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  min-height: 470px;
+`;
+
+const StyledReorderGroup = styled(Reorder.Group)`
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const StyledReorderItem = styled(Reorder.Item)`
   background: var(--color-card-bg);
   border-radius: 16px;
   padding: 16px;
@@ -130,7 +144,7 @@ const ListItem = styled(motion.div)`
     0 2px 8px rgba(0, 0, 0, 0.04),
     0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease-in-out;
+  cursor: grab;
 `;
 
 const ItemIcon = styled.div`
@@ -207,8 +221,20 @@ const Chip = styled.div`
   }
 `;
 
-const SmartSortingMockup = () => {
-  const groceryItems = [
+const SmartSortingMockup = ({ startAnimation }) => {
+  const [currentStoreIndex, setCurrentStoreIndex] = useState(0);
+  const [groceryItems, setGroceryItems] = useState([]);
+  const [showItems, setShowItems] = useState(false);
+  const [loopKey, setLoopKey] = useState(0);
+
+  const stores = [
+    { name: 'Walmart', address: '1050 Cedar Ridge Blvd' },
+    { name: 'Walmart', address: '842 Maple Valley Parkway' },
+    { name: 'Kroger', address: '231 Stonebridge Avenue' },
+    { name: 'Costco', address: '718 Harvest Loop Drive' }
+  ];
+
+  const baseItems = [
     { id: 1, emoji: '🥒', name: 'Cucumber', section: 'Produce' },
     { id: 2, emoji: '🍅', name: 'Tomatoes', section: 'Produce' },
     { id: 3, emoji: '🥛', name: 'Milk', section: 'Dairy' },
@@ -217,6 +243,84 @@ const SmartSortingMockup = () => {
     { id: 6, emoji: '🥓', name: 'Salami', section: 'Deli' }
   ];
 
+  const getItemsForStore = (storeIndex) => {
+    const items = [...baseItems];
+    switch (storeIndex) {
+      case 0: // Walmart 1 - Original order
+        return items;
+      case 1: // Walmart 2 - Move salami after tomatoes, ground beef after salami
+        return [
+          items[0], // cucumber
+          items[1], // tomatoes
+          items[5], // salami
+          items[4], // ground beef
+          items[2], // milk
+          items[3]  // cheese
+        ];
+      case 2: // Kroger - cucumber/tomatoes switch, milk/cheese switch
+        return [
+          items[1], // tomatoes
+          items[0], // cucumber
+          items[3], // cheese
+          items[2], // milk
+          items[5], // salami
+          items[4]  // ground beef
+        ];
+      case 3: // Costco - ground beef and salami move to bottom
+        return [
+          items[1], // tomatoes
+          items[0], // cucumber
+          items[3], // cheese
+          items[2], // milk
+          items[4], // ground beef
+          items[5]  // salami
+        ];
+      default:
+        return items;
+    }
+  };
+
+  // Animation sequence
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    const animationSequence = () => {
+      // Animation sequence for each store
+      let totalDelay = 2500; // Initial delay after first store
+
+      for (let i = 1; i < stores.length; i++) {
+        setTimeout(() => {
+          // Change store name/address immediately
+          setCurrentStoreIndex(i);
+          // Wait 600ms then update the item order state
+          setTimeout(() => {
+            setGroceryItems(getItemsForStore(i));
+          }, 600);
+        }, totalDelay);
+        
+        totalDelay += 2500; // 2s wait + 600ms delay + 1.4s for settling
+      }
+
+      // Loop the animation
+      setTimeout(() => {
+        setLoopKey(prevKey => prevKey + 1);
+        setCurrentStoreIndex(0);
+        // Wait 600ms then reset the item order
+        setTimeout(() => {
+          setGroceryItems(getItemsForStore(0));
+        }, 600);
+      }, totalDelay + 1000);
+    };
+
+    animationSequence();
+  }, [startAnimation, loopKey]);
+
+  // Set initial items
+  useEffect(() => {
+    setGroceryItems(getItemsForStore(0));
+    setShowItems(true);
+  }, []);
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -224,6 +328,20 @@ const SmartSortingMockup = () => {
       y: 0,
       transition: { delay: i * 0.1, duration: 0.4, ease: "easeOut" }
     })
+  };
+
+  const storeVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.5, ease: "easeOut" }
+    },
+    exit: { 
+      opacity: 0, 
+      y: -20, 
+      transition: { duration: 0.3, ease: "easeIn" }
+    }
   };
 
   return (
@@ -245,31 +363,53 @@ const SmartSortingMockup = () => {
       }}
     >
       <ListHeader>
-        <ListSubtitle>
-          <MapPin size={16} />
-          Whole Foods Market
-        </ListSubtitle>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${currentStoreIndex}-${loopKey}`}
+            variants={storeVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <ListSubtitle>
+              <MapPin size={16} />
+              {stores[currentStoreIndex]?.name || 'Walmart'}
+            </ListSubtitle>
+            <StoreAddress>
+              {stores[currentStoreIndex]?.address || '1050 Cedar Ridge Blvd'}
+            </StoreAddress>
+          </motion.div>
+        </AnimatePresence>
       </ListHeader>
       
       <ListItemsContainer>
-        {groceryItems.map((item, index) => (
-          <ListItem
-            key={item.id}
-            custom={index}
-            variants={itemVariants}
+        {showItems && (
+          <StyledReorderGroup
+            axis="y"
+            values={groceryItems}
+            onReorder={setGroceryItems}
           >
-            <ItemIcon>{item.emoji}</ItemIcon>
-            <ItemContent>
-              <ItemName>{item.name}</ItemName>
-            </ItemContent>
-          </ListItem>
-        ))}
+            {groceryItems.map((item) => (
+              <StyledReorderItem
+                key={item.id}
+                value={item}
+              >
+                <ItemIcon>{item.emoji}</ItemIcon>
+                <ItemContent>
+                  <ItemName>{item.name}</ItemName>
+                </ItemContent>
+              </StyledReorderItem>
+            ))}
+          </StyledReorderGroup>
+        )}
       </ListItemsContainer>
     </SmartSortingContainer>
   );
 };
 
 const SmartSortingFeature = () => {
+  const [startComplexAnimation, setStartComplexAnimation] = useState(false);
+
   return (
     <FeatureSection>
       <FeatureContainer>
@@ -305,8 +445,9 @@ const SmartSortingFeature = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={slideInRight}
+          onAnimationComplete={() => setStartComplexAnimation(true)}
         >
-          <SmartSortingMockup />
+          <SmartSortingMockup startAnimation={startComplexAnimation} />
         </GraphicSide>
       </FeatureContainer>
     </FeatureSection>

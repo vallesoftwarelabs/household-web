@@ -667,9 +667,8 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
   );
 };
 
-const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed }) => {
+const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnimation }) => {
   const [annotationPhase, setAnnotationPhase] = useState('none');
-  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
   const [loopKey, setLoopKey] = useState(0);
   const [hasTriggeredModal, setHasTriggeredModal] = useState(false);
 
@@ -681,7 +680,7 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed }) => {
   ];
 
   useEffect(() => {
-    if (!hasAnimatedIn) return;
+    if (!startAnimation) return;
 
     const timers = [
       setTimeout(() => setAnnotationPhase('orange'), 2000),
@@ -698,7 +697,7 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed }) => {
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, [hasAnimatedIn, loopKey]);
+  }, [startAnimation, loopKey]);
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -723,7 +722,6 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed }) => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", when: "beforeChildren", staggerChildren: 0.05 } }
       }}
-      onAnimationComplete={() => setHasAnimatedIn(true)}
     >
       <ListHeader isDimmed={annotationPhase !== 'none'}>
         <ListTitle>Your Shopping Memory</ListTitle>
@@ -791,7 +789,7 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed }) => {
   );
 };
 
-const PurchaseMemoryWithModal = () => {
+const PurchaseMemoryWithModal = ({ startAnimation }) => {
   const [showModal, setShowModal] = useState(false);
   const [infoPressed, setInfoPressed] = useState(false);
   const [resetKey, setResetKey] = useState(0);
@@ -824,6 +822,7 @@ const PurchaseMemoryWithModal = () => {
               onShowModal={handleShowModal}
               onInfoPress={handleInfoPress}
               infoPressed={infoPressed}
+              startAnimation={startAnimation}
             />
           </motion.div>
         )}
@@ -851,6 +850,8 @@ const PurchaseMemoryWithModal = () => {
 };
 
 const PurchaseMemoryFeature = () => {
+  const [startComplexAnimation, setStartComplexAnimation] = useState(false);
+
   return (
     <FeatureSection>
       <FeatureContainer className="reverse">
@@ -886,8 +887,9 @@ const PurchaseMemoryFeature = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={slideInLeft}
+          onAnimationComplete={() => setStartComplexAnimation(true)}
         >
-          <PurchaseMemoryWithModal />
+          <PurchaseMemoryWithModal startAnimation={startComplexAnimation} />
         </GraphicSide>
       </FeatureContainer>
     </FeatureSection>
