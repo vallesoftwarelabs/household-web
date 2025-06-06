@@ -24,9 +24,40 @@ const AiRecognitionContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 32px;
   width: 100%;
   padding: 60px 20px;
+`;
+
+const HeaderRow = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 16px;
+`;
+
+const HeaderLabel = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  
+  ${props => props.side === 'left' && `
+    max-width: 200px;
+  `}
+  
+  ${props => props.side === 'right' && `
+    width: 200px;
+  `}
+`;
+
+const HeaderSpacer = styled.div`
+  width: 120px;
+  height: 20px;
 `;
 
 const ExampleRow = styled(motion.div)`
@@ -231,7 +262,7 @@ const ShimmerOverlay = styled(motion.div)`
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
+    rgba(232, 144, 49, 0.8) 50%,
     transparent 100%
   );
   transform: translateX(-100%);
@@ -304,6 +335,21 @@ const AiRecognitionGraphic = () => {
         }
       }}
     >
+      <HeaderRow
+        variants={{
+          hidden: { opacity: 0, y: -10 },
+          visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+          }
+        }}
+      >
+        <HeaderLabel side="left">You write</HeaderLabel>
+        <HeaderSpacer />
+        <HeaderLabel side="right">YAGA interprets</HeaderLabel>
+      </HeaderRow>
+
       <ExampleRow
         variants={{
           hidden: { opacity: 0, y: 20 },
