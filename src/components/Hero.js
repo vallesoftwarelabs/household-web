@@ -126,10 +126,10 @@ const Hero = () => {
           Tired of zigzagging through the store and constantly backtracking? Our app optimizes your shopping experience, and continiously learns your pattern in each individual grocery store.
         </p>
         <BadgesContainer>
-          <BadgeLink href="#" target="_blank" rel="noopener noreferrer">
+          <BadgeLink href="https://apps.apple.com/app/id6737360577" target="_blank" rel="noopener noreferrer">
             <img src={AppStoreBadge} alt="Download on the App Store" />
           </BadgeLink>
-          <BadgeLink href="#" target="_blank" rel="noopener noreferrer">
+          <BadgeLink href="https://play.google.com/store/apps/details?id=com.vallesoftwarelabs.household" target="_blank" rel="noopener noreferrer">
             <img src={GooglePlayBadge} alt="Get it on Google Play" />
           </BadgeLink>
         </BadgesContainer>

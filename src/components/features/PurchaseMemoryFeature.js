@@ -632,7 +632,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
                 <StoreName>Rema 1000</StoreName>
                 <ModalItemName>Tine Økologisk Melk</ModalItemName>
                 <HistoryChips>
-                  <HistoryChip variant="exact">Exact</HistoryChip>
+                  <HistoryChip variant="similar">Similar</HistoryChip>
                   <HistoryChip variant="time">3 days ago</HistoryChip>
                 </HistoryChips>
               </HistoryItemContent>
@@ -643,7 +643,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
                 <StoreName>Kiwi</StoreName>
                 <ModalItemName>Q-Meieriene Økologisk Melk</ModalItemName>
                 <HistoryChips>
-                  <HistoryChip variant="similar">Similar</HistoryChip>
+                  <HistoryChip variant="exact">Exact</HistoryChip>
                   <HistoryChip variant="time">1 week ago</HistoryChip>
                 </HistoryChips>
               </HistoryItemContent>
