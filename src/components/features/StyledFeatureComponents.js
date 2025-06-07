@@ -64,7 +64,8 @@ export const ContentSide = styled(motion.div)`
 
   @media (max-width: 768px) {
     max-width: 100%;
-  text-align: center;
+    text-align: center;
+    order: 1; /* Always show content first on mobile */
   }
 `;
 
@@ -76,7 +77,11 @@ export const GraphicSide = styled(motion.div)`
   position: relative;
 
   @media (max-width: 768px) {
-    order: -1;
+    /* Add padding so graphic doesn't extend to screen edges */
+    padding: 0 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+    order: 2; /* Always show graphic second on mobile */
   }
 `;
 

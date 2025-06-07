@@ -27,6 +27,11 @@ const AiRecognitionContainer = styled(motion.div)`
   gap: 32px;
   width: 100%;
   padding: 60px 20px;
+  
+  @media (max-width: 768px) {
+    padding: 40px 10px;
+    gap: 24px;
+  }
 `;
 
 const HeaderRow = styled(motion.div)`
@@ -53,6 +58,28 @@ const HeaderLabel = styled.div`
   ${props => props.side === 'right' && `
     width: 200px;
   `}
+  
+  @media (max-width: 768px) {
+    font-size: 12px;
+    ${props => props.side === 'left' && `
+      max-width: 150px;
+    `}
+    
+    ${props => props.side === 'right' && `
+      width: 150px;
+    `}
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 11px;
+    ${props => props.side === 'left' && `
+      max-width: 100%;
+    `}
+    
+    ${props => props.side === 'right' && `
+      width: 100%;
+    `}
+  }
 `;
 
 const HeaderSpacer = styled.div`
@@ -66,6 +93,16 @@ const ExampleRow = styled(motion.div)`
   justify-content: center;
   gap: 40px;
   width: 100%;
+  
+  @media (max-width: 768px) {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 const InputText = styled(motion.div)`
@@ -90,6 +127,16 @@ const InputText = styled(motion.div)`
     color: var(--color-text-secondary);
     opacity: 0.6;
   }
+  
+  @media (max-width: 768px) {
+    font-size: 20px;
+    max-width: 180px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 18px;
+    max-width: 100%;
+  }
 `;
 
 const ArrowContainer = styled.div`
@@ -99,6 +146,16 @@ const ArrowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-width: 768px) {
+    width: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    transform: rotate(90deg);
+    width: 20px;
+    height: 60px;
+  }
 `;
 
 const ArrowLine = styled(motion.div)`
