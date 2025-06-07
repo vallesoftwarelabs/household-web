@@ -152,9 +152,9 @@ const ArrowContainer = styled.div`
   }
   
   @media (max-width: 480px) {
-    transform: rotate(90deg);
     width: 20px;
     height: 60px;
+    flex-shrink: 0;
   }
 `;
 
@@ -162,6 +162,7 @@ const ArrowLine = styled(motion.div)`
   position: absolute;
   left: 0;
   top: 50%;
+  width: 100px;
   height: 2px;
   background: transparent;
   background-image: repeating-linear-gradient(
@@ -172,6 +173,7 @@ const ArrowLine = styled(motion.div)`
     transparent 12px
   );
   transform: translateY(-50%);
+  transform-origin: left center;
   border-radius: 1px;
   overflow: hidden;
   
@@ -184,12 +186,40 @@ const ArrowLine = styled(motion.div)`
       transparent 12px
     );
   }
+  
+  @media (max-width: 480px) {
+    /* Rotate to vertical */
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 60px;
+    transform: translateX(-50%);
+    transform-origin: center top;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(232, 144, 49, 0.8) 0px,
+      rgba(232, 144, 49, 0.8) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    
+    body.dark-mode & {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(237, 165, 74, 0.8) 0px,
+        rgba(237, 165, 74, 0.8) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+    }
+  }
 `;
 
 const ArrowHead = styled(motion.div)`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  right: 0;
+  transform: translate(-100%, -40%);
   width: 0;
   height: 0;
   border-left: 8px solid rgba(232, 144, 49, 0.8);
@@ -198,6 +228,24 @@ const ArrowHead = styled(motion.div)`
   
   body.dark-mode & {
     border-left-color: rgba(237, 165, 74, 0.8);
+  }
+  
+  @media (max-width: 480px) {
+    /* Rotate to point downward */
+    left: 50%;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    transform: translate(-40%, 100%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid rgba(232, 144, 49, 0.8);
+    border-bottom: none;
+    
+    body.dark-mode & {
+      border-top-color: rgba(237, 165, 74, 0.8);
+      border-left-color: transparent;
+    }
   }
 `;
 
@@ -230,6 +278,15 @@ const OutputContainer = styled(motion.div)`
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
+  
+  @media (max-width: 480px) {
+  margin-top: 16px;
+  margin-bottom: 16px;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+    align-items: stretch;
+  }
 `;
 
 const TagContainer = styled(motion.div)`
@@ -310,7 +367,7 @@ const CategoryValue = styled.span`
   letter-spacing: -0.2px;
 `;
 
-const ShimmerOverlay = styled(motion.div)`
+const ShimmerOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -323,14 +380,48 @@ const ShimmerOverlay = styled(motion.div)`
     transparent 100%
   );
   transform: translateX(-100%);
+  animation: shimmerHorizontal 3s infinite ease-in-out;
+  animation-delay: 2s;
+  
+  @keyframes shimmerHorizontal {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  @keyframes shimmerVertical {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
   
   body.dark-mode & {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.5) 50%,
       transparent 100%
     );
+  }
+  
+  @media (max-width: 480px) {
+    /* Vertical shimmer for mobile */
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(232, 144, 49, 0.8) 50%,
+      transparent 100%
+    );
+    transform: translateY(-100%);
+    animation: shimmerVertical 3s infinite ease-in-out;
+    animation-delay: 2s;
+    
+    body.dark-mode & {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 100%
+      );
+    }
   }
 `;
 
@@ -338,37 +429,35 @@ const SimpleArrowAnimation = () => {
   return (
     <ArrowContainer>
       <ArrowLine
+        initial={{ 
+          opacity: 0,
+          scaleX: 0,
+          scaleY: 0
+        }}
         animate={{
-          width: [0, 100],
-          opacity: [0, 1]
+          opacity: 1,
+          scaleX: 1,
+          scaleY: 1
         }}
         transition={{
           duration: 1.5,
           ease: "easeOut"
         }}
       >
-        <ShimmerOverlay
-          animate={{
-            transform: ["translateX(-100%)", "translateX(100%)"]
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatDelay: 1,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
+        <ShimmerOverlay />
       </ArrowLine>
       
       <ArrowHead
+        initial={{
+          opacity: 0
+        }}
         animate={{
-          left: [0, 100],
-          opacity: [0, 1]
+          opacity: 1
         }}
         transition={{
           duration: 1.5,
-          ease: "easeOut"
+          ease: "easeOut",
+          delay: 1.2
         }}
       />
     </ArrowContainer>

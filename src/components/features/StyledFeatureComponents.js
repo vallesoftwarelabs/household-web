@@ -77,8 +77,6 @@ export const GraphicSide = styled(motion.div)`
   position: relative;
 
   @media (max-width: 768px) {
-    /* Add padding so graphic doesn't extend to screen edges */
-    padding: 0 2rem;
     max-width: 90%;
     margin: 0 auto;
     order: 2; /* Always show graphic second on mobile */
