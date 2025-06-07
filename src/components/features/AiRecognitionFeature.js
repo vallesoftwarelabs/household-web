@@ -41,6 +41,10 @@ const HeaderRow = styled(motion.div)`
   gap: 40px;
   width: 100%;
   margin-bottom: 16px;
+  
+  @media (max-width: 480px) {
+    gap: 0;
+  }
 `;
 
 const HeaderLabel = styled.div`
@@ -71,20 +75,31 @@ const HeaderLabel = styled.div`
   }
   
   @media (max-width: 480px) {
-    font-size: 11px;
-    ${props => props.side === 'left' && `
-      max-width: 100%;
-    `}
-    
-    ${props => props.side === 'right' && `
-      width: 100%;
-    `}
+    display: none;
   }
 `;
 
 const HeaderSpacer = styled.div`
   width: 120px;
   height: 20px;
+  
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
+const MobileHeaderLabel = styled.div`
+  display: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  
+  @media (max-width: 480px) {
+    display: block;
+  }
 `;
 
 const ExampleRow = styled(motion.div)`
@@ -494,6 +509,7 @@ const AiRecognitionGraphic = () => {
         <HeaderLabel side="left">You write</HeaderLabel>
         <HeaderSpacer />
         <HeaderLabel side="right">YAGA interprets</HeaderLabel>
+        <MobileHeaderLabel>You write, YAGA interprets</MobileHeaderLabel>
       </HeaderRow>
 
       <ExampleRow

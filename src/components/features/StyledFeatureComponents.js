@@ -64,7 +64,7 @@ export const ContentSide = styled(motion.div)`
 
   @media (max-width: 768px) {
     max-width: 100%;
-    text-align: center;
+    text-align: left;
     order: 1; /* Always show content first on mobile */
   }
 `;
@@ -101,7 +101,7 @@ export const FeatureIcon = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    margin: 0 auto 2rem auto;
+    margin: 0 0 2rem 0;
   }
 `;
 

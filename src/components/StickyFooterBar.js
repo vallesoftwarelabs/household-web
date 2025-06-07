@@ -84,7 +84,6 @@ const BarWrapper = styled.div`
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); // Keep shadow simple or make variable later
   border-top: 1px solid var(--color-border, #eee); // Keep themed border
-  margin-top: auto; // Push to bottom if content is short
   transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; // Adjust transitions
 
   body.dark-mode & {
@@ -94,12 +93,14 @@ const BarWrapper = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
-    padding: 0.75rem 1rem;
+    padding: 2rem 1rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -110,6 +111,8 @@ const FooterInfo = styled.div`
   // Color is inherited from BarWrapper
   font-size: 0.85rem;
   transition: color 0.3s ease; // Add transition for color inheritance
+  flex-wrap: wrap;
+  justify-content: center;
 
   a {
     color: inherit; // Inherit color from parent
@@ -124,7 +127,20 @@ const FooterInfo = styled.div`
   @media (max-width: 768px) {
     order: 2; // Move to bottom on mobile
     font-size: 0.8rem;
-    margin-top: 0.5rem;
+    margin-top: 0;
+    flex-direction: column;
+    gap: 0.5rem;
+    line-height: 1.4;
+    
+    a {
+      margin-left: 0;
+      margin: 0 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    gap: 0.25rem;
   }
 `;
 
@@ -132,19 +148,14 @@ const StickyFooterBar = () => {
   return (
     <BarWrapper>
       <FooterInfo>
-        © {new Date().getFullYear()} Valle Software Labs AS
-        {` · `}
-        <Link to="/privacy-policy">
-          Privacy policy
-        </Link>
-        {` · `}
-        <Link to="/terms-and-conditions">
-          Terms & Conditions
-        </Link>
-        {` · `}
-        <Link to="/contact/">
-          Contact Us
-        </Link>
+        <div>© {new Date().getFullYear()} Valle Software Labs AS</div>
+        <div>
+          <Link to="/privacy-policy">Privacy policy</Link>
+          {` · `}
+          <Link to="/terms-and-conditions">Terms & Conditions</Link>
+          {` · `}
+          <Link to="/contact/">Contact Us</Link>
+        </div>
       </FooterInfo>
       
     </BarWrapper>
