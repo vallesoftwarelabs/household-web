@@ -84,6 +84,33 @@ const PurchaseMemoryContainer = styled(motion.div)`
       border-color: rgba(237, 165, 74, 0.15);
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 24px 20px;
+    border-radius: 20px;
+    
+    &::before {
+      border-radius: 20px;
+    }
+    
+    &::after {
+      border-radius: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+    border-radius: 16px;
+    
+    &::before {
+      border-radius: 16px;
+    }
+    
+    &::after {
+      border-radius: 16px;
+    }
+  }
 `;
 
 const dimmedStyle = css`
@@ -303,6 +330,19 @@ const ModalContainer = styled(motion.div)`
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
     border-color: rgba(237, 165, 74, 0.15);
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 350px;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 320px;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
 `;
 
 const ModalHeader = styled(motion.div)`
@@ -320,6 +360,14 @@ const ItemTitle = styled.h2`
   color: var(--color-text);
   margin: 0 0 16px 0;
   line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 const CategoryChips = styled.div`
@@ -380,6 +428,14 @@ const PurchaseTime = styled.div`
   font-size: 24px;
   font-weight: 700;
   color: var(--color-text);
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 const PurchaseHistorySection = styled(motion.div)`
@@ -808,7 +864,12 @@ const PurchaseMemoryWithModal = ({ startAnimation }) => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '400px', height: '600px' }}>
+    <div style={{ 
+      position: 'relative', 
+      width: '400px', 
+      height: '600px',
+      maxWidth: '100%'
+    }}>
       <AnimatePresence mode="wait">
         {!showModal && (
           <motion.div

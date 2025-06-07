@@ -77,8 +77,7 @@ export const GraphicSide = styled(motion.div)`
   position: relative;
 
   @media (max-width: 768px) {
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 100%;
     order: 2; /* Always show graphic second on mobile */
   }
 `;
