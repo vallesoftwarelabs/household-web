@@ -637,17 +637,17 @@ const AnalyticsFeature = () => {
             Spending Analytics
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Get detailed insights into your spending habits. Track expenses by category, compare costs across different stores, and identify where your money goes to make smarter financial decisions.
+            Scan your receipts to unlock powerful insights into your grocery spending. See totals and trends by category, drill down to individual items, and track your habits over time—whether it's the last month, quarter, or year. Discover where your money goes and spot opportunities to save.
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
-            <FeatureListItem variants={fadeInUp} emoji="📈">
-              Category-wise spending breakdown
+            <FeatureListItem variants={fadeInUp} emoji="📊">
+              Spending breakdown by category and item
             </FeatureListItem>
-            <FeatureListItem variants={fadeInUp} emoji="🏪">
-              Compare prices across stores
+            <FeatureListItem variants={fadeInUp} emoji="📅">
+              See totals, averages, and trends over time
             </FeatureListItem>
-            <FeatureListItem variants={fadeInUp} emoji="💡">
-              Smart budgeting insights
+            <FeatureListItem variants={fadeInUp} emoji="🔍">
+              Drill down to see spending on individual items within each category
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />
