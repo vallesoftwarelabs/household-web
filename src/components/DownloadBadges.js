@@ -10,7 +10,7 @@ const BadgesContainer = styled.div`
   margin-top: 2.5rem;
 
   @media (max-width: 768px) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
