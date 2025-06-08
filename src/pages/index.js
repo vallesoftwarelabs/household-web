@@ -7,8 +7,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Hero from "../components/Hero" // Import the new Hero component
 import Features from "../components/Features"; // Import the new Features component
-import HowItWorks from "../components/HowItWorks"; // Import the HowItWorks component
-import FeaturedCategories from "../components/FeaturedCategories"; // Import FeaturedCategories
+import OurPromise from "../components/OurPromise"; // Import the HowItWorks component
 // Removed SpecialOffers import
 // import * as styles from "../components/index.module.css"
 
@@ -19,10 +18,7 @@ const IndexPage = () => (
     {/* Keep SEO component */}
     <Hero /> {/* Render the Hero component */}
     <Features /> {/* Render the Features component */}
-    <HowItWorks /> {/* Render the HowItWorks component */}
-    <FeaturedCategories /> {/* Render FeaturedCategories */}
-    {/* Removed SpecialOffers component */}
-    {/* Remove all default starter JSX */}
+    <OurPromise /> {/* Render the HowItWorks component */}
   </Layout>
 )
 
