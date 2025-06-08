@@ -47,7 +47,7 @@ const HeaderWrapper = styled.header`
   body.dark-mode & {
     background-color: transparent; /* Override light mode bg */
     &::before { opacity: 0; } /* Ensure it stays hidden in dark mode too if needed */
-    &::after { opacity: 1; z-index: 0; }
+    &::after { opacity: 0.4; z-index: 0; }
   }
 
   @media (max-width: 768px) {

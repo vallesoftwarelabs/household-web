@@ -17,6 +17,7 @@ import {
   fadeInUp,
   iconVariants
 } from './StyledFeatureComponents';
+import DownloadBadges from '../DownloadBadges';
 
 // Styled components for the analytics mockup
 const AnalyticsContainer = styled(motion.div)`
@@ -649,6 +650,7 @@ const AnalyticsFeature = () => {
               Smart budgeting insights
             </FeatureListItem>
           </FeatureList>
+          <DownloadBadges />
         </ContentSide>
         <GraphicSide
           initial="hidden"

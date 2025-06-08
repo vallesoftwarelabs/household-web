@@ -17,6 +17,7 @@ import {
   fadeInUp,
   iconVariants
 } from './StyledFeatureComponents';
+import DownloadBadges from '../DownloadBadges';
 
 // Reusing styled components from PurchaseMemoryFeature
 const SmartSortingContainer = styled(motion.div)`
@@ -439,6 +440,7 @@ const SmartSortingFeature = () => {
               Learns store layouts automatically
             </FeatureListItem>
           </FeatureList>
+          <DownloadBadges />
         </ContentSide>
         <GraphicSide
           initial="hidden"

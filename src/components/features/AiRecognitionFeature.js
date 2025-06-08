@@ -17,6 +17,7 @@ import {
   fadeInUp,
   iconVariants
 } from './StyledFeatureComponents';
+import DownloadBadges from '../DownloadBadges';
 
 // Styled components for AI Recognition animation
 const AiRecognitionContainer = styled(motion.div)`
@@ -737,6 +738,7 @@ const AiRecognitionFeature = () => {
               Smart categorization
             </FeatureListItem>
           </FeatureList>
+          <DownloadBadges />
         </ContentSide>
         <GraphicSide
           initial="hidden"

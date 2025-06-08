@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export const FeatureSection = styled.section`
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  padding: 6rem 0;
+  padding: 10rem 0;
   position: relative;
   overflow: hidden;
   

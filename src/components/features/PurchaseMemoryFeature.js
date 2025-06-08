@@ -17,6 +17,7 @@ import {
   fadeInUp,
   iconVariants
 } from './StyledFeatureComponents';
+import DownloadBadges from '../DownloadBadges';
 
 // Styled-components specific to this feature
 const PurchaseMemoryContainer = styled(motion.div)`
@@ -942,6 +943,7 @@ const PurchaseMemoryFeature = () => {
               Smart quantities
             </FeatureListItem>
           </FeatureList>
+          <DownloadBadges />
         </ContentSide>
         <GraphicSide
           initial="hidden"

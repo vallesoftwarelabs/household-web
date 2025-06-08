@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useTheme } from '../context/ThemeContext'; // Import useTheme hook
-import GooglePlayBadge from '../images/googleplay.png'; // Import Google Play badge
-import AppStoreBadge from '../images/appstore_black.svg'; // Import App Store badge
+import DownloadBadges from './DownloadBadges';
 
 // Re-using the Button style from Header (consider moving to a shared file later)
 const Button = styled.button`
@@ -23,27 +22,7 @@ const Button = styled.button`
   }
 `;
 
-// New styled component for the badges container
-const BadgesContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem; // Space between badges
-  margin-top: 1.5rem; // Same top margin as the button had
 
-  @media (max-width: 768px) {
-    justify-content: center; // Center badges when stacked
-  }
-`;
-
-// New styled component for individual badges
-const BadgeLink = styled.a`
-  display: inline-block; // Allows setting height/width if needed
-  img {
-    height: 40px; // Standard height for store badges
-    width: auto; // Maintain aspect ratio
-    display: block; // Remove extra space below img
-  }
-`;
 
 const HeroWrapper = styled.section`
   display: flex;
@@ -98,6 +77,24 @@ const TextContent = styled.div`
   }
 `;
 
+// Sub-headline styled component
+const SubHeadline = styled.p`
+  font-size: 1.4rem; // Larger than regular paragraph, smaller than h1
+  font-weight: 600; // Semi-bold
+  color: var(--color-text); // Primary text color like h1
+  margin-bottom: 1.25rem; // Slightly less margin than h1
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
+
 const ImageContent = styled.div`
   flex: 1;
   max-width: 45%; // Adjust width as needed
@@ -121,18 +118,14 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <TextContent>
-        <h1>Stop wasting time at the grocery store.</h1>
+        <h1>Your Grocery List, Intelligently Reimagined.</h1>
+        <SubHeadline>
+          Shop faster with lists that automatically sort for <em>your</em> path in <em>any</em> store, and gain clear insights into your spending.
+        </SubHeadline>
         <p>
-          Tired of zigzagging through the store and constantly backtracking? Our app optimizes your shopping experience, and continiously learns your pattern in each individual grocery store.
+          Tired of aisle-hopping? Our app learns your habits at each store, auto-sorts your list, tracks your spending, and lets you share everything with your household.
         </p>
-        <BadgesContainer>
-          <BadgeLink href="https://apps.apple.com/app/id6737360577" target="_blank" rel="noopener noreferrer">
-            <img src={AppStoreBadge} alt="Download on the App Store" />
-          </BadgeLink>
-          <BadgeLink href="https://play.google.com/store/apps/details?id=com.vallesoftwarelabs.household" target="_blank" rel="noopener noreferrer">
-            <img src={GooglePlayBadge} alt="Get it on Google Play" />
-          </BadgeLink>
-        </BadgesContainer>
+        <DownloadBadges />
       </TextContent>
       <ImageContent>
         {isDarkMode ? (
