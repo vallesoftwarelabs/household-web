@@ -725,17 +725,17 @@ const AiRecognitionFeature = () => {
             AI-Powered Item Recognition
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Write your items in any language, with typos, or just quick notes—our AI automatically categorizes and corrects everything. "tomatos" becomes "Tomatoes" in "Fresh Produce" instantly.
+            Write your grocery list in any language—YAGA understands, tags, and categorizes everything for you. Items from your scanned grocery receipts are also interpreted, tagged, and categorized, and made available in your shopping trip history.
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🌍">
-              Multi-language support
-            </FeatureListItem>
-            <FeatureListItem variants={fadeInUp} emoji="✨">
-              Auto-correct typos
+              Multi-language support for your grocery list
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🏷️">
-              Smart categorization
+              Smart tagging and categorization of all items
+            </FeatureListItem>
+            <FeatureListItem variants={fadeInUp} emoji="🧾">
+              Interprets, tags, and categorizes each item in your scanned receipts—available in your shopping trip history
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />
