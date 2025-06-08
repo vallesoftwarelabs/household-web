@@ -930,17 +930,17 @@ const PurchaseMemoryFeature = () => {
             Smart Purchase Memory
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Never wonder "When did I last buy this?" again. Each item displays when you purchased it last, helping you make better decisions about quantities and avoiding duplicate purchases.
+            Never wonder "When did I last buy this?" again. Instantly see when you last purchased any item—helping you avoid duplicates, reduce waste, and shop with confidence.
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🧠">
-              Remember everything
+              Remembers every item you buy
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🗑️">
-              Avoid waste
+              Avoid waste and duplicate purchases
             </FeatureListItem>
-            <FeatureListItem variants={fadeInUp} emoji="📊">
-              Smart quantities
+            <FeatureListItem variants={fadeInUp} emoji="📅">
+              See your full purchase history
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />

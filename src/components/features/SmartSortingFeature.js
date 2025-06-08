@@ -427,17 +427,17 @@ const SmartSortingFeature = () => {
             Smart Store-Based Sorting
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Never zigzag through the store again. Your grocery list automatically reorganizes itself based on the specific store layout, creating the most efficient shopping path.
+            Never zigzag through the store again. Your grocery list automatically reorders itself based on the way <em>you</em> shop at each store, creating the most efficient path for your unique routine.
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🎯">
-              Optimized routing for each store
+              Personalized sorting for every store you visit
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="⚡">
-              Saves 30% shopping time
+              Saves lots of time shopping!
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="📍">
-              Learns store layouts automatically
+              Remembers your route and order automatically
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />
