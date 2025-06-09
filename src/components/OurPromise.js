@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { Gift, RotateCcw, Shield } from 'lucide-react';
+import { useTranslation, Trans } from 'gatsby-plugin-react-i18next';
 import DownloadBadges from './DownloadBadges';
 
 const float = keyframes`
@@ -330,6 +331,9 @@ const itemVariants = {
 };
 
 const OurPromise = () => {
+  const { t } = useTranslation();
+  const promises = t('ourPromise.promises', { returnObjects: true }) || [];
+
   return (
     <OurPromiseWrapper>
       <OurPromiseInner>
@@ -339,7 +343,7 @@ const OurPromise = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Our Promise to You
+          {t('ourPromise.title')}
         </SectionTitle>
         
         <Subtitle
@@ -348,7 +352,7 @@ const OurPromise = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          Try risk-free and experience smarter grocery shopping with complete confidence.
+          {t('ourPromise.subtitle')}
         </Subtitle>
 
         <PromisesContainer
@@ -357,35 +361,55 @@ const OurPromise = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <PromiseCard variants={itemVariants}>
-            <IconContainer className="icon-container">
-              <FreeTrialIcon />
-            </IconContainer>
-            <PromiseTitle>2-Week Free Trial</PromiseTitle>
-            <PromiseDescription>
-              Try all features completely free for 14 days. No commitments, no hidden fees.
-            </PromiseDescription>
-          </PromiseCard>
+          {Array.isArray(promises) && promises.length > 0 ? promises.map((promise, index) => {
+            const icons = [FreeTrialIcon, FlexibleIcon, SupportIcon];
+            const IconComponent = icons[index];
+            
+            return (
+              <PromiseCard key={index} variants={itemVariants}>
+                <IconContainer className="icon-container">
+                  <IconComponent />
+                </IconContainer>
+                <PromiseTitle>{promise?.title || 'Promise'}</PromiseTitle>
+                <PromiseDescription>
+                  {promise?.description || 'Description'}
+                </PromiseDescription>
+              </PromiseCard>
+            );
+          }) : (
+            // Fallback content in case translations don't load
+            <>
+              <PromiseCard variants={itemVariants}>
+                <IconContainer className="icon-container">
+                  <FreeTrialIcon />
+                </IconContainer>
+                <PromiseTitle>2-Week Free Trial</PromiseTitle>
+                <PromiseDescription>
+                  Try all features completely free for 14 days. No commitments, no hidden fees.
+                </PromiseDescription>
+              </PromiseCard>
 
-          <PromiseCard variants={itemVariants}>
-            <IconContainer className="icon-container">
-              <FlexibleIcon />
-            </IconContainer>
-            <PromiseTitle>Cancel Anytime</PromiseTitle>
-            <PromiseDescription>
-              Unsubscribe during your trial period and you won't be charged. No questions asked.
-            </PromiseDescription>
-          </PromiseCard>
+              <PromiseCard variants={itemVariants}>
+                <IconContainer className="icon-container">
+                  <FlexibleIcon />
+                </IconContainer>
+                <PromiseTitle>Cancel Anytime</PromiseTitle>
+                <PromiseDescription>
+                  Unsubscribe during your trial period and you won't be charged. No questions asked.
+                </PromiseDescription>
+              </PromiseCard>
 
-          <PromiseCard variants={itemVariants}>
-            <IconContainer className="icon-container">
-              <SupportIcon />
-            </IconContainer>
-            <PromiseTitle>Transparent Pricing</PromiseTitle>
-            <PromiseDescription>
-              Multiple plans to choose from. What you see is what you pay—no surprise charges.
-            </PromiseDescription>
-          </PromiseCard>
+              <PromiseCard variants={itemVariants}>
+                <IconContainer className="icon-container">
+                  <SupportIcon />
+                </IconContainer>
+                <PromiseTitle>Transparent Pricing</PromiseTitle>
+                <PromiseDescription>
+                  Multiple plans to choose from. What you see is what you pay—no surprise charges.
+                </PromiseDescription>
+              </PromiseCard>
+            </>
+          )}
         </PromisesContainer>
 
         <TrialBanner
@@ -394,11 +418,13 @@ const OurPromise = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <h3>Ready to Transform Your Shopping?</h3>
+          <h3>{t('ourPromise.banner.title') || 'Ready to Transform Your Shopping?'}</h3>
           <p>
-            Download the app and choose from our <span className="highlight">flexible subscription plans</span>. 
-            Start your <span className="highlight">14-day free trial</span> instantly—no payment required upfront. 
-            If you're not completely satisfied, simply cancel before the trial ends.
+            <Trans 
+              i18nKey="ourPromise.banner.description" 
+              components={{ highlight: <span className="highlight" /> }}
+              defaults="Download the app and choose from our <highlight>flexible subscription plans</highlight>. Start your <highlight>14-day free trial</highlight> instantly—no payment required upfront. If you're not completely satisfied, simply cancel before the trial ends."
+            />
           </p>
         </TrialBanner>
 

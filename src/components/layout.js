@@ -14,6 +14,25 @@ import { ThemeProvider } from "../context/ThemeContext"
 import "./layout.css"
 
 const Layout = ({ children }) => {
+  // Manual language detection and redirect
+  React.useEffect(() => {
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname;
+      const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+      const userChoice = localStorage.getItem('userLanguageChoice');
+      
+      // Only auto-redirect if:
+      // 1. We're on the root path
+      // 2. User hasn't made an explicit language choice
+      // 3. Browser language is Norwegian
+      if (currentPath === '/' && 
+          !userChoice && 
+          (browserLang.startsWith('nb') || browserLang.startsWith('no'))) {
+        window.location.href = '/nb/';
+      }
+    }
+  }, []);
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

@@ -4,7 +4,7 @@
   --border-radius: 4px;
   --color-text: #333;
   --color-text-secondary: #555; /* Added secondary text color for light mode */
-  --color-primary: #7026b9;
+  --color-primary: #E89031;
   --color-background: #fff; /* Changed background for light theme to white */
   --color-header-bg: #FEFAF5; /* New light mode header background */
   --color-code-bg: #fff4db;
@@ -54,7 +54,7 @@
 body.dark-mode {
   --color-text: #e0e0e0;
   --color-text-secondary: #b0b0b0; /* Added secondary text color for dark mode */
-  --color-primary: #bb86fc;
+  --color-primary: #EDA54A;
   --color-background: #121212; /* Dark background */
   --color-header-bg: #1e1e1e; /* Slightly lighter dark for header */
   --color-code-bg: #2a2a2a;
@@ -301,6 +301,15 @@ pre tt:after {
   transition: background-color 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .theme-switch-track {
+    width: 50px; /* Smaller width on mobile */
+    height: 26px; /* Smaller height on mobile */
+    border-radius: 13px;
+    padding: 2px;
+  }
+}
+
 .theme-switch.dark .theme-switch-track {
   background-color: var(--theme-switch-track-bg);
 }
@@ -321,12 +330,27 @@ pre tt:after {
   z-index: 1; /* Ensure thumb is above track icons */
 }
 
+@media (max-width: 768px) {
+  .theme-switch-thumb {
+    width: 20px; /* Smaller thumb on mobile */
+    height: 20px;
+    font-size: 12px;
+    left: 2px;
+  }
+}
+
 .theme-switch.light .theme-switch-thumb {
   transform: translateX(0);
 }
 
 .theme-switch.dark .theme-switch-thumb {
   transform: translateX(30px); /* Move thumb to the right in dark mode */
+}
+
+@media (max-width: 768px) {
+  .theme-switch.dark .theme-switch-thumb {
+    transform: translateX(24px); /* Smaller movement for mobile */
+  }
 }
 
 /* Icons inside the track - positioned absolutely */
@@ -346,6 +370,21 @@ pre tt:after {
 
 .theme-switch-track .moon-icon {
   right: 7px;
+}
+
+@media (max-width: 768px) {
+  .theme-switch-track .sun-icon,
+  .theme-switch-track .moon-icon {
+    font-size: 12px; /* Smaller icons for mobile */
+  }
+  
+  .theme-switch-track .sun-icon {
+    left: 5px; /* Adjust positioning */
+  }
+  
+  .theme-switch-track .moon-icon {
+    right: 5px; /* Adjust positioning */
+  }
 }
 
 /* Active icon colors based on theme */

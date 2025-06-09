@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Info, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { 
   FeatureSection, 
   FeatureContainer, 
@@ -590,6 +591,8 @@ const PriceTag = styled.div`
 
 // Main Components
 const GroceryItemModal = ({ showAnnotations = false }) => {
+  const { t } = useTranslation();
+  const modalData = t('features.purchaseMemory.modal', { returnObjects: true });
   const [modalAnnotationPhase, setModalAnnotationPhase] = useState('none');
 
   useEffect(() => {
@@ -630,10 +633,11 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
         }}
         isDimmed={modalAnnotationPhase === 'history'}
       >
-        <ItemTitle>Organic Milk</ItemTitle>
+        <ItemTitle>{modalData.itemTitle}</ItemTitle>
         <CategoryChips>
-          <CategoryChip>Dairy</CategoryChip>
-          <CategoryChip>Milk</CategoryChip>
+          {modalData.categories.map((category, index) => (
+            <CategoryChip key={index}>{category}</CategoryChip>
+          ))}
         </CategoryChips>
       </ModalHeader>
 
@@ -645,12 +649,12 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
         isDimmed={modalAnnotationPhase === 'history'}
       >
         <PurchaseCard>
-          <PurchaseLabel>Exact item bought</PurchaseLabel>
-          <PurchaseTime>12 days ago</PurchaseTime>
+          <PurchaseLabel>{modalData.exactItemLabel}</PurchaseLabel>
+          <PurchaseTime>{modalData.timeExact}</PurchaseTime>
         </PurchaseCard>
         <PurchaseCard>
-          <PurchaseLabel>Similar item bought</PurchaseLabel>
-          <PurchaseTime>3 days ago</PurchaseTime>
+          <PurchaseLabel>{modalData.similarItemLabel}</PurchaseLabel>
+          <PurchaseTime>{modalData.timeSimilar}</PurchaseTime>
         </PurchaseCard>
       </LastPurchasedSection>
 
@@ -666,7 +670,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
         exit="exit"
       >
         {modalAnnotationPhase === 'history' 
-          ? "View your household's shopping history for milk."
+          ? modalData.annotation
           : ' '}
       </ModalAnnotationText>
 
@@ -678,45 +682,25 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
       >
         <PurchaseHistoryHighlightContainer isGlowing={modalAnnotationPhase === 'history'}>
           <PurchaseHistoryHeader>
-            <SectionTitle>Purchase History</SectionTitle>
+            <SectionTitle>{modalData.historyTitle}</SectionTitle>
             <ViewAllButton>
-              View all <ChevronRight size={14} />
+              {modalData.viewAllButton} <ChevronRight size={14} />
             </ViewAllButton>
           </PurchaseHistoryHeader>
           <HistoryList>
-            <HistoryItem>
-              <HistoryItemContent>
-                <StoreName>Rema 1000</StoreName>
-                <ModalItemName>Tine Økologisk Melk</ModalItemName>
-                <HistoryChips>
-                  <HistoryChip variant="similar">Similar</HistoryChip>
-                  <HistoryChip variant="time">3 days ago</HistoryChip>
-                </HistoryChips>
-              </HistoryItemContent>
-              <PriceTag>34.90kr</PriceTag>
-            </HistoryItem>
-            <HistoryItem>
-              <HistoryItemContent>
-                <StoreName>Kiwi</StoreName>
-                <ModalItemName>Q-Meieriene Økologisk Melk</ModalItemName>
-                <HistoryChips>
-                  <HistoryChip variant="exact">Exact</HistoryChip>
-                  <HistoryChip variant="time">1 week ago</HistoryChip>
-                </HistoryChips>
-              </HistoryItemContent>
-              <PriceTag>32.50kr</PriceTag>
-            </HistoryItem>
-            <HistoryItem>
-              <HistoryItemContent>
-                <StoreName>Meny</StoreName>
-                <ModalItemName>Tine Økologisk Melk</ModalItemName>
-                <HistoryChips>
-                  <HistoryChip variant="exact">Exact</HistoryChip>
-                  <HistoryChip variant="time">2 weeks ago</HistoryChip>
-                </HistoryChips>
-              </HistoryItemContent>
-              <PriceTag>36.90kr</PriceTag>
-            </HistoryItem>
+            {modalData.history.map((item, index) => (
+              <HistoryItem key={index}>
+                <HistoryItemContent>
+                  <StoreName>{item.store}</StoreName>
+                  <ModalItemName>{item.product}</ModalItemName>
+                  <HistoryChips>
+                    <HistoryChip variant={item.type.toLowerCase()}>{item.type}</HistoryChip>
+                    <HistoryChip variant="time">{item.time}</HistoryChip>
+                  </HistoryChips>
+                </HistoryItemContent>
+                <PriceTag>{item.price}</PriceTag>
+              </HistoryItem>
+            ))}
           </HistoryList>
         </PurchaseHistoryHighlightContainer>
       </PurchaseHistorySection>
@@ -725,16 +709,13 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
 };
 
 const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnimation }) => {
+  const { t } = useTranslation();
+  const groceryItems = t('features.purchaseMemory.groceryItems', { returnObjects: true });
+  const annotations = t('features.purchaseMemory.annotations', { returnObjects: true });
+  
   const [annotationPhase, setAnnotationPhase] = useState('none');
   const [loopKey, setLoopKey] = useState(0);
   const [hasTriggeredModal, setHasTriggeredModal] = useState(false);
-
-  const groceryItems = [
-    { id: 1, emoji: '🥛', name: 'Organic Milk', categoryTag: 'milk 3d', genericDays: '12d' },
-    { id: 2, emoji: '🍞', name: 'Whole Grain Bread', categoryTag: 'bread 1d', genericDays: '4d' },
-    { id: 3, emoji: '🧀', name: 'Cheese', categoryTag: null, genericDays: '3w' },
-    { id: 4, emoji: '🥩', name: 'Ground Beef', categoryTag: 'meat 5d', genericDays: '1w' }
-  ];
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -766,8 +747,8 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
   };
 
   const getAnnotationText = () => {
-    if (annotationPhase === 'orange') return 'Some milk product was last bought 3 days ago.';
-    if (annotationPhase === 'grey') return '"Organic Milk" was last bought 12 days ago.';
+    if (annotationPhase === 'orange') return annotations.categoryRecent;
+    if (annotationPhase === 'grey') return annotations.exactItem;
     return ' ';
   };
 
@@ -781,8 +762,8 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
       }}
     >
       <ListHeader isDimmed={annotationPhase !== 'none'}>
-        <ListTitle>Your Shopping Memory</ListTitle>
-        <ListSubtitle>Smart purchase tracking</ListSubtitle>
+        <ListTitle>{t('features.purchaseMemory.listTitle')}</ListTitle>
+        <ListSubtitle>{t('features.purchaseMemory.listSubtitle')}</ListSubtitle>
       </ListHeader>
 
       <AnimatePresence mode="wait">
@@ -912,6 +893,7 @@ const PurchaseMemoryWithModal = ({ startAnimation }) => {
 };
 
 const PurchaseMemoryFeature = () => {
+  const { t } = useTranslation();
   const [startComplexAnimation, setStartComplexAnimation] = useState(false);
 
   return (
@@ -927,20 +909,20 @@ const PurchaseMemoryFeature = () => {
             <Clock />
           </FeatureIcon>
           <FeatureTitle variants={fadeInUp}>
-            Smart Purchase Memory
+            {t('features.purchaseMemory.title')}
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Never wonder "When did I last buy this?" again. Instantly see when you last purchased any item—helping you avoid duplicates, reduce waste, and shop with confidence.
+            {t('features.purchaseMemory.description')}
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🧠">
-              Remembers every item you buy
+              {t('features.purchaseMemory.feature1')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🗑️">
-              Avoid waste and duplicate purchases
+              {t('features.purchaseMemory.feature2')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="📅">
-              See your full purchase history
+              {t('features.purchaseMemory.feature3')}
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />

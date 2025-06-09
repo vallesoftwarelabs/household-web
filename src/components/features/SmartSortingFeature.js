@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { ShoppingCart, MapPin } from 'lucide-react';
 import { 
   FeatureSection, 
@@ -92,13 +93,14 @@ const ListHeader = styled.div`
   text-align: center;
 `;
 
-const ListTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin: 0 0 8px 0;
-  letter-spacing: -0.3px;
-`;
+// Unused for now
+// const ListTitle = styled.h3`
+//   font-size: 18px;
+//   font-weight: 600;
+//   color: var(--color-text);
+//   margin: 0 0 8px 0;
+//   letter-spacing: -0.3px;
+// `;
 
 const ListSubtitle = styled.p`
   font-size: 20px;
@@ -183,66 +185,56 @@ const ItemName = styled.div`
   letter-spacing: -0.2px;
 `;
 
-const ItemChips = styled.div`
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-wrap: wrap;
-`;
+// Unused for now
+// const ItemChips = styled.div`
+//   display: flex;
+//   gap: 6px;
+//   align-items: center;
+//   flex-wrap: wrap;
+// `;
 
-const Chip = styled.div`
-  background: ${props => props.variant === 'primary' 
-    ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.1))'
-    : 'rgba(0, 0, 0, 0.04)'
-  };
-  border: 1px solid ${props => props.variant === 'primary' 
-    ? 'rgba(34, 197, 94, 0.25)' 
-    : 'rgba(0, 0, 0, 0.08)'
-  };
-  border-radius: 10px;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  color: ${props => props.variant === 'primary' ? '#16A34A' : 'var(--color-text-secondary)'};
-  transition: all 0.3s ease-in-out;
-
-  body.dark-mode & {
-    background: ${props => props.variant === 'primary' 
-      ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.15))'
-      : 'rgba(255, 255, 255, 0.06)'
-    };
-    border-color: ${props => props.variant === 'primary' 
-      ? 'rgba(34, 197, 94, 0.3)' 
-      : 'rgba(255, 255, 255, 0.1)'
-    };
-    color: ${props => props.variant === 'primary' ? '#22C55E' : 'var(--color-text-secondary)'};
-  }
-`;
+// Unused styled components for now
+// const Chip = styled.div`
+//   background: ${props => props.variant === 'primary' 
+//     ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.1))'
+//     : 'rgba(0, 0, 0, 0.04)'
+//   };
+//   border: 1px solid ${props => props.variant === 'primary' 
+//     ? 'rgba(34, 197, 94, 0.25)' 
+//     : 'rgba(0, 0, 0, 0.08)'
+//   };
+//   border-radius: 10px;
+//   padding: 6px 10px;
+//   display: flex;
+//   align-items: center;
+//   gap: 5px;
+//   font-size: 12px;
+//   font-weight: 500;
+//   color: ${props => props.variant === 'primary' ? '#16A34A' : 'var(--color-text-secondary)'};
+//   transition: all 0.3s ease-in-out;
+//
+//   body.dark-mode & {
+//     background: ${props => props.variant === 'primary' 
+//       ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.15))'
+//       : 'rgba(255, 255, 255, 0.06)'
+//     };
+//     border-color: ${props => props.variant === 'primary' 
+//       ? 'rgba(34, 197, 94, 0.3)' 
+//       : 'rgba(255, 255, 255, 0.1)'
+//     };
+//     color: ${props => props.variant === 'primary' ? '#22C55E' : 'var(--color-text-secondary)'};
+//   }
+// `;
 
 const SmartSortingMockup = ({ startAnimation }) => {
+  const { t } = useTranslation();
   const [currentStoreIndex, setCurrentStoreIndex] = useState(0);
   const [groceryItems, setGroceryItems] = useState([]);
   const [showItems, setShowItems] = useState(false);
   const [loopKey, setLoopKey] = useState(0);
 
-  const stores = [
-    { name: 'Walmart', address: '1050 Cedar Ridge Blvd' },
-    { name: 'Walmart', address: '842 Maple Valley Parkway' },
-    { name: 'Kroger', address: '231 Stonebridge Avenue' },
-    { name: 'Costco', address: '718 Harvest Loop Drive' }
-  ];
-
-  const baseItems = [
-    { id: 1, emoji: '🥒', name: 'Cucumber', section: 'Produce' },
-    { id: 2, emoji: '🍅', name: 'Tomatoes', section: 'Produce' },
-    { id: 3, emoji: '🥛', name: 'Milk', section: 'Dairy' },
-    { id: 4, emoji: '🧀', name: 'Cheese', section: 'Dairy' },
-    { id: 5, emoji: '🥩', name: 'Ground Beef', section: 'Meat' },
-    { id: 6, emoji: '🥓', name: 'Salami', section: 'Deli' }
-  ];
+  const stores = t('features.smartSorting.stores', { returnObjects: true });
+  const baseItems = t('features.smartSorting.groceryItems', { returnObjects: true });
 
   const getItemsForStore = (storeIndex) => {
     const items = [...baseItems];
@@ -409,6 +401,7 @@ const SmartSortingMockup = ({ startAnimation }) => {
 };
 
 const SmartSortingFeature = () => {
+  const { t } = useTranslation();
   const [startComplexAnimation, setStartComplexAnimation] = useState(false);
 
   return (
@@ -424,20 +417,20 @@ const SmartSortingFeature = () => {
             <ShoppingCart />
           </FeatureIcon>
           <FeatureTitle variants={fadeInUp}>
-            Smart Store-Based Sorting
+            {t('features.smartSorting.title')}
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Never zigzag through the store again. Your grocery list automatically reorders itself based on the way <em>you</em> shop at each store, creating the most efficient path for your unique routine.
+            {t('features.smartSorting.description')}
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🎯">
-              Personalized sorting for every store you visit
+              {t('features.smartSorting.feature1')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="⚡">
-              Saves lots of time shopping!
+              {t('features.smartSorting.feature2')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="📍">
-              Remembers your route and order automatically
+              {t('features.smartSorting.feature3')}
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const FAQWrapper = styled.section`
   padding: 5rem 0;
@@ -193,45 +194,9 @@ const Answer = styled.div`
   }
 `;
 
-const faqData = [
-  {
-    id: 1,
-    question: "How do I invite other people to my household?",
-    answer: "Navigate to the <strong>menu</strong> in the bottom navigation bar, open your household's detail page (press the info icon), copy the invitation code and send it to the people you want to invite. <strong>Only household administrators can invite people to a household.</strong>"
-  },
-  {
-    id: 2,
-    question: "How do I join a household for free?",
-    answer: "You can use YAGA for free if you get an invite code from another subscriber. Download the app, create your account, and select <strong>\"Join Existing Household\"</strong> instead of buying a subscription. Enter your invite code, and voila!"
-  },
-  {
-    id: 3,
-    question: "How many members can I invite to my household?",
-    answer: "Depending on your subscription plan, you can invite either <strong>4 or 8 other members</strong>. There is no limit to total members in a household—if other household members also have a subscription, they can invite people to the household too (provided they are made admin for the household)."
-  },
-  {
-    id: 4,
-    question: "How does the app know which store I'm shopping at?",
-    answer: "YAGA uses your location to automatically detect when you arrive at a known grocery store. If it's the first time you (or any other YAGA user) shops at a given store, YAGA will <strong>discover and learn the store</strong> when your shopping trip completes. The next time you shop at the same store, YAGA recognizes it and will sort your grocery list accordingly."
-  },
-  {
-    id: 5,
-    question: "What if the app doesn't recognize my local store?",
-    answer: "YAGA will occasionally struggle with discovering a store, though this is rare. We are continually working to improve store discovery. If the problem <strong>persists</strong>, please reach out to us at <strong>contact@vallesoftwarelabs.com</strong>."
-  },
-  {
-    id: 6,
-    question: "What happens to my data if I delete my account?",
-    answer: "When you delete your account, we <strong>delete all personal data</strong> tied to you. Data that belongs to your households, like shopping history, will not be deleted unless you are the only member of those households—in which case the households and all their data will also be deleted."
-  },
-  {
-    id: 7,
-    question: "How do I delete my account and data?",
-    answer: "Navigate to the <strong>menu</strong> in the bottom navigation bar, go to the Account view, and press <strong>Delete Account</strong>. Please note that we cannot cancel your subscription on your behalf, so remember to also cancel your subscription if you no longer want to use YAGA."
-  }
-];
-
 const FAQ = () => {
+  const { t } = useTranslation();
+  const faqData = t('faq.questions', { returnObjects: true }) || [];
   const [openItems, setOpenItems] = useState(new Set());
 
   const toggleItem = (id) => {
@@ -262,7 +227,7 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Frequently Asked Questions
+          {t('faq.title')}
         </SectionTitle>
         
         <Subtitle
@@ -271,7 +236,7 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
-          Everything you need to know about getting started with YAGA.
+          {t('faq.subtitle')}
         </Subtitle>
 
         <FAQList
@@ -289,7 +254,7 @@ const FAQ = () => {
             }
           }}
         >
-          {faqData.map((faq) => (
+          {Array.isArray(faqData) && faqData.map((faq) => (
             <FAQItem
               key={faq.id}
               variants={{

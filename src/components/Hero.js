@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
+import { useTranslation, Trans } from 'gatsby-plugin-react-i18next';
 import { useTheme } from '../context/ThemeContext'; // Import useTheme hook
 import DownloadBadges from './DownloadBadges';
 
@@ -113,17 +114,18 @@ const ImageContent = styled.div`
 `;
 
 const Hero = () => {
+  const { t } = useTranslation();
   const { isDarkMode } = useTheme(); // Get theme state
 
   return (
     <HeroWrapper>
       <TextContent>
-        <h1>Your Grocery List, Intelligently Reimagined.</h1>
+        <h1>{t('hero.headline')}</h1>
         <SubHeadline>
-          Shop faster with lists that automatically sort for <em>your</em> path in <em>any</em> store, and gain clear insights into your spending.
+          <Trans i18nKey="hero.subHeadline" components={{ em: <em /> }} />
         </SubHeadline>
         <p>
-          Tired of aisle-hopping? Our app learns your habits at each store, auto-sorts your list, tracks your spending, and lets you share everything with your household.
+          {t('hero.description')}
         </p>
         <DownloadBadges />
       </TextContent>
@@ -131,7 +133,7 @@ const Hero = () => {
         {isDarkMode ? (
           <StaticImage
             src="../images/iphonemockup-dark.png" // Dark mode image path
-            alt="App screenshot on iPhone mockup (Dark Mode)"
+            alt={t('hero.phoneAltDark')} // Using translation for alt text
             placeholder="blurred"
             layout="constrained"
             style={{ borderRadius: '8px' }}
@@ -139,7 +141,7 @@ const Hero = () => {
         ) : (
           <StaticImage
             src="../images/iphonemockup.png" // Light mode image path
-            alt="App screenshot on iPhone mockup (Light Mode)"
+            alt={t('hero.phoneAltLight')} // Using translation for alt text
             placeholder="blurred"
             layout="constrained"
             style={{ borderRadius: '8px' }}

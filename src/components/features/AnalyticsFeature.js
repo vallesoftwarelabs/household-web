@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
+import { useTranslation, Trans } from 'gatsby-plugin-react-i18next';
 import { 
   FeatureSection, 
   FeatureContainer, 
@@ -210,22 +211,10 @@ const SectionTitle = styled.h4`
 `;
 
 const ItemDetailsMockup = ({ startAnimation }) => {
+  const { t } = useTranslation();
+  const itemData = t('features.analytics.itemDetails', { returnObjects: true });
+  const months = itemData?.months || [];
   const [animatedBars, setAnimatedBars] = useState(new Set());
-
-  const months = [
-    { id: 1, name: 'May', amount: '442.70kr', percentage: 51 },
-    { id: 2, name: 'Apr', amount: '870.70kr', percentage: 100 },
-    { id: 3, name: 'Mar', amount: '775.90kr', percentage: 89 },
-    { id: 4, name: 'Feb', amount: '550.40kr', percentage: 63 },
-    { id: 5, name: 'Jan', amount: '593.80kr', percentage: 68 },
-    { id: 6, name: 'Dec', amount: '104.70kr', percentage: 12 },
-    { id: 7, name: 'Nov', amount: '234.50kr', percentage: 27 },
-    { id: 8, name: 'Oct', amount: '412.30kr', percentage: 47 },
-    { id: 9, name: 'Sep', amount: '156.80kr', percentage: 18 },
-    { id: 10, name: 'Aug', amount: '298.60kr', percentage: 34 },
-    { id: 11, name: 'Jul', amount: '367.20kr', percentage: 42 },
-    { id: 12, name: 'Jun', amount: '521.40kr', percentage: 60 }
-  ];
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -268,7 +257,7 @@ const ItemDetailsMockup = ({ startAnimation }) => {
       animate="visible"
     >
       <Header>
-        <Title>Milk Details</Title>
+        <Title>{itemData?.title || 'Item Details'}</Title>
       </Header>
 
       <motion.div
@@ -276,7 +265,7 @@ const ItemDetailsMockup = ({ startAnimation }) => {
         style={{ marginBottom: '24px' }}
       >
         <SectionTitle style={{ fontSize: '20px', fontWeight: '700', marginBottom: '16px' }}>
-          Spending History
+          {itemData?.spendingHistory || 'Spending History'}
         </SectionTitle>
         
         <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
@@ -289,10 +278,10 @@ const ItemDetailsMockup = ({ startAnimation }) => {
             border: '1px solid rgba(0, 0, 0, 0.05)'
           }}>
             <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-              Spent past year
+              {itemData?.spentPastYear || 'Spent past year'}
             </div>
             <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text)' }}>
-              3 338.20kr
+              {itemData?.totalYearAmount || '$3,338.20'}
             </div>
           </div>
           <div style={{ 
@@ -304,17 +293,17 @@ const ItemDetailsMockup = ({ startAnimation }) => {
             border: '1px solid rgba(0, 0, 0, 0.05)'
           }}>
             <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-              Spent past 30 days
+              {itemData?.spentPast30Days || 'Spent past 30 days'}
             </div>
             <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text)' }}>
-              308.70kr
+              {itemData?.total30DayAmount || '$308.70'}
             </div>
           </div>
         </div>
 
         <div style={{ marginBottom: '16px' }}>
           <h4 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--color-text)', margin: '0 0 16px 0' }}>
-            Last 12 months
+            {itemData?.last12Months || 'Last 12 months'}
           </h4>
         </div>
       </motion.div>
@@ -322,24 +311,24 @@ const ItemDetailsMockup = ({ startAnimation }) => {
       <CategoriesContainer>
         {months.map((month, index) => (
           <CategoryItem
-            key={month.id}
+            key={month?.id || index}
             variants={itemVariants}
           >
             <div style={{ width: '36px', fontSize: '14px', fontWeight: '500', color: 'var(--color-text-secondary)' }}>
-              {month.name}
+              {month?.name || 'Month'}
             </div>
             <BarContainer>
               <BarFill
-                style={{ width: `${month.percentage}%` }}
+                style={{ width: `${month?.percentage || 0}%` }}
                 initial={{ width: 0 }}
                 animate={{ 
-                  width: animatedBars.has(index) ? `${month.percentage}%` : 0 
+                  width: animatedBars.has(index) ? `${month?.percentage || 0}%` : 0 
                 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               />
               <CategoryLabel>
                 <CategoryAmount style={{ fontSize: '14px', left: '12px' }}>
-                  {month.amount}
+                  {month?.amount || '$0'}
                 </CategoryAmount>
               </CategoryLabel>
             </BarContainer>
@@ -351,16 +340,10 @@ const ItemDetailsMockup = ({ startAnimation }) => {
 };
 
 const DrillDownMockup = ({ startAnimation }) => {
+  const { t } = useTranslation();
+  const drilldownData = t('features.analytics.drilldown', { returnObjects: true });
+  const categories = drilldownData?.categories || [];
   const [animatedBars, setAnimatedBars] = useState(new Set());
-
-  const categories = [
-    { id: 1, emoji: '🥛', name: 'milk', amount: '442.70kr', percentage: 100 },
-    { id: 2, emoji: '🍦', name: 'ice cream', amount: '221.70kr', percentage: 50 },
-    { id: 3, emoji: '🧀', name: 'cheese', amount: '151.80kr', percentage: 34 },
-    { id: 4, emoji: '🥛', name: 'yogurt', amount: '120.90kr', percentage: 27 },
-    { id: 5, emoji: '🧈', name: 'cheese spread', amount: '53.70kr', percentage: 12 },
-    { id: 6, emoji: '🥚', name: 'egg', amount: '51.90kr', percentage: 12 }
-  ];
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -403,28 +386,28 @@ const DrillDownMockup = ({ startAnimation }) => {
       animate="visible"
     >
       <Header>
-        <Title>Statistics for dairy & eggs</Title>
+        <Title>{drilldownData?.title || 'Drilldown Statistics'}</Title>
       </Header>
 
       <CategoriesContainer>
         {categories.map((category, index) => (
           <CategoryItem
-            key={category.id}
+            key={category?.id || index}
             variants={itemVariants}
           >
-            <CategoryIcon>{category.emoji}</CategoryIcon>
+            <CategoryIcon>{category?.emoji || '📊'}</CategoryIcon>
             <BarContainer>
               <BarFill
-                style={{ width: `${category.percentage}%` }}
+                style={{ width: `${category?.percentage || 0}%` }}
                 initial={{ width: 0 }}
                 animate={{ 
-                  width: animatedBars.has(index) ? `${category.percentage}%` : 0 
+                  width: animatedBars.has(index) ? `${category?.percentage || 0}%` : 0 
                 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               />
               <CategoryLabel>
-                <CategoryName>{category.name}</CategoryName>
-                <CategoryAmount>({category.amount})</CategoryAmount>
+                <CategoryName>{category?.name || 'Unknown'}</CategoryName>
+                <CategoryAmount>({category?.amount || '$0'})</CategoryAmount>
               </CategoryLabel>
             </BarContainer>
           </CategoryItem>
@@ -434,26 +417,20 @@ const DrillDownMockup = ({ startAnimation }) => {
       <SummaryText
         variants={itemVariants}
       >
-        Within <HighlightText>dairy & eggs</HighlightText>, you spent a total of <HighlightText>1042.70kr</HighlightText> this period. <HighlightText>milk</HighlightText> was the largest expense, accounting for <HighlightText>42.5% of the category total!</HighlightText> 🧈
+        <Trans 
+          i18nKey="features.analytics.drilldown.summary" 
+          components={{ highlight: <HighlightText /> }} 
+        />
       </SummaryText>
     </AnalyticsContainer>
   );
 };
 
 const AnalyticsMockup = ({ startAnimation }) => {
+  const { t } = useTranslation();
+  const overviewData = t('features.analytics.overview', { returnObjects: true });
+  const categories = overviewData?.categories || [];
   const [animatedBars, setAnimatedBars] = useState(new Set());
-
-  const categories = [
-    { id: 1, emoji: '🥛', name: 'dairy & eggs', amount: '1042.70kr', percentage: 100 },
-    { id: 3, emoji: '🍎', name: 'fresh produce', amount: '404.44kr', percentage: 39 },
-    { id: 4, emoji: '🥨', name: 'salty snacks', amount: '401.70kr', percentage: 38 },
-    { id: 5, emoji: '🍫', name: 'confectionery & snacks', amount: '385.70kr', percentage: 37 },
-    { id: 6, emoji: '🥤', name: 'beverages & soft drinks', amount: '294.80kr', percentage: 28 },
-    { id: 7, emoji: '🍪', name: 'biscuits, cookies & wafers', amount: '268.50kr', percentage: 26 },
-    { id: 8, emoji: '🍕', name: 'frozen meals & pizzas', amount: '266.70kr', percentage: 26 },
-    { id: 9, emoji: '🐟', name: 'fish & seafood', amount: '251.40kr', percentage: 24 },
-    { id: 10, emoji: '🥩', name: 'meat & poultry', amount: '228.58kr', percentage: 22 }
-  ];
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -504,28 +481,28 @@ const AnalyticsMockup = ({ startAnimation }) => {
       animate="visible"
     >
       <Header>
-        <Title>Category statistics</Title>
+        <Title>{overviewData?.title || 'Category Statistics'}</Title>
       </Header>
 
       <CategoriesContainer>
         {categories.map((category, index) => (
           <CategoryItem
-            key={category.id}
+            key={category?.id || index}
             variants={itemVariants}
           >
-            <CategoryIcon>{category.emoji}</CategoryIcon>
+            <CategoryIcon>{category?.emoji || '📊'}</CategoryIcon>
             <BarContainer>
               <BarFill
-                style={{ width: `${category.percentage}%` }}
+                style={{ width: `${category?.percentage || 0}%` }}
                 initial={{ width: 0 }}
                 animate={{ 
-                  width: animatedBars.has(index) ? `${category.percentage}%` : 0 
+                  width: animatedBars.has(index) ? `${category?.percentage || 0}%` : 0 
                 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               />
               <CategoryLabel>
-                <CategoryName>{category.name}</CategoryName>
-                <CategoryAmount>({category.amount})</CategoryAmount>
+                <CategoryName>{category?.name || 'Unknown'}</CategoryName>
+                <CategoryAmount>({category?.amount || '$0'})</CategoryAmount>
               </CategoryLabel>
             </BarContainer>
           </CategoryItem>
@@ -535,7 +512,10 @@ const AnalyticsMockup = ({ startAnimation }) => {
       <SummaryText
         variants={itemVariants}
       >
-        You spent a total of <HighlightText>6053.17kr</HighlightText> this period, with <HighlightText>dairy & eggs</HighlightText> reigning at the top of the list, accounting for <HighlightText>17.2% of the total!</HighlightText> 💰
+        <Trans 
+          i18nKey="features.analytics.overview.summary" 
+          components={{ highlight: <HighlightText /> }} 
+        />
       </SummaryText>
     </AnalyticsContainer>
   );
@@ -619,6 +599,7 @@ const AnalyticsWithTransition = ({ startAnimation }) => {
 };
 
 const AnalyticsFeature = () => {
+  const { t } = useTranslation();
   const [startComplexAnimation, setStartComplexAnimation] = useState(false);
 
   return (
@@ -634,20 +615,20 @@ const AnalyticsFeature = () => {
             <TrendingUp />
           </FeatureIcon>
           <FeatureTitle variants={fadeInUp}>
-            Spending Analytics
+            {t('features.analytics.title')}
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Scan your receipts to unlock powerful insights into your grocery spending. See totals and trends by category, drill down to individual items, and track your habits over time—whether it's the last month, quarter, or year. Discover where your money goes and spot opportunities to save.
+            {t('features.analytics.description')}
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="📊">
-              Spending breakdown by category and item
+              {t('features.analytics.feature1')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="📅">
-              See totals, averages, and trends over time
+              {t('features.analytics.feature2')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🔍">
-              Drill down to see spending on individual items within each category
+              {t('features.analytics.feature3')}
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />

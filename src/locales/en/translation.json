@@ -1,0 +1,459 @@
+{
+    "header": {
+        "appName": "yet another grocery app",
+        "logoAlt": "YAGA Logo"
+    },
+    "hero": {
+        "headline": "Your Grocery List, Intelligently Reimagined",
+        "subHeadline": "Shop smarter with lists that automatically sort for <em>your</em> path in <em>any</em> store, and gain clear insights into your spending.",
+        "description": "YAGA learns your shopping habits, auto-sorts your lists, tracks spending patterns, and works with your household—making every grocery trip simpler and more informed.",
+        "phoneAltLight": "App screenshot on iPhone mockup (Light Mode)",
+        "phoneAltDark": "App screenshot on iPhone mockup (Dark Mode)",
+        "downloadAppStoreAlt": "Download on the App Store",
+        "downloadPlayStoreAlt": "Get it on Google Play"
+    },
+    "features": {
+        "smartSorting": {
+            "title": "Smart Store-Based Sorting",
+            "description": "Never zigzag through the store again. Your grocery list automatically reorders itself based on the way you shop at each store, creating the most efficient path for your unique routine.",
+            "feature1": "Personalized sorting for every store you visit",
+            "feature2": "Saves lots of time shopping!",
+            "feature3": "Remembers your route and order automatically",
+            "stores": [
+                {
+                    "name": "Walmart",
+                    "address": "1050 Cedar Ridge Blvd"
+                },
+                {
+                    "name": "Walmart",
+                    "address": "842 Maple Valley Parkway"
+                },
+                {
+                    "name": "Kroger",
+                    "address": "231 Stonebridge Avenue"
+                },
+                {
+                    "name": "Costco",
+                    "address": "718 Harvest Loop Drive"
+                }
+            ],
+            "groceryItems": [
+                {
+                    "id": 1,
+                    "emoji": "🥒",
+                    "name": "Cucumber",
+                    "section": "Produce"
+                },
+                {
+                    "id": 2,
+                    "emoji": "🍅",
+                    "name": "Tomatoes",
+                    "section": "Produce"
+                },
+                {
+                    "id": 3,
+                    "emoji": "🥛",
+                    "name": "Milk",
+                    "section": "Dairy"
+                },
+                {
+                    "id": 4,
+                    "emoji": "🧀",
+                    "name": "Cheese",
+                    "section": "Dairy"
+                },
+                {
+                    "id": 5,
+                    "emoji": "🥩",
+                    "name": "Ground Beef",
+                    "section": "Meat"
+                },
+                {
+                    "id": 6,
+                    "emoji": "🥓",
+                    "name": "Salami",
+                    "section": "Deli"
+                }
+            ]
+        },
+        "aiRecognition": {
+            "title": "AI-Powered Item Recognition",
+            "description": "Write your grocery list in any language—YAGA understands, tags, and categorizes everything for you. Items from your scanned grocery receipts are also interpreted, tagged, and categorized, and made available in your shopping trip history.",
+            "feature1": "Multi-language support for your grocery list",
+            "feature2": "Smart tagging and categorization of all items",
+            "feature3": "Interprets, tags, and categorizes each item in your scanned receipts—available in your shopping trip history",
+            "headerLeft": "You write",
+            "headerRight": "YAGA interprets",
+            "mobileHeader": "You write, YAGA interprets",
+            "tagLabel": "Tag",
+            "categoryLabel": "Category",
+            "examples": [
+                {
+                    "input": "dos cervezas",
+                    "tag": "🍺 Beer",
+                    "category": "Alcoholic Beverages"
+                },
+                {
+                    "input": "tomeitoz",
+                    "tag": "🍅 Tomato",
+                    "category": "Fresh Produce"
+                },
+                {
+                    "input": "the tasty bread that your mother bought last week",
+                    "tag": "🍞 Bread",
+                    "category": "Bakery & Bread"
+                }
+            ]
+        },
+        "purchaseMemory": {
+            "title": "Smart Purchase Memory",
+            "description": "Never wonder \"When did I last buy this?\" again. Instantly see when you last purchased any item—helping you avoid duplicates, reduce waste, and shop with confidence.",
+            "feature1": "Remembers every item you buy",
+            "feature2": "Avoid waste and duplicate purchases",
+            "feature3": "See your full purchase history",
+            "listTitle": "Your Shopping Memory",
+            "listSubtitle": "Smart purchase tracking",
+            "groceryItems": [
+                {
+                    "id": 1,
+                    "emoji": "🥛",
+                    "name": "Whole Milk",
+                    "categoryTag": "milk 3d",
+                    "genericDays": "12d"
+                },
+                {
+                    "id": 2,
+                    "emoji": "🍞",
+                    "name": "Whole Grain Bread",
+                    "categoryTag": "bread 1d",
+                    "genericDays": "4d"
+                },
+                {
+                    "id": 3,
+                    "emoji": "🧀",
+                    "name": "Cheese",
+                    "categoryTag": null,
+                    "genericDays": "3w"
+                },
+                {
+                    "id": 4,
+                    "emoji": "🥩",
+                    "name": "Ground Beef",
+                    "categoryTag": "meat 5d",
+                    "genericDays": "1w"
+                }
+            ],
+            "annotations": {
+                "categoryRecent": "Some milk product was last bought 3 days ago.",
+                "exactItem": "\"Whole Milk\" was last bought 12 days ago."
+            },
+            "modal": {
+                "itemTitle": "Whole Milk",
+                "categories": [
+                    "Dairy",
+                    "Milk"
+                ],
+                "exactItemLabel": "Exact item bought",
+                "similarItemLabel": "Similar item bought",
+                "timeExact": "12 days ago",
+                "timeSimilar": "3 days ago",
+                "annotation": "View your household's shopping history for milk.",
+                "historyTitle": "Purchase History",
+                "viewAllButton": "View all",
+                "history": [
+                    {
+                        "store": "Walmart",
+                        "product": "Lowfat Milk",
+                        "type": "Similar",
+                        "time": "3 days ago",
+                        "price": "$3.32"
+                    },
+                    {
+                        "store": "Costco",
+                        "product": "Whole Milk",
+                        "type": "Exact",
+                        "time": "1 week ago",
+                        "price": "$2.91"
+                    },
+                    {
+                        "store": "Kroger",
+                        "product": "Whole Milk",
+                        "type": "Exact",
+                        "time": "2 weeks ago",
+                        "price": "$2.96"
+                    }
+                ]
+            }
+        },
+        "analytics": {
+            "title": "Spending Analytics",
+            "description": "Scan your receipts to unlock powerful insights into your grocery spending. See totals and trends by category, drill down to individual items, and track your habits over time—whether it's the last month, quarter, or year. Discover where your money goes and spot opportunities to save.",
+            "feature1": "Spending breakdown by category and item",
+            "feature2": "See totals, averages, and trends over time",
+            "feature3": "Drill down to see spending on individual items within each category",
+            "overview": {
+                "title": "Category statistics",
+                "categories": [
+                    {
+                        "id": 1,
+                        "emoji": "🥛",
+                        "name": "dairy & eggs",
+                        "amount": "$104.27",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 3,
+                        "emoji": "🍎",
+                        "name": "fresh produce",
+                        "amount": "$40.44",
+                        "percentage": 39
+                    },
+                    {
+                        "id": 4,
+                        "emoji": "🥨",
+                        "name": "salty snacks",
+                        "amount": "$40.17",
+                        "percentage": 38
+                    },
+                    {
+                        "id": 5,
+                        "emoji": "🍫",
+                        "name": "confectionery & snacks",
+                        "amount": "$38.57",
+                        "percentage": 37
+                    },
+                    {
+                        "id": 6,
+                        "emoji": "🥤",
+                        "name": "beverages & soft drinks",
+                        "amount": "$29.48",
+                        "percentage": 28
+                    },
+                    {
+                        "id": 7,
+                        "emoji": "🍪",
+                        "name": "biscuits, cookies & wafers",
+                        "amount": "$26.85",
+                        "percentage": 26
+                    },
+                    {
+                        "id": 8,
+                        "emoji": "🍕",
+                        "name": "frozen meals & pizzas",
+                        "amount": "$26.67",
+                        "percentage": 26
+                    },
+                    {
+                        "id": 9,
+                        "emoji": "🐟",
+                        "name": "fish & seafood",
+                        "amount": "$25.14",
+                        "percentage": 24
+                    },
+                    {
+                        "id": 10,
+                        "emoji": "🥩",
+                        "name": "meat & poultry",
+                        "amount": "$22.86",
+                        "percentage": 22
+                    }
+                ],
+                "summary": "You spent a total of <highlight>$605.32</highlight> this period, with <highlight>dairy & eggs</highlight> reigning at the top of the list, accounting for <highlight>17.2% of the total!</highlight> 💰"
+            },
+            "drilldown": {
+                "title": "Statistics for dairy & eggs",
+                "categories": [
+                    {
+                        "id": 1,
+                        "emoji": "🥛",
+                        "name": "milk",
+                        "amount": "$44.27",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 2,
+                        "emoji": "🍦",
+                        "name": "ice cream",
+                        "amount": "$22.17",
+                        "percentage": 50
+                    },
+                    {
+                        "id": 3,
+                        "emoji": "🧀",
+                        "name": "cheese",
+                        "amount": "$15.18",
+                        "percentage": 34
+                    },
+                    {
+                        "id": 4,
+                        "emoji": "🥛",
+                        "name": "yogurt",
+                        "amount": "$12.09",
+                        "percentage": 27
+                    },
+                    {
+                        "id": 5,
+                        "emoji": "🧈",
+                        "name": "cheese spread",
+                        "amount": "$5.37",
+                        "percentage": 12
+                    },
+                    {
+                        "id": 6,
+                        "emoji": "🥚",
+                        "name": "egg",
+                        "amount": "$5.19",
+                        "percentage": 12
+                    }
+                ],
+                "summary": "Within <highlight>dairy & eggs</highlight>, you spent a total of <highlight>$104.27</highlight> this period. <highlight>milk</highlight> was the largest expense, accounting for <highlight>42.5% of the category total!</highlight> 🧈"
+            },
+            "itemDetails": {
+                "title": "Milk Details",
+                "spendingHistory": "Spending History",
+                "spentPastYear": "Spent past year",
+                "spentPast30Days": "Spent past 30 days",
+                "totalYearAmount": "$333.82",
+                "total30DayAmount": "$30.87",
+                "last12Months": "Last 12 months",
+                "months": [
+                    {
+                        "id": 1,
+                        "name": "May",
+                        "amount": "$44.27",
+                        "percentage": 51
+                    },
+                    {
+                        "id": 2,
+                        "name": "Apr",
+                        "amount": "$87.07",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 3,
+                        "name": "Mar",
+                        "amount": "$77.59",
+                        "percentage": 89
+                    },
+                    {
+                        "id": 4,
+                        "name": "Feb",
+                        "amount": "$55.04",
+                        "percentage": 63
+                    },
+                    {
+                        "id": 5,
+                        "name": "Jan",
+                        "amount": "$59.38",
+                        "percentage": 68
+                    },
+                    {
+                        "id": 6,
+                        "name": "Dec",
+                        "amount": "$10.47",
+                        "percentage": 12
+                    },
+                    {
+                        "id": 7,
+                        "name": "Nov",
+                        "amount": "$23.45",
+                        "percentage": 27
+                    },
+                    {
+                        "id": 8,
+                        "name": "Oct",
+                        "amount": "$41.23",
+                        "percentage": 47
+                    },
+                    {
+                        "id": 9,
+                        "name": "Sep",
+                        "amount": "$15.68",
+                        "percentage": 18
+                    },
+                    {
+                        "id": 10,
+                        "name": "Aug",
+                        "amount": "$29.86",
+                        "percentage": 34
+                    },
+                    {
+                        "id": 11,
+                        "name": "Jul",
+                        "amount": "$36.72",
+                        "percentage": 42
+                    },
+                    {
+                        "id": 12,
+                        "name": "Jun",
+                        "amount": "$52.14",
+                        "percentage": 60
+                    }
+                ]
+            }
+        }
+    },
+    "ourPromise": {
+        "title": "Our Promise to You",
+        "subtitle": "Try risk-free and experience smarter grocery shopping with complete confidence.",
+        "promises": [
+            {
+                "title": "2-Week Free Trial",
+                "description": "Try all features completely free for 14 days. No commitments, no hidden fees."
+            },
+            {
+                "title": "Cancel Anytime",
+                "description": "Unsubscribe during your trial period and you won't be charged. No questions asked."
+            },
+            {
+                "title": "Transparent Pricing",
+                "description": "Multiple plans to choose from. What you see is what you pay—no surprise charges."
+            }
+        ],
+        "banner": {
+            "title": "Ready to Transform Your Shopping?",
+            "description": "Download the app and choose from our <highlight>flexible subscription plans</highlight>. Start your <highlight>14-day free trial</highlight> instantly—no payment required upfront. If you're not completely satisfied, simply cancel before the trial ends."
+        }
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about getting started with YAGA.",
+        "questions": [
+            {
+                "id": 1,
+                "question": "How do I invite other people to my household?",
+                "answer": "Navigate to the <strong>menu</strong> in the bottom navigation bar, open your household's detail page (press the info icon), copy the invitation code and send it to the people you want to invite. <strong>Only household administrators can invite people to a household.</strong>"
+            },
+            {
+                "id": 2,
+                "question": "How do I join a household for free?",
+                "answer": "You can use YAGA for free if you get an invite code from another subscriber. Download the app, create your account, and select <strong>\"Join Existing Household\"</strong> instead of buying a subscription. Enter your invite code, and voila!"
+            },
+            {
+                "id": 3,
+                "question": "How many members can I invite to my household?",
+                "answer": "Depending on your subscription plan, you can invite either <strong>4 or 8 other members</strong>. There is no limit to total members in a household—if other household members also have a subscription, they can invite people to the household too (provided they are made admin for the household)."
+            },
+            {
+                "id": 4,
+                "question": "How does the app know which store I'm shopping at?",
+                "answer": "YAGA uses your location to automatically detect when you arrive at a known grocery store. If it's the first time you (or any other YAGA user) shops at a given store, YAGA will <strong>discover and learn the store</strong> when your shopping trip completes. The next time you shop at the same store, YAGA recognizes it and will sort your grocery list accordingly."
+            },
+            {
+                "id": 5,
+                "question": "What if the app doesn't recognize my local store?",
+                "answer": "YAGA will occasionally struggle with discovering a store, though this is rare. We are continually working to improve store discovery. If the problem <strong>persists</strong>, please reach out to us at <strong>contact@vallesoftwarelabs.com</strong>."
+            },
+            {
+                "id": 6,
+                "question": "What happens to my data if I delete my account?",
+                "answer": "When you delete your account, we <strong>delete all personal data</strong> tied to you. Data that belongs to your households, like shopping history, will not be deleted unless you are the-only member of those households—in which case the households and all their data will also be deleted."
+            },
+            {
+                "id": 7,
+                "question": "How do I delete my account and data?",
+                "answer": "Navigate to the <strong>menu</strong> in the bottom navigation bar, go to the Account view, and press <strong>Delete Account</strong>. Please note that we cannot cancel your subscription on your behalf, so remember to also cancel your subscription if you no longer want to use YAGA."
+            }
+        ]
+    }
+}

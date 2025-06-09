@@ -2,6 +2,7 @@ import React from 'react';
 import { Brain } from 'lucide-react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { 
   FeatureSection, 
   FeatureContainer, 
@@ -481,6 +482,8 @@ const SimpleArrowAnimation = () => {
 };
 
 const AiRecognitionGraphic = () => {
+  const { t } = useTranslation();
+  const examples = t('features.aiRecognition.examples', { returnObjects: true });
   return (
     <AiRecognitionContainer
       initial="hidden"
@@ -507,10 +510,10 @@ const AiRecognitionGraphic = () => {
           }
         }}
       >
-        <HeaderLabel side="left">You write</HeaderLabel>
+        <HeaderLabel side="left">{t('features.aiRecognition.headerLeft')}</HeaderLabel>
         <HeaderSpacer />
-        <HeaderLabel side="right">YAGA interprets</HeaderLabel>
-        <MobileHeaderLabel>You write, YAGA interprets</MobileHeaderLabel>
+        <HeaderLabel side="right">{t('features.aiRecognition.headerRight')}</HeaderLabel>
+        <MobileHeaderLabel>{t('features.aiRecognition.mobileHeader')}</MobileHeaderLabel>
       </HeaderRow>
 
       <ExampleRow
@@ -533,7 +536,7 @@ const AiRecognitionGraphic = () => {
             visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
           }}
         >
-          dos cervezas
+          {examples[0]?.input}
         </InputText>
         
         <ArrowContainer>
@@ -561,8 +564,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <TagLabel>Tag</TagLabel>
-            <TagValue>🍺 Beer</TagValue>
+            <TagLabel>{t('features.aiRecognition.tagLabel')}</TagLabel>
+            <TagValue>{examples[0]?.tag}</TagValue>
           </TagContainer>
           
           <CategoryContainer
@@ -571,8 +574,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <CategoryLabel>Category</CategoryLabel>
-            <CategoryValue>Alcoholic Beverages</CategoryValue>
+            <CategoryLabel>{t('features.aiRecognition.categoryLabel')}</CategoryLabel>
+            <CategoryValue>{examples[0]?.category}</CategoryValue>
           </CategoryContainer>
         </OutputContainer>
       </ExampleRow>
@@ -597,7 +600,7 @@ const AiRecognitionGraphic = () => {
             visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
           }}
         >
-          tomeitoz
+          {examples[1]?.input}
         </InputText>
         
         <ArrowContainer>
@@ -625,8 +628,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <TagLabel>Tag</TagLabel>
-            <TagValue>🍅 Tomato</TagValue>
+            <TagLabel>{t('features.aiRecognition.tagLabel')}</TagLabel>
+            <TagValue>{examples[1]?.tag}</TagValue>
           </TagContainer>
           
           <CategoryContainer
@@ -635,8 +638,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <CategoryLabel>Category</CategoryLabel>
-            <CategoryValue>Fresh Produce</CategoryValue>
+            <CategoryLabel>{t('features.aiRecognition.categoryLabel')}</CategoryLabel>
+            <CategoryValue>{examples[1]?.category}</CategoryValue>
           </CategoryContainer>
         </OutputContainer>
       </ExampleRow>
@@ -661,7 +664,7 @@ const AiRecognitionGraphic = () => {
             visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
           }}
         >
-          the tasty bread that your mother bought last week
+          {examples[2]?.input}
         </InputText>
         
         <ArrowContainer>
@@ -689,8 +692,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <TagLabel>Tag</TagLabel>
-            <TagValue>🍞 Bread</TagValue>
+            <TagLabel>{t('features.aiRecognition.tagLabel')}</TagLabel>
+            <TagValue>{examples[2]?.tag}</TagValue>
           </TagContainer>
           
           <CategoryContainer
@@ -699,8 +702,8 @@ const AiRecognitionGraphic = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
             }}
           >
-            <CategoryLabel>Category</CategoryLabel>
-            <CategoryValue>Bakery & Bread</CategoryValue>
+            <CategoryLabel>{t('features.aiRecognition.categoryLabel')}</CategoryLabel>
+            <CategoryValue>{examples[2]?.category}</CategoryValue>
           </CategoryContainer>
         </OutputContainer>
       </ExampleRow>
@@ -709,6 +712,8 @@ const AiRecognitionGraphic = () => {
 };
 
 const AiRecognitionFeature = () => {
+  const { t } = useTranslation();
+  
   return (
     <FeatureSection>
       <FeatureContainer className="reverse">
@@ -722,20 +727,20 @@ const AiRecognitionFeature = () => {
             <Brain />
           </FeatureIcon>
           <FeatureTitle variants={fadeInUp}>
-            AI-Powered Item Recognition
+            {t('features.aiRecognition.title')}
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            Write your grocery list in any language—YAGA understands, tags, and categorizes everything for you. Items from your scanned grocery receipts are also interpreted, tagged, and categorized, and made available in your shopping trip history.
+            {t('features.aiRecognition.description')}
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🌍">
-              Multi-language support for your grocery list
+              {t('features.aiRecognition.feature1')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🏷️">
-              Smart tagging and categorization of all items
+              {t('features.aiRecognition.feature2')}
             </FeatureListItem>
             <FeatureListItem variants={fadeInUp} emoji="🧾">
-              Interprets, tags, and categorizes each item in your scanned receipts—available in your shopping trip history
+              {t('features.aiRecognition.feature3')}
             </FeatureListItem>
           </FeatureList>
           <DownloadBadges />

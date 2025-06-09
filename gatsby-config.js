@@ -9,10 +9,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `yet another grocery app`,
-    description: `.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `YAGA - Yet Another Grocery App`,
+    description: `Shop smarter with lists that automatically sort for your path in any store, and gain clear insights into your spending.`,
+    author: `@vallesoftwarelabs`,
+    siteUrl: `https://yetanothergroceryapp.com`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -24,18 +24,42 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `locale`,
+        path: `${__dirname}/src/locales`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`en`, `nb`],
+        defaultLanguage: `en`,
+        trailingSlash: 'always',
+        generateDefaultLanguagePage: true,
+        redirect: false,
+        siteUrl: `https://yetanothergroceryapp.com`,
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false
+          },
+          keySeparator: '.',
+          nsSeparator: false
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `YAGA - Yet Another Grocery App`,
+        short_name: `YAGA`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#E89031`,
+        theme_color: `#E89031`,
         display: `minimal-ui`,
         icon: `src/images/logo.svg`, // This path is relative to the root of the site.
       },

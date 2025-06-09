@@ -1,0 +1,459 @@
+{
+    "header": {
+        "appName": "enda en handleliste-app",
+        "logoAlt": "YAGA Logo"
+    },
+    "hero": {
+        "headline": "Handlelisten din, intelligent gjenoppfunnet",
+        "subHeadline": "Handle smartere med lister som automatisk sorteres for <em>din</em> rute i <em>enhver</em> butikk, og få klar innsikt i forbruket ditt.",
+        "description": "La YAGA ta seg av detaljene: lærer vanene dine, sorterer listene, analyserer forbruk og synkroniserer med familien – for enklere og smartere handling.",
+        "phoneAltLight": "App-skjermbilde på iPhone mockup (Lys modus)",
+        "phoneAltDark": "App-skjermbilde på iPhone mockup (Mørk modus)",
+        "downloadAppStoreAlt": "Last ned på App Store",
+        "downloadPlayStoreAlt": "Last ned på Google Play"
+    },
+    "features": {
+        "smartSorting": {
+            "title": "Smart butikkbasert sortering",
+            "description": "Aldri mer sikksakk-gåing i butikken. Handlelisten din omorganiseres automatisk basert på hvordan du handler i hver butikk, og skaper den mest effektive ruten for din unike rutine.",
+            "feature1": "Personlig tilpasset sortering for hver butikk du besøker",
+            "feature2": "Du sparer masse tid i butikken!",
+            "feature3": "Husker ruten og rekkefølgen din automatisk",
+            "stores": [
+                {
+                    "name": "Rema 1000",
+                    "address": "Storgata 45, Oslo"
+                },
+                {
+                    "name": "Meny",
+                    "address": "Torggata 12, Bergen"
+                },
+                {
+                    "name": "Coop Mega",
+                    "address": "Kirkevegen 23, Trondheim"
+                },
+                {
+                    "name": "Kiwi",
+                    "address": "Hovedgata 67, Stavanger"
+                }
+            ],
+            "groceryItems": [
+                {
+                    "id": 1,
+                    "emoji": "🥒",
+                    "name": "Agurk",
+                    "section": "Frukt og grønt"
+                },
+                {
+                    "id": 2,
+                    "emoji": "🍅",
+                    "name": "Tomater",
+                    "section": "Frukt og grønt"
+                },
+                {
+                    "id": 3,
+                    "emoji": "🥛",
+                    "name": "Melk",
+                    "section": "Meieri"
+                },
+                {
+                    "id": 4,
+                    "emoji": "🧀",
+                    "name": "Ost",
+                    "section": "Meieri"
+                },
+                {
+                    "id": 5,
+                    "emoji": "🥩",
+                    "name": "Kjøttdeig",
+                    "section": "Kjøtt"
+                },
+                {
+                    "id": 6,
+                    "emoji": "🥓",
+                    "name": "Salami",
+                    "section": "Pålegg"
+                }
+            ]
+        },
+        "aiRecognition": {
+            "title": "KI-drevet varegjenkjenning",
+            "description": "Skriv handlelisten din på hvilket som helst språk—YAGA forstår, merker og kategoriserer alt for deg. Varer fra skannede kvitteringer blir også tolket, merket og kategorisert, og gjort tilgjengelig i handlehistorikken din.",
+            "feature1": "Flerspråklig støtte for handlelisten din",
+            "feature2": "Smart merking og kategorisering av alle varer",
+            "feature3": "Tolker, merker og kategoriserer hver vare i skannede kvitteringer—tilgjengelig i handlehistorikken din",
+            "headerLeft": "Du skriver",
+            "headerRight": "YAGA tolker",
+            "mobileHeader": "Du skriver, YAGA tolker",
+            "tagLabel": "Merke",
+            "categoryLabel": "Kategori",
+            "examples": [
+                {
+                    "input": "dos cervezas",
+                    "tag": "🍺 Øl",
+                    "category": "Alkoholholdige drikkevarer"
+                },
+                {
+                    "input": "tommaterr",
+                    "tag": "🍅 Tomat",
+                    "category": "Frukt og grønt"
+                },
+                {
+                    "input": "det deilige brødet som mamma kjøpte forrige uke",
+                    "tag": "🍞 Brød",
+                    "category": "Bakeri og brød"
+                }
+            ]
+        },
+        "purchaseMemory": {
+            "title": "Smart kjøpshukommelse",
+            "description": "Aldri mer lur på \"Når kjøpte jeg denne sist?\". Se umiddelbart når du sist kjøpte en vare – noe som hjelper deg å unngå dobbeltkjøp, redusere svinn og handle smartere.",
+            "feature1": "Husker alt du kjøper",
+            "feature2": "Unngå svinn og dobbelthandling",
+            "feature3": "Se fullstendig kjøpshistorikk",
+            "listTitle": "Din handleliste-hukommelse",
+            "listSubtitle": "Smart kjøpssporing",
+            "groceryItems": [
+                {
+                    "id": 1,
+                    "emoji": "🥛",
+                    "name": "Helmelk",
+                    "categoryTag": "melk 3d",
+                    "genericDays": "12d"
+                },
+                {
+                    "id": 2,
+                    "emoji": "🍞",
+                    "name": "Fullkornsbrød",
+                    "categoryTag": "brød 1d",
+                    "genericDays": "4d"
+                },
+                {
+                    "id": 3,
+                    "emoji": "🧀",
+                    "name": "Ost",
+                    "categoryTag": null,
+                    "genericDays": "3u"
+                },
+                {
+                    "id": 4,
+                    "emoji": "🥩",
+                    "name": "Kjøttdeig",
+                    "categoryTag": "kjøtt 5d",
+                    "genericDays": "1u"
+                }
+            ],
+            "annotations": {
+                "categoryRecent": "Et eller annet melkeprodukt ble sist kjøpt for 3 dager siden.",
+                "exactItem": "\"Helmelk\" ble sist kjøpt for 12 dager siden."
+            },
+            "modal": {
+                "itemTitle": "Helmelk",
+                "categories": [
+                    "Melkeprodukter og egg",
+                    "Melk"
+                ],
+                "exactItemLabel": "Eksakt vare kjøpt",
+                "similarItemLabel": "Lignende vare kjøpt",
+                "timeExact": "12 dager siden",
+                "timeSimilar": "3 dager siden",
+                "annotation": "Se husholdningens handlehistorikk for melk.",
+                "historyTitle": "Kjøpshistorikk",
+                "viewAllButton": "Se alle",
+                "history": [
+                    {
+                        "store": "Rema 1000",
+                        "product": "Tine Lettmelk",
+                        "type": "Lignende",
+                        "time": "3 dager siden",
+                        "price": "34,90kr"
+                    },
+                    {
+                        "store": "Kiwi",
+                        "product": "Q-Meieriene Helmelk",
+                        "type": "Eksakt",
+                        "time": "1 uke siden",
+                        "price": "32,50kr"
+                    },
+                    {
+                        "store": "Meny",
+                        "product": "Tine Helmelk",
+                        "type": "Eksakt",
+                        "time": "2 uker siden",
+                        "price": "36,90kr"
+                    }
+                ]
+            }
+        },
+        "analytics": {
+            "title": "Forbruksanalyse",
+            "description": "Skann kvitteringene dine for å få verdifull innsikt i dagligvareforbruket ditt. Se totaler og trender per kategori, dykk ned i enkeltvarer, og følg vanene dine over tid – enten det er forrige måned, kvartal eller år. Oppdag hvor pengene dine går og finn sparemuligheter.",
+            "feature1": "Forbruk fordelt på kategori og vare",
+            "feature2": "Se totaler, gjennomsnitt og trender over tid",
+            "feature3": "Dykk ned for å se forbruk på enkeltvarer innenfor hver kategori",
+            "overview": {
+                "title": "Kategoristatistikk",
+                "categories": [
+                    {
+                        "id": 1,
+                        "emoji": "🥛",
+                        "name": "melkeprodukter og egg",
+                        "amount": "1042.70kr",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 3,
+                        "emoji": "🍎",
+                        "name": "frukt og grønt",
+                        "amount": "404.44kr",
+                        "percentage": 39
+                    },
+                    {
+                        "id": 4,
+                        "emoji": "🥨",
+                        "name": "salte snacks",
+                        "amount": "401.70kr",
+                        "percentage": 38
+                    },
+                    {
+                        "id": 5,
+                        "emoji": "🍫",
+                        "name": "godteri og snacks",
+                        "amount": "385.70kr",
+                        "percentage": 37
+                    },
+                    {
+                        "id": 6,
+                        "emoji": "🥤",
+                        "name": "drikkevarer",
+                        "amount": "294.80kr",
+                        "percentage": 28
+                    },
+                    {
+                        "id": 7,
+                        "emoji": "🍪",
+                        "name": "Kjeks, småkaker og vafler",
+                        "amount": "268.50kr",
+                        "percentage": 26
+                    },
+                    {
+                        "id": 8,
+                        "emoji": "🍕",
+                        "name": "frossenmåltider og pizza",
+                        "amount": "266.70kr",
+                        "percentage": 26
+                    },
+                    {
+                        "id": 9,
+                        "emoji": "🐟",
+                        "name": "fisk og sjømat",
+                        "amount": "251.40kr",
+                        "percentage": 24
+                    },
+                    {
+                        "id": 10,
+                        "emoji": "🥩",
+                        "name": "kjøtt og fjærkre",
+                        "amount": "228.58kr",
+                        "percentage": 22
+                    }
+                ],
+                "summary": "Du brukte totalt <highlight>6053.17kr</highlight> denne perioden, med <highlight>melkeprodukter og egg</highlight> på toppen av lista og utgjør <highlight>17,2% av totalen!</highlight> 💰"
+            },
+            "drilldown": {
+                "title": "Statistikk for melkeprodukter og egg",
+                "categories": [
+                    {
+                        "id": 1,
+                        "emoji": "🥛",
+                        "name": "melk",
+                        "amount": "442.70kr",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 2,
+                        "emoji": "🍦",
+                        "name": "iskrem",
+                        "amount": "221.70kr",
+                        "percentage": 50
+                    },
+                    {
+                        "id": 3,
+                        "emoji": "🧀",
+                        "name": "ost",
+                        "amount": "151.80kr",
+                        "percentage": 34
+                    },
+                    {
+                        "id": 4,
+                        "emoji": "🥛",
+                        "name": "yoghurt",
+                        "amount": "120.90kr",
+                        "percentage": 27
+                    },
+                    {
+                        "id": 5,
+                        "emoji": "🧈",
+                        "name": "ostesmør",
+                        "amount": "53.70kr",
+                        "percentage": 12
+                    },
+                    {
+                        "id": 6,
+                        "emoji": "🥚",
+                        "name": "egg",
+                        "amount": "51.90kr",
+                        "percentage": 12
+                    }
+                ],
+                "summary": "Innenfor <highlight>melkeprodukter og egg</highlight> brukte du totalt <highlight>1042.70kr</highlight> denne perioden. <highlight>melk</highlight> var den største utgiften og utgjorde <highlight>42,5% av kategorien!</highlight> 🧈"
+            },
+            "itemDetails": {
+                "title": "Melkedetaljer",
+                "spendingHistory": "Forbrukshistorikk",
+                "spentPastYear": "Brukt siste år",
+                "spentPast30Days": "Brukt siste 30 dager",
+                "totalYearAmount": "3 338.20kr",
+                "total30DayAmount": "308.70kr",
+                "last12Months": "Siste 12 måneder",
+                "months": [
+                    {
+                        "id": 1,
+                        "name": "Mai",
+                        "amount": "442.70kr",
+                        "percentage": 51
+                    },
+                    {
+                        "id": 2,
+                        "name": "Apr",
+                        "amount": "870.70kr",
+                        "percentage": 100
+                    },
+                    {
+                        "id": 3,
+                        "name": "Mar",
+                        "amount": "775.90kr",
+                        "percentage": 89
+                    },
+                    {
+                        "id": 4,
+                        "name": "Feb",
+                        "amount": "550.40kr",
+                        "percentage": 63
+                    },
+                    {
+                        "id": 5,
+                        "name": "Jan",
+                        "amount": "593.80kr",
+                        "percentage": 68
+                    },
+                    {
+                        "id": 6,
+                        "name": "Des",
+                        "amount": "104.70kr",
+                        "percentage": 12
+                    },
+                    {
+                        "id": 7,
+                        "name": "Nov",
+                        "amount": "234.50kr",
+                        "percentage": 27
+                    },
+                    {
+                        "id": 8,
+                        "name": "Okt",
+                        "amount": "412.30kr",
+                        "percentage": 47
+                    },
+                    {
+                        "id": 9,
+                        "name": "Sep",
+                        "amount": "156.80kr",
+                        "percentage": 18
+                    },
+                    {
+                        "id": 10,
+                        "name": "Aug",
+                        "amount": "298.60kr",
+                        "percentage": 34
+                    },
+                    {
+                        "id": 11,
+                        "name": "Jul",
+                        "amount": "367.20kr",
+                        "percentage": 42
+                    },
+                    {
+                        "id": 12,
+                        "name": "Jun",
+                        "amount": "521.40kr",
+                        "percentage": 60
+                    }
+                ]
+            }
+        }
+    },
+    "ourPromise": {
+        "title": "Vårt løfte til deg",
+        "subtitle": "Test uten risiko og få en smartere handleopplevelse, helt bekymringsfritt.",
+        "promises": [
+            {
+                "title": "2 ukers gratis prøveperiode",
+                "description": "Prøv alle funksjoner helt gratis i 14 dager. Ingen forpliktelser, ingen skjulte avgifter."
+            },
+            {
+                "title": "Si opp når du vil",
+                "description": "Si opp i løpet av prøvetiden, så slipper du å betale. Vi stiller ingen spørsmål."
+            },
+            {
+                "title": "Forutsigbar prising",
+                "description": "Flere abonnement å velge mellom. Det du ser er det du betaler – ingen overraskende kostnader."
+            }
+        ],
+        "banner": {
+            "title": "Klar til å transformere handlingen din?",
+            "description": "Last ned appen og velg blant våre <highlight>fleksible abonnementsplaner</highlight>. Start din <highlight>14-dagers gratis prøveperiode</highlight> umiddelbart—ingen betaling kreves på forhånd. Hvis du ikke er helt fornøyd, avbryt bare før prøveperioden utløper."
+        }
+    },
+    "faq": {
+        "title": "Ofte stilte spørsmål",
+        "subtitle": "Alt du trenger å vite for å komme i gang med YAGA.",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Hvordan inviterer jeg andre til husholdningen min?",
+                "answer": "Gå til <strong>menyen</strong> i navigasjonslinjen nederst, åpne detaljsiden for husholdningen din (trykk på info-ikonet), kopier invitasjonskoden og send den til personene du vil invitere. <strong>Kun administratorer av husholdningen kan invitere personer.</strong>"
+            },
+            {
+                "id": 2,
+                "question": "Hvordan blir jeg med i en husholdning gratis?",
+                "answer": "Du kan bruke YAGA gratis hvis du får en invitasjonskode fra en annen abonnent. Last ned appen, opprett kontoen din, og velg <strong>\"Bli med i eksisterende husholdning\"</strong> i stedet for å kjøpe et abonnement. Skriv inn invitasjonskoden din, og vips!"
+            },
+            {
+                "id": 3,
+                "question": "Hvor mange medlemmer kan jeg invitere til husholdningen min?",
+                "answer": "Avhengig av abonnementsplanen din kan du invitere enten <strong>4 eller 8 andre medlemmer</strong>. Det er ingen grense for totalt antall medlemmer i en husholdning – hvis andre medlemmer også har et abonnement, kan de også invitere personer til husstanden (forutsatt at de er administratorer)."
+            },
+            {
+                "id": 4,
+                "question": "Hvordan vet appen hvilken butikk jeg handler i?",
+                "answer": "YAGA bruker posisjonen din til å automatisk oppdage når du ankommer en kjent dagligvarebutikk. Hvis det er første gang du (eller en annen YAGA-bruker) handler i en gitt butikk, vil YAGA <strong>identifisere og lære seg butikken</strong> når handleturen er fullført. Neste gang du handler i samme butikk, kjenner YAGA den igjen og sorterer handlelisten din deretter."
+            },
+            {
+                "id": 5,
+                "question": "Hva om appen ikke gjenkjenner min lokale butikk?",
+                "answer": "YAGA kan av og til ha problemer med å identifisere en butikk, selv om dette er sjeldent. Vi jobber kontinuerlig med å forbedre butikkgjenkjenning. Hvis problemet <strong>vedvarer</strong>, vennligst ta kontakt med oss på <strong>contact@vallesoftwarelabs.com</strong>."
+            },
+            {
+                "id": 6,
+                "question": "Hva skjer med dataene mine hvis jeg sletter kontoen min?",
+                "answer": "Når du sletter kontoen din, <strong>sletter vi alle personlige data</strong> knyttet til deg. Data som tilhører husholdningene dine, som handlehistorikk, vil ikke bli slettet med mindre du er det eneste medlemmet i disse husholdningene – i så fall vil husholdningene og alle deres data også bli slettet."
+            },
+            {
+                "id": 7,
+                "question": "Hvordan sletter jeg kontoen og dataene mine?",
+                "answer": "Gå til <strong>menyen</strong> i den navigasjonslinjen nederst, gå til Konto-siden, og trykk på <strong>Slett konto</strong>. Vær oppmerksom på at vi ikke kan kansellere abonnementet ditt på dine vegne, så husk å også kansellere abonnementet ditt hvis du ikke lenger ønsker å bruke YAGA."
+            }
+        ]
+    }
+}

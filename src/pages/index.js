@@ -1,4 +1,5 @@
 import * as React from "react"
+import { graphql } from "gatsby"
 // Remove unused imports like Link, StaticImage, styles
 // import { Link } from "gatsby"
 // import { StaticImage } from "gatsby-plugin-image"
@@ -32,3 +33,17 @@ const IndexPage = () => (
 export const Head = () => <Seo title="YAGA" /> // Keep Head export
 
 export default IndexPage
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`
