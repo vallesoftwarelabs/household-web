@@ -99,7 +99,7 @@ const BarWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 2rem 1rem;
+    padding: 5rem 1rem;
     gap: 0.75rem;
   }
 `;

@@ -5,26 +5,13 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Effect to read from localStorage and apply initial theme
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-    } else if (savedTheme === 'light') {
-      setIsDarkMode(false);
-    } else if (prefersDark) {
-      // Default to system preference if no saved theme
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false); // Default to light if no preference/saved
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.body.classList.contains('dark-mode');
     }
-  }, []);
+    return false;
+  });
 
-  // Effect to apply theme class to body and save to localStorage
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
