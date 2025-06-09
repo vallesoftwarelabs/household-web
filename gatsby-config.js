@@ -15,6 +15,7 @@ module.exports = {
     siteUrl: `https://yetanothergroceryapp.com`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -24,7 +25,6 @@ module.exports = {
         display: 'swap'
       }
     },
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
