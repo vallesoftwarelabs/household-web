@@ -429,11 +429,11 @@ const SmartSortingFeature = () => {
             <FeatureListItem variants={fadeInUp} emoji="⚡">
               {t('features.smartSorting.feature2')}
             </FeatureListItem>
-            <FeatureListItem variants={fadeInUp} emoji="📍">
-              {t('features.smartSorting.feature3')}
-            </FeatureListItem>
+                      <FeatureListItem variants={fadeInUp} emoji="📍">
+            {t('features.smartSorting.feature3')}
+          </FeatureListItem>
           </FeatureList>
-          <DownloadBadges />
+          <DownloadBadges hideOnMobile={true} />
         </ContentSide>
         <GraphicSide
           initial="hidden"

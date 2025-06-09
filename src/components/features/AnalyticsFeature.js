@@ -631,7 +631,7 @@ const AnalyticsFeature = () => {
               {t('features.analytics.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges />
+          <DownloadBadges hideOnMobile={true} />
         </ContentSide>
         <GraphicSide
           initial="hidden"

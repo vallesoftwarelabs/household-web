@@ -18,7 +18,7 @@ const HeaderWrapper = styled.header`
   color: var(--color-text); /* Use CSS variable for text too */
   border-bottom: 1px solid var(--color-border, #eee); /* Use variable with fallback */
   position: relative; // For pseudo-elements
-  overflow: visible; // Allow dropdowns to show outside header
+  overflow-x: hidden; // Prevent horizontal scroll, allow vertical for dropdowns
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Adjust transitions */
 
   // Light mode gradient pseudo-element

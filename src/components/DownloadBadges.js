@@ -11,6 +11,7 @@ const BadgesContainer = styled.div`
 
   @media (max-width: 768px) {
     justify-content: flex-start;
+    ${props => props.hideOnMobile && 'display: none;'}
   }
 `;
 
@@ -23,9 +24,9 @@ const BadgeLink = styled.a`
   }
 `;
 
-const DownloadBadges = () => {
+const DownloadBadges = ({ hideOnMobile = false }) => {
   return (
-    <BadgesContainer>
+    <BadgesContainer hideOnMobile={hideOnMobile}>
       <BadgeLink href="https://apps.apple.com/app/id6737360577" target="_blank" rel="noopener noreferrer">
         <img src={AppStoreBadge} alt="Download on the App Store" />
       </BadgeLink>

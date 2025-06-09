@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import { ChevronDown } from 'lucide-react';
 import { useI18next } from 'gatsby-plugin-react-i18next';
@@ -82,14 +83,12 @@ const ChevronIcon = styled(ChevronDown)`
   width: 14px;
   height: 14px;
   transition: transform 0.2s ease;
-  transform: ${props => props.open ? 'rotate(180deg)' : 'rotate(0deg)'};
+  transform: ${props => props.$open ? 'rotate(180deg)' : 'rotate(0deg)'};
   opacity: 0.7;
 `;
 
 const DropdownMenu = styled.div`
-  position: absolute;
-  top: 100%;
-  right: 0;
+  position: fixed;
   margin-top: 0.25rem;
   background: var(--color-background);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -101,9 +100,9 @@ const DropdownMenu = styled.div`
   z-index: 9999;
   min-width: 120px;
   
-  opacity: ${props => props.show ? '1' : '0'};
-  visibility: ${props => props.show ? 'visible' : 'hidden'};
-  transform: ${props => props.show ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.95)'};
+  opacity: ${props => props.$show ? '1' : '0'};
+  visibility: ${props => props.$show ? 'visible' : 'hidden'};
+  transform: ${props => props.$show ? 'translateY(0) scale(1)' : 'translateY(-8px) scale(0.95)'};
   transition: all 0.15s ease;
 
   body.dark-mode & {
@@ -146,7 +145,7 @@ const DropdownItem = styled.button`
 `;
 
 const LanguageLabel = styled.span`
-  font-weight: ${props => props.active ? '600' : '500'};
+  font-weight: ${props => props.$isActive ? '600' : '500'};
 `;
 
 const LanguageCode = styled.span`
@@ -161,7 +160,7 @@ const ActiveIndicator = styled.div`
   height: 6px;
   border-radius: 50%;
   background: var(--color-primary, #E89031);
-  opacity: ${props => props.show ? '1' : '0'};
+  opacity: ${props => props.$show ? '1' : '0'};
   transition: opacity 0.15s ease;
 
   body.dark-mode & {
@@ -178,6 +177,13 @@ const LanguageSwitcher = () => {
   const { language, originalPath, navigate } = useI18next();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const menuRef = useRef(null);
+  const [menuStyle, setMenuStyle] = useState({});
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleLanguageChange = (lng) => {
     // Don't do anything if already on the selected language
@@ -212,21 +218,41 @@ const LanguageSwitcher = () => {
     setIsOpen(false);
   };
 
+  const updateMenuPosition = () => {
+    if (dropdownRef.current) {
+      const rect = dropdownRef.current.getBoundingClientRect();
+      setMenuStyle({
+        top: rect.bottom,
+        right: window.innerWidth - rect.right,
+      });
+    }
+  };
+
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    const nextIsOpen = !isOpen;
+    if (nextIsOpen) {
+      updateMenuPosition();
+    }
+    setIsOpen(nextIsOpen);
   };
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        isOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [isOpen]);
 
   // Close dropdown on escape key
   useEffect(() => {
@@ -240,7 +266,49 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
+  // Update position on resize and scroll
+  useEffect(() => {
+    if (isOpen) {
+      const handleInteraction = () => updateMenuPosition();
+      window.addEventListener('resize', handleInteraction);
+      window.addEventListener('scroll', handleInteraction, true);
+      return () => {
+        window.removeEventListener('resize', handleInteraction);
+        window.removeEventListener('scroll', handleInteraction, true);
+      };
+    }
+  }, [isOpen]);
+
   const currentLanguage = languages[language] || languages.en;
+
+  const dropdownMenu = (
+    <DropdownMenu
+      ref={menuRef}
+      $show={isOpen}
+      style={{
+        top: menuStyle.top ? `${menuStyle.top}px` : 'auto',
+        right: menuStyle.right ? `${menuStyle.right}px` : 'auto',
+      }}
+    >
+      {Object.entries(languages).map(([lng, config]) => (
+        <DropdownItem
+          key={lng}
+          onClick={() => handleLanguageChange(lng)}
+          aria-label={`Switch to ${config.label}`}
+        >
+          <div>
+            <LanguageLabel $isActive={lng === language}>
+              {config.label}
+            </LanguageLabel>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <LanguageCode>{config.code}</LanguageCode>
+            <ActiveIndicator $show={lng === language} />
+          </div>
+        </DropdownItem>
+      ))}
+    </DropdownMenu>
+  );
 
   return (
     <DropdownWrapper ref={dropdownRef}>
@@ -251,28 +319,10 @@ const LanguageSwitcher = () => {
         aria-label="Change language"
       >
         <LanguageCode>{currentLanguage.code}</LanguageCode>
-        <ChevronIcon open={isOpen} />
+        <ChevronIcon $open={isOpen} />
       </DropdownButton>
-
-      <DropdownMenu show={isOpen}>
-        {Object.entries(languages).map(([lng, config]) => (
-          <DropdownItem
-            key={lng}
-            onClick={() => handleLanguageChange(lng)}
-            aria-label={`Switch to ${config.label}`}
-          >
-            <div>
-              <LanguageLabel active={lng === language}>
-                {config.label}
-              </LanguageLabel>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <LanguageCode>{config.code}</LanguageCode>
-              <ActiveIndicator show={lng === language} />
-            </div>
-          </DropdownItem>
-        ))}
-      </DropdownMenu>
+      
+      {isMounted && isOpen ? createPortal(dropdownMenu, document.body) : null}
     </DropdownWrapper>
   );
 };

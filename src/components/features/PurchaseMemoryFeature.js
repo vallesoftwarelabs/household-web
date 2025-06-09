@@ -124,7 +124,7 @@ const ListHeader = styled.div`
   margin-bottom: 20px;
   text-align: center;
   transition: opacity 0.3s ease-in-out;
-  ${({ isDimmed }) => isDimmed && dimmedStyle}
+  ${({ $isDimmed }) => $isDimmed && dimmedStyle}
 `;
 
 const ListTitle = styled.h3`
@@ -178,7 +178,7 @@ const ListItem = styled(motion.div)`
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease-in-out;
 
-  ${({ isDimmed }) => isDimmed && dimmedStyle}
+  ${({ $isDimmed }) => $isDimmed && dimmedStyle}
 `;
 
 const ItemIcon = styled.div`
@@ -193,13 +193,39 @@ const ItemIcon = styled.div`
   box-shadow: 
     0 2px 4px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   body.dark-mode & {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
     box-shadow: 
       0 2px 4px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  ${({ $isGlowing }) => $isGlowing && css`
+    box-shadow: 0 0 12px 4px rgba(232, 144, 49, 0.4), 0 0 20px 8px rgba(232, 144, 49, 0.2);
+    border-color: rgba(232, 144, 49, 0.5);
+    transform: scale(1.05);
+    z-index: 2;
+  `}
+
+  ${({ $isDimmed }) => $isDimmed && dimmedStyle}
+
+  body.dark-mode & {
+    background: ${props => props.variant === 'primary' 
+      ? 'linear-gradient(135deg, rgba(237, 165, 74, 0.2), rgba(237, 165, 74, 0.15))'
+      : 'rgba(255, 255, 255, 0.06)'
+    };
+    border-color: ${props => props.variant === 'primary' 
+      ? 'rgba(237, 165, 74, 0.3)' 
+      : 'rgba(255, 255, 255, 0.1)'
+    };
+    color: ${props => props.variant === 'primary' ? '#EDA54A' : 'var(--color-text-secondary)'};
+    
+    ${({ $isGlowing }) => $isGlowing && css`
+      box-shadow: 0 0 12px 4px rgba(237, 165, 74, 0.5), 0 0 20px 8px rgba(237, 165, 74, 0.3);
+      border-color: rgba(237, 165, 74, 0.6);
+    `}
   }
 `;
 
@@ -245,14 +271,14 @@ const Chip = styled.div`
   transition: all 0.3s ease-in-out;
   position: relative;
 
-  ${({ isGlowing }) => isGlowing && css`
+  ${({ $isGlowing }) => $isGlowing && css`
     box-shadow: 0 0 12px 4px rgba(232, 144, 49, 0.4), 0 0 20px 8px rgba(232, 144, 49, 0.2);
     border-color: rgba(232, 144, 49, 0.5);
     transform: scale(1.05);
     z-index: 2;
   `}
 
-  ${({ isDimmed }) => isDimmed && dimmedStyle}
+  ${({ $isDimmed }) => $isDimmed && dimmedStyle}
 
   body.dark-mode & {
     background: ${props => props.variant === 'primary' 
@@ -265,7 +291,7 @@ const Chip = styled.div`
     };
     color: ${props => props.variant === 'primary' ? '#EDA54A' : 'var(--color-text-secondary)'};
     
-    ${({ isGlowing }) => isGlowing && css`
+    ${({ $isGlowing }) => $isGlowing && css`
       box-shadow: 0 0 12px 4px rgba(237, 165, 74, 0.5), 0 0 20px 8px rgba(237, 165, 74, 0.3);
       border-color: rgba(237, 165, 74, 0.6);
     `}
@@ -284,9 +310,9 @@ const InfoButton = styled.div`
   color: #D97706;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  ${({ isDimmed }) => isDimmed && dimmedStyle}
+  ${({ $isDimmed }) => $isDimmed && dimmedStyle}
   
-  ${({ isPressed }) => isPressed && css`
+  ${({ $isPressed }) => $isPressed && css`
     background: linear-gradient(135deg, rgba(232, 144, 49, 0.3), rgba(232, 144, 49, 0.2));
     transform: scale(0.95);
     box-shadow: 0 0 12px 4px rgba(232, 144, 49, 0.4);
@@ -298,7 +324,7 @@ const InfoButton = styled.div`
     border-color: rgba(237, 165, 74, 0.25);
     color: #EDA54A;
     
-    ${({ isPressed }) => isPressed && css`
+    ${({ $isPressed }) => $isPressed && css`
       background: linear-gradient(135deg, rgba(237, 165, 74, 0.3), rgba(237, 165, 74, 0.2));
       box-shadow: 0 0 12px 4px rgba(237, 165, 74, 0.5);
       border-color: rgba(237, 165, 74, 0.6);
@@ -351,7 +377,7 @@ const ModalHeader = styled(motion.div)`
   margin-bottom: 24px;
   transition: opacity 0.3s ease-in-out;
   
-  ${({ isDimmed }) => isDimmed && css`
+  ${({ $isDimmed }) => $isDimmed && css`
     opacity: 0.2;
   `}
 `;
@@ -399,7 +425,7 @@ const LastPurchasedSection = styled(motion.div)`
   margin-bottom: 8px;
   transition: opacity 0.3s ease-in-out;
   
-  ${({ isDimmed }) => isDimmed && css`
+  ${({ $isDimmed }) => $isDimmed && css`
     opacity: 0.12;
   `}
 `;
@@ -465,7 +491,7 @@ const PurchaseHistoryHighlightContainer = styled.div`
   border-radius: 16px;
   transition: all 0.3s ease-in-out;
   
-  ${({ isGlowing }) => isGlowing && css`
+  ${({ $isGlowing }) => $isGlowing && css`
     box-shadow: 0 0 12px 4px rgba(232, 144, 49, 0.4), 0 0 20px 8px rgba(232, 144, 49, 0.2);
     background: rgba(232, 144, 49, 0.1);
     border: 1px solid rgba(232, 144, 49, 0.3);
@@ -631,7 +657,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
           hidden: { y: 20 },
           visible: { y: 0, transition: { duration: 0.4 } }
         }}
-        isDimmed={modalAnnotationPhase === 'history'}
+        $isDimmed={modalAnnotationPhase === 'history'}
       >
         <ItemTitle>{modalData.itemTitle}</ItemTitle>
         <CategoryChips>
@@ -646,7 +672,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
           hidden: { y: 20 },
           visible: { y: 0, transition: { duration: 0.4 } }
         }}
-        isDimmed={modalAnnotationPhase === 'history'}
+        $isDimmed={modalAnnotationPhase === 'history'}
       >
         <PurchaseCard>
           <PurchaseLabel>{modalData.exactItemLabel}</PurchaseLabel>
@@ -680,7 +706,7 @@ const GroceryItemModal = ({ showAnnotations = false }) => {
           visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
         }}
       >
-        <PurchaseHistoryHighlightContainer isGlowing={modalAnnotationPhase === 'history'}>
+        <PurchaseHistoryHighlightContainer $isGlowing={modalAnnotationPhase === 'history'}>
           <PurchaseHistoryHeader>
             <SectionTitle>{modalData.historyTitle}</SectionTitle>
             <ViewAllButton>
@@ -761,7 +787,7 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
         visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut", when: "beforeChildren", staggerChildren: 0.05 } }
       }}
     >
-      <ListHeader isDimmed={annotationPhase !== 'none'}>
+      <ListHeader $isDimmed={annotationPhase !== 'none'}>
         <ListTitle>{t('features.purchaseMemory.listTitle')}</ListTitle>
         <ListSubtitle>{t('features.purchaseMemory.listSubtitle')}</ListSubtitle>
       </ListHeader>
@@ -788,7 +814,7 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
             key={item.id}
             custom={index}
             variants={itemVariants} 
-            isDimmed={annotationPhase !== 'none' && index !== 0}
+            $isDimmed={annotationPhase !== 'none' && index !== 0}
           >
             <ItemIcon style={annotationPhase !== 'none' && index !== 0 ? {opacity: 0.3} : {}}>{item.emoji}</ItemIcon>
             <ItemContent style={annotationPhase !== 'none' && index !== 0 ? {opacity: 0.3} : {}}>
@@ -797,8 +823,8 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
                 {item.categoryTag && (
                   <Chip 
                     variant="primary"
-                    isGlowing={index === 0 && annotationPhase === 'orange'}
-                    isDimmed={index === 0 && annotationPhase === 'grey'}
+                    $isGlowing={index === 0 && annotationPhase === 'orange'}
+                    $isDimmed={index === 0 && annotationPhase === 'grey'}
                   >
                     <Clock size={10} />
                     {item.categoryTag}
@@ -806,8 +832,8 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
                 )}
                 <Chip 
                   variant="secondary"
-                  isGlowing={index === 0 && annotationPhase === 'grey'}
-                  isDimmed={index === 0 && annotationPhase === 'orange'}
+                  $isGlowing={index === 0 && annotationPhase === 'grey'}
+                  $isDimmed={index === 0 && annotationPhase === 'orange'}
                 >
                   <Clock size={10} />
                   {item.genericDays}
@@ -815,8 +841,8 @@ const PurchaseMemoryMockup = ({ onShowModal, onInfoPress, infoPressed, startAnim
               </ItemChips>
             </ItemContent>
             <InfoButton 
-              isDimmed={annotationPhase !== 'none' && index !== 0}
-              isPressed={index === 0 && infoPressed}
+              $isDimmed={annotationPhase !== 'none' && index !== 0}
+              $isPressed={index === 0 && infoPressed}
             >
               <Info size={16} />
             </InfoButton>
@@ -925,7 +951,7 @@ const PurchaseMemoryFeature = () => {
               {t('features.purchaseMemory.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges />
+          <DownloadBadges hideOnMobile={true} />
         </ContentSide>
         <GraphicSide
           initial="hidden"
