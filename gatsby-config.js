@@ -15,6 +15,15 @@ module.exports = {
     siteUrl: `https://yetanothergroceryapp.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `sniglet`
+        ],
+        display: 'swap'
+      }
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     {

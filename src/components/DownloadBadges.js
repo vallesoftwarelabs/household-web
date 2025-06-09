@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import GooglePlayBadge from '../images/googleplay.png';
-import AppStoreBadge from '../images/appstore_black.svg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const BadgesContainer = styled.div`
   display: flex;
@@ -17,21 +16,16 @@ const BadgesContainer = styled.div`
 
 const BadgeLink = styled.a`
   display: inline-block;
-  img {
-    height: 40px;
-    width: auto;
-    display: block;
-  }
 `;
 
 const DownloadBadges = ({ hideOnMobile = false }) => {
   return (
     <BadgesContainer hideOnMobile={hideOnMobile}>
       <BadgeLink href="https://apps.apple.com/app/id6737360577" target="_blank" rel="noopener noreferrer">
-        <img src={AppStoreBadge} alt="Download on the App Store" />
+        <StaticImage src="../images/appstore_black.svg" alt="Download on the App Store" height={40} />
       </BadgeLink>
       <BadgeLink href="https://play.google.com/store/apps/details?id=com.vallesoftwarelabs.household" target="_blank" rel="noopener noreferrer">
-        <img src={GooglePlayBadge} alt="Get it on Google Play" />
+        <StaticImage src="../images/googleplay.png" alt="Get it on Google Play" height={40} />
       </BadgeLink>
     </BadgesContainer>
   );
