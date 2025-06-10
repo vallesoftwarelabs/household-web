@@ -22,19 +22,19 @@
             "stores": [
                 {
                     "name": "Rema 1000",
-                    "address": "Storgata 45, Oslo"
+                    "address": "Storgata 45"
                 },
                 {
                     "name": "Meny",
-                    "address": "Torggata 12, Bergen"
+                    "address": "Torggata 12"
                 },
                 {
                     "name": "Coop Mega",
-                    "address": "Kirkevegen 23, Trondheim"
+                    "address": "Kirkevegen 23"
                 },
                 {
                     "name": "Kiwi",
-                    "address": "Hovedgata 67, Stavanger"
+                    "address": "Hovedgata 67"
                 }
             ],
             "groceryItems": [
