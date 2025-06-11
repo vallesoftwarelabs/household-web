@@ -15,7 +15,7 @@
     "features": {
         "smartSorting": {
             "title": "Smart butikkbasert sortering",
-            "description": "Aldri mer sikksakk-gåing i butikken. Handlelisten din omorganiseres automatisk basert på hvordan du handler i hver butikk, og skaper den mest effektive ruten for din unike rutine.",
+            "description": "Aldri mer sikksakk-gåing i butikken. Vi omorganiserer handlelisten etter dine vaner i <strong><em>hver enkelt butikk</em></strong> – for en sømløs og effektiv handletur, uansett hvor du handler.",
             "feature1": "Personlig tilpasset sortering for hver butikk du besøker",
             "feature2": "Du sparer masse tid i butikken!",
             "feature3": "Husker ruten og rekkefølgen din automatisk",
@@ -309,7 +309,7 @@
                 "summary": "Innenfor <highlight>melkeprodukter og egg</highlight> brukte du totalt <highlight>1042.70kr</highlight> denne perioden. <highlight>melk</highlight> var den største utgiften og utgjorde <highlight>42,5% av kategorien!</highlight> 🧈"
             },
             "itemDetails": {
-                "title": "Melkedetaljer",
+                "title": "Melk",
                 "spendingHistory": "Forbrukshistorikk",
                 "spentPastYear": "Brukt siste år",
                 "spentPast30Days": "Brukt siste 30 dager",
@@ -394,7 +394,7 @@
         }
     },
     "ourPromise": {
-        "title": "Vårt løfte til deg",
+        "title": "Prøv helt uten risiko",
         "subtitle": "Test uten risiko og få en smartere handleopplevelse, helt bekymringsfritt.",
         "promises": [
             {

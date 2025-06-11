@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useTranslation, Trans } from 'gatsby-plugin-react-i18next';
 import { ShoppingCart, MapPin } from 'lucide-react';
 import { 
   FeatureSection, 
@@ -420,7 +420,7 @@ const SmartSortingFeature = () => {
             {t('features.smartSorting.title')}
           </FeatureTitle>
           <FeatureDescription variants={fadeInUp}>
-            {t('features.smartSorting.description')}
+            <Trans i18nKey="features.smartSorting.description" components={{ em: <em />, strong: <strong /> }} />
           </FeatureDescription>
           <FeatureList variants={containerVariants}>
             <FeatureListItem variants={fadeInUp} emoji="🎯">
