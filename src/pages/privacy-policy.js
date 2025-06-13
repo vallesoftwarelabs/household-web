@@ -38,6 +38,7 @@ const PrivacyPolicyPage = () => {
           <li><strong>Configuration and Preferences:</strong> Your app settings and preferences, such as notification permissions (<code>AllowNotifications</code>), selected store, synchronization timestamps, and other configurations.</li>
           <li><strong>Subscription Data:</strong> Information related to your subscription status, processed via RevenueCat. We link your subscription status to your user account.</li>
           <li><strong>Technical and Error Data:</strong> Diagnostic information to help us identify and fix problems with the App, collected via Bugsnag. This may include device identifiers and OS version.</li>
+          <li><strong>Analytics and Advertising Data:</strong> To help us understand how users find our App, we may collect advertising identifiers (such as Apple's IDFA or Android's AAID, where permission is granted) and data about in-app events, such as installs and purchases, via Firebase Analytics.</li>
         </ul>
 
         <h2>How We Use Your Information</h2>
@@ -51,6 +52,7 @@ const PrivacyPolicyPage = () => {
           <li>Synchronize your data across your devices and with our backend services.</li>
           <li>Process payments and manage subscriptions (via RevenueCat).</li>
           <li>Monitor and analyze usage and trends to improve your experience with the Application.</li>
+          <li>Measure the effectiveness of our advertising campaigns and understand our user acquisition funnels.</li>
           <li>Diagnose and resolve technical problems and errors (via Bugsnag).</li>
           <li>Send you notifications based on your preferences.</li>
           <li>Respond to your requests and support needs.</li>
@@ -65,7 +67,7 @@ const PrivacyPolicyPage = () => {
           <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
           <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including authentication, data storage, synchronization, subscription management, and error monitoring. Our service providers include:
             <ul>
-              <li>Firebase (Authentication)</li>
+              <li>Firebase (Authentication and Analytics for conversion tracking)</li>
               <li>PowerSync (Data Storage and Synchronization)</li>
               <li>Microsoft Azure (Backend Data Processing and Storage)</li>
               <li>RevenueCat (Subscription Management)</li>
@@ -76,6 +78,16 @@ const PrivacyPolicyPage = () => {
           <li><strong>Business Transfers:</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
           <li><strong>Aggregated Store Data:</strong> Information about grocery stores, such as their name, address, and location footprint (derived from user activity like shopping trips or location services), may be aggregated and made available to all users of the App to improve features like store discovery and location-based services. This store data is considered public within the App ecosystem and is not tied to specific households.</li>
           <li><strong>We do not sell your personal information to third parties.</strong></li>
+        </ul>
+
+        <h2>Analytics and Conversion Tracking</h2>
+        <p>
+          To understand how users find our App and to measure the effectiveness of our advertising, we use analytics services.
+        </p>
+        <ul>
+          <li><strong>Firebase Analytics:</strong> We use Google's Firebase Analytics to collect data about app usage and user engagement. This helps us understand which features are popular and how to improve the App. When you install our app through an advertisement, this service helps us attribute that installation to the specific ad campaign.</li>
+          <li><strong>Advertising Identifiers:</strong> On devices running iOS 14.5 or later, we will request your permission through Apple's App Tracking Transparency (ATT) framework to access your device's advertising identifier (IDFA). On Android, we may use the Google Advertising ID (AAID). These identifiers are used by us and our advertising partners (like Google Ads) to attribute app installs and purchases to the campaigns that brought you to our App.</li>
+          <li><strong>Your Control and SKAdNetwork:</strong> Granting tracking permission is optional. If you decline on iOS, we will not access your IDFA. For iOS users who decline, we use Apple's SKAdNetwork, a privacy-preserving framework that provides us with anonymous, aggregated data about ad campaign performance without tracking you individually.</li>
         </ul>
 
         <h2>Data Storage, Security, and Retention</h2>
