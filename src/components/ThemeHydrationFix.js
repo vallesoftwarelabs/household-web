@@ -30,6 +30,14 @@ function ThemeHydrationFix() {
   return <script dangerouslySetInnerHTML={{ __html: minifiedCode }} />;
 }
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
+  setHeadComponents([
+    <script
+      key="cookieyes"
+      id="cookieyes"
+      type="text/javascript"
+      src="https://cdn-cookieyes.com/client_data/a8a3d85ec8a019b2389d035d/script.js"
+    />,
+  ]);
   setPreBodyComponents(<ThemeHydrationFix key="theme-hydration-fix" />);
 }; 

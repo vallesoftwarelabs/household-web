@@ -73,5 +73,58 @@ module.exports = {
         icon: `src/images/logo.svg`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: [
+          `**/dev-404-page`,
+          `**/404`,
+          `**/404.html`,
+          `**/offline-plugin-app-shell-fallback`,
+          `**/using-dsg`,
+          `**/using-typescript`,
+        ],
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.map(page => {
+            return { ...page }
+          })
+        },
+        serialize: ({ path }) => {
+          return {
+            url: path,
+            lastmod: new Date().toISOString(),
+          }
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [
+          'G-42RC3CKGS3',
+        ],
+        pluginConfig: {
+          head: true,
+        },
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+      },
+    },
   ],
 }
