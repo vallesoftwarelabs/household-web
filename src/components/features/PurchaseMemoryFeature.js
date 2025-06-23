@@ -951,7 +951,7 @@ const PurchaseMemoryFeature = () => {
               {t('features.purchaseMemory.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges hideOnMobile={true} />
+          <DownloadBadges hideOnMobile={true} text={t('features.purchaseMemory.downloadBadgesText')} />
         </ContentSide>
         <GraphicSide
           initial="hidden"

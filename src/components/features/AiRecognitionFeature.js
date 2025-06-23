@@ -743,7 +743,7 @@ const AiRecognitionFeature = () => {
               {t('features.aiRecognition.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges hideOnMobile={true} />
+          <DownloadBadges hideOnMobile={true} text={t('features.aiRecognition.downloadBadgesText')} />
         </ContentSide>
         <GraphicSide
           initial="hidden"

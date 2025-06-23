@@ -4,13 +4,36 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 const BadgesContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    ${props => props.hideOnMobile && 'display: none;'}
+  }
+`;
+
+const DownloadText = styled.p`
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const BadgesWrapper = styled.div`
+  display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 2.5rem;
 
   @media (max-width: 768px) {
     justify-content: flex-start;
-    ${props => props.hideOnMobile && 'display: none;'}
   }
 `;
 
@@ -18,7 +41,7 @@ const BadgeLink = styled.a`
   display: inline-block;
 `;
 
-const DownloadBadges = ({ hideOnMobile = false }) => {
+const DownloadBadges = ({ hideOnMobile = false, text }) => {
   const handleBadgeClick = (event, storeName, url) => {
     event.preventDefault(); // Prevent the browser from navigating immediately
 
@@ -60,18 +83,21 @@ const DownloadBadges = ({ hideOnMobile = false }) => {
 
   return (
     <BadgesContainer hideOnMobile={hideOnMobile}>
-      <BadgeLink
-        href={appStoreUrl}
-        onClick={(e) => handleBadgeClick(e, 'app_store', appStoreUrl)}
-      >
-        <StaticImage src="../images/appstore_black.svg" alt="Download on the App Store" height={40} />
-      </BadgeLink>
-      <BadgeLink
-        href={playStoreUrl}
-        onClick={(e) => handleBadgeClick(e, 'play_store', playStoreUrl)}
-      >
-        <StaticImage src="../images/googleplay.png" alt="Get it on Google Play" height={40} />
-      </BadgeLink>
+      {text && <DownloadText>{text}</DownloadText>}
+      <BadgesWrapper>
+        <BadgeLink
+          href={appStoreUrl}
+          onClick={(e) => handleBadgeClick(e, 'app_store', appStoreUrl)}
+        >
+          <StaticImage src="../images/appstore_black.svg" alt="Download on the App Store" height={40} />
+        </BadgeLink>
+        <BadgeLink
+          href={playStoreUrl}
+          onClick={(e) => handleBadgeClick(e, 'play_store', playStoreUrl)}
+        >
+          <StaticImage src="../images/googleplay.png" alt="Get it on Google Play" height={40} />
+        </BadgeLink>
+      </BadgesWrapper>
     </BadgesContainer>
   );
 };

@@ -129,7 +129,7 @@ export const FeatureDescription = styled(motion.p)`
   font-size: 1.3rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
     font-size: 1.2rem;

@@ -19,6 +19,7 @@
             "feature1": "Personalized sorting for every store you visit",
             "feature2": "Saves lots of time shopping!",
             "feature3": "Remembers your route and order automatically",
+            "downloadBadgesText": "Get your shopping list sorted for you. Download Yet Another Grocery App and breeze through the store.",
             "stores": [
                 {
                     "name": "Walmart",
@@ -82,6 +83,7 @@
             "feature1": "Multi-language support for your grocery list",
             "feature2": "Smart tagging and categorization of all items",
             "feature3": "Interprets, tags, and categorizes each item in your scanned receipts—available in your shopping trip history",
+            "downloadBadgesText": "Experience the magic of AI-powered shopping. Yet Another Grocery App understands what you mean.",
             "headerLeft": "You write",
             "headerRight": "YAGA interprets",
             "mobileHeader": "You write, YAGA interprets",
@@ -111,6 +113,7 @@
             "feature1": "Remembers every item you buy",
             "feature2": "Avoid waste and duplicate purchases",
             "feature3": "See your full purchase history",
+            "downloadBadgesText": "Shop with confidence, knowing what's at home. Yet Another Grocery App is your household's memory.",
             "listTitle": "Your Shopping Memory",
             "listSubtitle": "Smart purchase tracking",
             "groceryItems": [
@@ -191,6 +194,7 @@
             "feature1": "Spending breakdown by category and item",
             "feature2": "See totals, averages, and trends over time",
             "feature3": "Drill down to see spending on individual items within each category",
+            "downloadBadgesText": "Take control of your grocery budget. Download Yet Another Grocery App for detailed spending insights.",
             "overview": {
                 "title": "Category statistics",
                 "categories": [
@@ -417,7 +421,7 @@
     },
     "faq": {
         "title": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about getting started with YAGA.",
+        "subtitle": "Everything you need to know about getting started with YAGA - Yet Another Grocery App.",
         "questions": [
             {
                 "id": 1,

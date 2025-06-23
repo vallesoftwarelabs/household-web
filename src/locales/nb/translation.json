@@ -19,6 +19,7 @@
             "feature1": "Personlig tilpasset sortering for hver butikk du besøker",
             "feature2": "Du sparer masse tid i butikken!",
             "feature3": "Husker ruten og rekkefølgen din automatisk",
+            "downloadBadgesText": "Få handlelisten sortert for deg. Last ned Yet Another Grocery App og kom deg raskt gjennom butikken.",
             "stores": [
                 {
                     "name": "Rema 1000",
@@ -82,6 +83,7 @@
             "feature1": "Flerspråklig støtte for handlelisten din",
             "feature2": "Smart merking og kategorisering av alle varer",
             "feature3": "Tolker, merker og kategoriserer hver vare i skannede kvitteringer—tilgjengelig i handlehistorikken din",
+            "downloadBadgesText": "Opplev magien med KI-drevet handling. Yet Another Grocery App forstår hva du mener.",
             "headerLeft": "Du skriver",
             "headerRight": "YAGA tolker",
             "mobileHeader": "Du skriver, YAGA tolker",
@@ -111,6 +113,7 @@
             "feature1": "Husker alt du kjøper",
             "feature2": "Unngå svinn og dobbelthandling",
             "feature3": "Se fullstendig kjøpshistorikk",
+            "downloadBadgesText": "Handle med selvtillit, vel vitende om hva du har hjemme. Yet Another Grocery App er husholdningens minne.",
             "listTitle": "Din handleliste-hukommelse",
             "listSubtitle": "Smart kjøpssporing",
             "groceryItems": [
@@ -191,6 +194,7 @@
             "feature1": "Forbruk fordelt på kategori og vare",
             "feature2": "Se totaler, gjennomsnitt og trender over tid",
             "feature3": "Dykk ned for å se forbruk på enkeltvarer innenfor hver kategori",
+            "downloadBadgesText": "Ta kontroll over dagligvarebudsjettet ditt. Last ned Yet Another Grocery App for detaljert innsikt i forbruket ditt.",
             "overview": {
                 "title": "Kategoristatistikk",
                 "categories": [
@@ -417,7 +421,7 @@
     },
     "faq": {
         "title": "Ofte stilte spørsmål",
-        "subtitle": "Alt du trenger å vite for å komme i gang med YAGA.",
+        "subtitle": "Alt du trenger å vite for å komme i gang med YAGA - Yet Another Grocery App.",
         "questions": [
             {
                 "id": 1,
