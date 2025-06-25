@@ -210,6 +210,20 @@ const SectionTitle = styled.h4`
   margin: 0;
 `;
 
+const DownloadText = styled.p`
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: left;
+  }
+`;
+
 const ItemDetailsMockup = ({ startAnimation }) => {
   const { t } = useTranslation();
   const itemData = t('features.analytics.itemDetails', { returnObjects: true });
@@ -631,7 +645,8 @@ const AnalyticsFeature = () => {
               {t('features.analytics.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges hideOnMobile={true} text={t('features.analytics.downloadBadgesText')} />
+          <DownloadText>{t('features.analytics.downloadBadgesText')}</DownloadText>
+          <DownloadBadges hideOnMobile={true} />
         </ContentSide>
         <GraphicSide
           initial="hidden"

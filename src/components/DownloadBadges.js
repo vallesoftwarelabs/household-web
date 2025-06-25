@@ -7,23 +7,11 @@ const BadgesContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   @media (max-width: 768px) {
     align-items: flex-start;
     ${props => props.hideOnMobile && 'display: none;'}
-  }
-`;
-
-const DownloadText = styled.p`
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-  
-  @media (max-width: 768px) {
-    font-size: 1rem;
   }
 `;
 
@@ -41,7 +29,7 @@ const BadgeLink = styled.a`
   display: inline-block;
 `;
 
-const DownloadBadges = ({ hideOnMobile = false, text }) => {
+const DownloadBadges = ({ hideOnMobile = false }) => {
   const handleBadgeClick = (event, storeName, url) => {
     event.preventDefault(); // Prevent the browser from navigating immediately
 
@@ -83,7 +71,6 @@ const DownloadBadges = ({ hideOnMobile = false, text }) => {
 
   return (
     <BadgesContainer hideOnMobile={hideOnMobile}>
-      {text && <DownloadText>{text}</DownloadText>}
       <BadgesWrapper>
         <BadgeLink
           href={appStoreUrl}

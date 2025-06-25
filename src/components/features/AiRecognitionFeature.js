@@ -711,6 +711,20 @@ const AiRecognitionGraphic = () => {
   );
 };
 
+const DownloadText = styled.p`
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: left;
+  }
+`;
+
 const AiRecognitionFeature = () => {
   const { t } = useTranslation();
   
@@ -743,7 +757,8 @@ const AiRecognitionFeature = () => {
               {t('features.aiRecognition.feature3')}
             </FeatureListItem>
           </FeatureList>
-          <DownloadBadges hideOnMobile={true} text={t('features.aiRecognition.downloadBadgesText')} />
+          <DownloadText>{t('features.aiRecognition.downloadBadgesText')}</DownloadText>
+          <DownloadBadges hideOnMobile={true} />
         </ContentSide>
         <GraphicSide
           initial="hidden"
