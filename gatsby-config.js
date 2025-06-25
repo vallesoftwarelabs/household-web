@@ -102,20 +102,20 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [
-          'G-42RC3CKGS3',
-        ],
-        pluginConfig: {
-          head: true,
-        },
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-google-gtag',
+    //   options: {
+    //     trackingIds: [
+    //       'G-42RC3CKGS3',
+    //     ],
+    //     pluginConfig: {
+    //       head: true,
+    //     },
+    //     gtagConfig: {
+    //       anonymize_ip: true,
+    //       cookie_expires: 0,
+    //     },
+    //   },
+    // },
   ],
 }

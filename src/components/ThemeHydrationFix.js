@@ -37,7 +37,23 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
       id="cookieyes"
       type="text/javascript"
       src="https://cdn-cookieyes.com/client_data/a8a3d85ec8a019b2389d035d/script.js"
-      async
+      defer
+    />,
+    <script
+      key="gtag-script"
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-42RC3CKGS3"
+    />,
+    <script
+      key="gtag-config"
+      dangerouslySetInnerHTML={{
+        __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-42RC3CKGS3', { "anonymize_ip": true });
+        `,
+      }}
     />,
   ]);
   setPreBodyComponents(<ThemeHydrationFix key="theme-hydration-fix" />);
