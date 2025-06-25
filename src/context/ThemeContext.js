@@ -6,16 +6,19 @@ export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // This effect runs only on the client, after hydration, to sync the state
-    // with the DOM which was set by ThemeHydrationFix.js
+    setIsMounted(true);
     const darkMode = document.body.classList.contains('dark-mode');
     setIsDarkMode(darkMode);
   }, []);
 
   useEffect(() => {
-    // This effect now correctly handles theme changes after the initial hydration
+    // We only want to run this effect if the component is mounted
+    // to avoid trying to set localStorage on the server.
+    if (!isMounted) return;
+
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
       localStorage.setItem('theme', 'dark');
@@ -23,7 +26,7 @@ export const ThemeProvider = ({ children }) => {
       document.body.classList.remove('dark-mode');
       localStorage.setItem('theme', 'light');
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isMounted]);
 
   const toggleTheme = () => {
     setIsDarkMode(prevMode => !prevMode);
@@ -31,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      {children}
+      {isMounted ? children : null}
     </ThemeContext.Provider>
   );
 }; 
