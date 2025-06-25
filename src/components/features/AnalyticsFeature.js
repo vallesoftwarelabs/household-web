@@ -211,7 +211,7 @@ const SectionTitle = styled.h4`
 `;
 
 const DownloadText = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: var(--color-text-secondary);
   margin-bottom: 0.5rem;
