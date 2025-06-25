@@ -409,7 +409,7 @@ const DownloadText = styled.p`
   margin-top: 2rem;
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: left;
   }
 `;
