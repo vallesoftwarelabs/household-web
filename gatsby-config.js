@@ -16,15 +16,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `sniglet`
-        ],
-        display: 'swap'
-      }
-    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
