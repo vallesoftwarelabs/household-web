@@ -6,7 +6,7 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 
 import Header from "./header"
 import StickyFooterBar from "./StickyFooterBar"
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       if (currentPath === '/' && 
           !userChoice && 
           (browserLang.startsWith('nb') || browserLang.startsWith('no'))) {
-        window.location.href = '/nb/';
+        navigate('/nb/', { replace: true });
       }
     }
   }, []);
