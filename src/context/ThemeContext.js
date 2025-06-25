@@ -5,14 +5,17 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return document.body.classList.contains('dark-mode');
-    }
-    return false;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
+    // This effect runs only on the client, after hydration, to sync the state
+    // with the DOM which was set by ThemeHydrationFix.js
+    const darkMode = document.body.classList.contains('dark-mode');
+    setIsDarkMode(darkMode);
+  }, []);
+
+  useEffect(() => {
+    // This effect now correctly handles theme changes after the initial hydration
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
       localStorage.setItem('theme', 'dark');
