@@ -65,11 +65,12 @@ const PrivacyPolicyPage = () => {
         <ul>
           <li><strong>Within Your Household:</strong> Any information you associate with a specific household will be visible to other members you invite or who are part of that household.</li>
           <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
-          <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including authentication, data storage, synchronization, subscription management, and error monitoring. Our service providers include:
+          <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including authentication, data storage, synchronization, subscription management, error monitoring, and website analytics. Our service providers include:
             <ul>
               <li>Firebase (Authentication and Analytics for conversion tracking)</li>
               <li>PowerSync (Data Storage and Synchronization)</li>
               <li>Microsoft Azure (Backend Data Processing and Storage)</li>
+              <li>Microsoft Clarity (Website analytics and session recording)</li>
               <li>RevenueCat (Subscription Management)</li>
               <li>Bugsnag (Error Reporting)</li>
             </ul>
@@ -89,6 +90,85 @@ const PrivacyPolicyPage = () => {
           <li><strong>Advertising Identifiers:</strong> On devices running iOS 14.5 or later, we will request your permission through Apple's App Tracking Transparency (ATT) framework to access your device's advertising identifier (IDFA). On Android, we may use the Google Advertising ID (AAID). These identifiers are used by us and our advertising partners (like Google Ads) to attribute app installs and purchases to the campaigns that brought you to our App.</li>
           <li><strong>Your Control and SKAdNetwork:</strong> Granting tracking permission is optional. If you decline on iOS, we will not access your IDFA. For iOS users who decline, we use Apple's SKAdNetwork, a privacy-preserving framework that provides us with anonymous, aggregated data about ad campaign performance without tracking you individually.</li>
         </ul>
+
+        <h2>Website Analytics and Session Recording</h2>
+        <p>
+          On our marketing website (yetanothergroceryapp.com), we use Microsoft Clarity to understand how users interact with our website and to improve the user experience.
+        </p>
+        <h3>Data Collected by Microsoft Clarity:</h3>
+        <ul>
+          <li>Mouse movements, clicks, and scrolls</li>
+          <li>Screen recordings of your browsing session</li>
+          <li>Heatmaps showing where users click and scroll</li>
+          <li>Page performance and loading metrics</li>
+        </ul>
+        <h3>Data Processing:</h3>
+        <ul>
+          <li>Data is processed by Microsoft Clarity</li>
+          <li>Sessions are recorded anonymously</li>
+          <li>No personally identifiable information is captured in recordings</li>
+          <li>Sensitive form fields are automatically masked</li>
+        </ul>
+        <h3>Your Rights Regarding Website Analytics:</h3>
+        <ul>
+          <li>You can opt out via our cookie preferences on the website</li>
+          <li>Data is retained for up to 90 days by Microsoft Clarity</li>
+          <li>You can request deletion of your session data by contacting us</li>
+        </ul>
+        <p>
+          <strong>Legal Basis:</strong> Legitimate interest for website optimization (GDPR Article 6.1.f)
+        </p>
+
+        <h2>Cookies and Website Tracking</h2>
+        <p>
+          Our marketing website uses cookies to provide functionality and analyze website usage. Below are the specific cookies we use:
+        </p>
+        <h3>Analytics and Performance Cookies</h3>
+        <table style={{borderCollapse: 'collapse', width: '100%', border: '1px solid #ddd'}}>
+          <thead>
+            <tr style={{backgroundColor: '#f2f2f2'}}>
+              <th style={{border: '1px solid #ddd', padding: '8px', textAlign: 'left'}}>Cookie Name</th>
+              <th style={{border: '1px solid #ddd', padding: '8px', textAlign: 'left'}}>Purpose</th>
+              <th style={{border: '1px solid #ddd', padding: '8px', textAlign: 'left'}}>Duration</th>
+              <th style={{border: '1px solid #ddd', padding: '8px', textAlign: 'left'}}>Provider</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}><code>_clck</code></td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft Clarity user identifier for session tracking</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>1 year</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft</td>
+            </tr>
+            <tr>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}><code>_clsk</code></td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft Clarity session identifier</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>1 day</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft</td>
+            </tr>
+            <tr>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}><code>CLID</code></td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft Clarity installation identifier</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>1 year</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Microsoft</td>
+            </tr>
+            <tr>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}><code>_ga</code></td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Google Analytics user identifier</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>2 years</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Google</td>
+            </tr>
+            <tr>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}><code>_ga_*</code></td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Google Analytics session data</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>2 years</td>
+              <td style={{border: '1px solid #ddd', padding: '8px'}}>Google</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Cookie Consent:</strong> You can manage your cookie preferences through our cookie consent banner. Analytics cookies are only set with your explicit consent.
+        </p>
 
         <h2>Data Storage, Security, and Retention</h2>
         <ul>
