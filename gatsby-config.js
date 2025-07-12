@@ -74,6 +74,7 @@ module.exports = {
           `**/offline-plugin-app-shell-fallback`,
           `**/using-dsg`,
           `**/using-typescript`,
+          `**/app-ads.txt`,
         ],
         query: `
           {
