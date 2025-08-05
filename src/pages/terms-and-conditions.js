@@ -9,7 +9,7 @@ const TermsAndConditionsPage = () => {
     <Layout>
       <PolicyContainer>
         <h1>Terms and Conditions for YAGA - Yet Another Grocery App</h1>
-        <p><strong>Effective Date: April 5, 2025</strong></p>
+        <p><strong>Effective Date: August 5, 2025</strong></p>
 
         <p>
           Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the YAGA - Yet Another Grocery App mobile application (the "Service", "App", "Licensed Application") operated by Valle Software Labs AS ("us", "we", "our", "Developer").
@@ -46,14 +46,29 @@ const TermsAndConditionsPage = () => {
           <li>To upload or transmit viruses, Trojan horses, worms, time bombs, or other malicious or technologically harmful material.</li>
           <li>To attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Service, the server on which the Service is stored, or any server, computer, or database connected to the Service.</li>
           <li>To reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code of the App, except as permitted by applicable law.</li>
+          <li>To use the AI Recipe Generator to create or attempt to create inappropriate, dangerous, offensive, or harmful recipes as further defined in Section 4.1.</li>
         </ul>
 
         <h2>4. User-Generated Content</h2>
         <ul>
-          <li><strong>Responsibility:</strong> You are solely responsible for the content (e.g., grocery lists, item details, receipt information, notes) that you create, upload, post, link, store, share and otherwise make available ("User Content") via the Service. You represent and warrant that you have all necessary rights to your User Content and that it does not violate any third-party rights or applicable laws.</li>
+          <li><strong>Responsibility:</strong> You are solely responsible for the content that you create, upload, post, link, store, share and otherwise make available ("User Content") via the Service. User Content includes, but is not limited to, grocery lists, item details, receipt information, notes, and any prompts you submit to the AI Recipe Generator. You represent and warrant that you have all necessary rights to your User Content and that it does not violate any third-party rights or applicable laws.</li>
           <li><strong>License Grant:</strong> You retain all of your rights to any User Content you submit, post or display on or through the Service. By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free, sublicensable license to use, copy, reproduce, process, adapt, modify, publish, transmit, display, store, sync, and distribute such User Content solely for the purpose of operating, developing, providing, and improving the Service and making that Content available to you and members of any household you are part of within the App.</li>
           <li><strong>Content Removal:</strong> We reserve the right, but not the obligation, to monitor and remove User Content that we determine in our sole discretion violates these Terms, is illegal, offensive, threatening, libelous, defamatory, obscene, or otherwise objectionable, or violates any party's intellectual property.</li>
         </ul>
+
+        <h3>4.1. AI Recipe Generator and Prohibited Content</h3>
+        <p>
+          Our Service includes an AI-powered recipe generator that creates recipes based on prompts provided by users. While we encourage creativity, you are expressly prohibited from using this feature to generate, or attempt to generate, recipes or other content that is:
+        </p>
+        <ul>
+          <li><strong>Dangerous or Harmful:</strong> Includes non-edible, toxic, or dangerous substances (e.g., recipes calling for bleach, soil, or inedible objects) or promotes unsafe food handling and preparation practices.</li>
+          <li><strong>Illegal:</strong> Involves the use of illegal substances or promotes illegal acts.</li>
+          <li><strong>Offensive or Hateful:</strong> Is obscene, pornographic, grotesque, vile, or promotes bigotry, racism, hatred, or harm against any group or individual. This includes using prompts designed to elicit a hateful or discriminatory response from the AI.</li>
+          <li><strong>Nonsensical or Spam:</strong> Intended to maliciously overload our systems, disrupt the Service for other users, or generate content that is deliberately nonsensical or irrelevant to the function of a recipe app.</li>
+        </ul>
+        <p>
+          You acknowledge that the AI-generated recipes will be made available to other users. Any attempt to deliberately create and share inappropriate content through this feature is a material breach of these Terms. We reserve the right, at our sole discretion, to review prompts, remove any generated content we deem to be in violation of these rules, and take action against the offending account, up to and including immediate and permanent termination, as outlined in Section 12 of these Terms.
+        </p>
 
         <h2>5. Intellectual Property</h2>
         <p>
