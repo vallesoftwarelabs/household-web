@@ -395,33 +395,84 @@
                     }
                 ]
             }
+        },
+        "recipes": {
+            "title": "KI-drevne oppskrifter",
+            "description": "Be vår KI generere oppskrifter for akkurat det du vil ha – eller bla i vår omfattende oppskriftsdatabase. Lagre favoritter og legg alle ingredienser til handlelisten med ett trykk.",
+            "feature1": "KI-generering og søk av oppskrifter med strømming",
+            "feature2": "Kjappe måltider, kjøkken og ingredientsamlinger",
+            "feature3": "Ett-trykks legg til handleliste; lagre til husholdningen",
+            "downloadBadgesText": "Finn akkurat det du vil lage. Last ned Yet Another Grocery App for KI-drevne oppskrifter.",
+            "images": {
+                "savedAlt": "Lagrede oppskrifter og kjappe måltider",
+                "exploreAlt": "Utforsk kjøkken og samlinger"
+            }
+        },
+        "analyticsCarousel": {
+            "title": "Kraftig innsikt i forbruket",
+            "prev": "Forrige",
+            "next": "Neste",
+            "aria": "Forhåndsvisninger av analyse",
+            "heading": {
+                "overview": "Forbruksinnsikt",
+                "categories": "Kategorifordeling",
+                "categoryDetail": "Statistikk for frukt og grønt",
+                "tagDetail": "Taggdetaljer"
+            },
+            "alt": {
+                "overview": "Oversikt: antall handleturer og totalt forbruk",
+                "categories": "Kategorifordeling",
+                "categoryDetail": "Kategoridetaljer med taggmarkering",
+                "tagDetail": "Detaljer per tagg"
+            }
+        },
+        "mealPlanning": {
+            "title": "Måltidsplan",
+            "description": "Planlegg uken og legg til alle ingrediensene med ett trykk—vi slår sammen like eller lignende varer fra flere måltider til én handleliste-linje.",
+            "feature1": "Ukesvisning (man–søn) med måltider per dag",
+            "feature2": "Bytt måltider raskt; hent fra lagrede oppskrifter",
+            "feature3": "Én-trykks legg til med smart sammenslåing: like/lignende varer blir én linje",
+            "downloadBadgesText": "Planlegg uken og handle smartere. Last ned Yet Another Grocery App for enkel måltidsplanlegging.",
+            "ctaAddWeek": "Legg ukens ingredienser til listen",
+            "listTitle": "Handleliste",
+            "listSubtitle": "Ingredienser hentet fra ukesplanen",
+            "ariaPlanner": "Demonstrasjon av måltidsplan",
+            "addedCount": "Lagt til {{count}} ingredienser",
+            "weekTitle": "Uke 39",
+            "currentWeek": "Denne uken",
+            "weekRange": "8. sep – 14. sep",
+            "prev": "Forrige",
+            "next": "Neste",
+            "today": "I dag",
+            "noMeals": "Ingen måltider planlagt"
         }
     },
     "ourPromise": {
-        "title": "Prøv helt uten risiko",
-        "subtitle": "Test uten risiko og få en smartere handleopplevelse, helt bekymringsfritt.",
+        "title": "Gratis å bruke",
+        "subtitle": "Kom i gang gratis. Ingen betalingsinfo kreves.",
         "promises": [
             {
-                "title": "2 ukers gratis prøveperiode",
-                "description": "Prøv alle funksjoner helt gratis i 14 dager. Ingen forpliktelser, ingen skjulte avgifter."
+                "title": "Gratis å bruke",
+                "description": "Opprett konto og handle smartere – helt uten kostnad."
             },
             {
-                "title": "Si opp når du vil",
-                "description": "Si opp i løpet av prøvetiden, så slipper du å betale. Vi stiller ingen spørsmål."
+                "title": "Oppgrader når som helst",
+                "description": "Bruk gratisversjonen så lenge du vil; oppgrader hvis du trenger mer."
             },
             {
                 "title": "Forutsigbar prising",
-                "description": "Flere abonnement å velge mellom. Det du ser er det du betaler – ingen overraskende kostnader."
+                "description": "Enkel prising hvis du senere vil oppgradere – ingen skjulte avgifter."
             }
         ],
         "banner": {
-            "title": "Klar for en ny handlehverdag?",
-            "description": "Last ned appen og velg blant våre <highlight>fleksible abonnementsplaner</highlight>. Start din <highlight>14-dagers gratis prøveperiode</highlight> umiddelbart—ingen betaling kreves på forhånd. Er du ikke helt fornøyd, kan du enkelt si opp før prøveperioden utløper."
+            "title": "Den smarte handleappen som er gratis å bruke",
+            "description": "Last ned appen — den er <highlight>gratis</highlight>. Bruk den så lenge du vil. Oppgrader når som helst."
         }
     },
     "faq": {
         "title": "Ofte stilte spørsmål",
         "subtitle": "Alt du trenger å vite for å komme i gang med YAGA - Yet Another Grocery App.",
+        "freemiumNote": "YAGA er gratis å bruke. Du kan oppgradere til Pro når som helst for flere funksjoner.",
         "questions": [
             {
                 "id": 1,
@@ -430,13 +481,13 @@
             },
             {
                 "id": 2,
-                "question": "Hvordan blir jeg med i en husholdning gratis?",
-                "answer": "Du kan bruke YAGA gratis hvis du får en invitasjonskode fra en annen abonnent. Last ned appen, opprett kontoen din, og velg <strong>\"Bli med i eksisterende husholdning\"</strong> i stedet for å kjøpe et abonnement. Skriv inn invitasjonskoden din, og vips!"
+                "question": "Hvordan starter jeg gratis?",
+                "answer": "Last ned appen og opprett en konto — ingen betaling kreves. Du kan opprette en ny husholdning eller bli med i en eksisterende med en invitasjonskode."
             },
             {
                 "id": 3,
                 "question": "Hvor mange medlemmer kan jeg invitere til husholdningen min?",
-                "answer": "Avhengig av abonnementsplanen din kan du invitere enten <strong>4 eller 8 andre medlemmer</strong>. Det er ingen grense for totalt antall medlemmer i en husholdning – hvis andre medlemmer også har et abonnement, kan de også invitere personer til husstanden (forutsatt at de er administratorer)."
+                "answer": "Du kan invitere flere medlemmer til husholdningen din. Nøyaktige grenser vises i appen og kan endres over tid."
             },
             {
                 "id": 4,

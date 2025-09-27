@@ -239,6 +239,17 @@ const FAQ = () => {
           {t('faq.subtitle')}
         </Subtitle>
 
+        {/* Freemium note: short and non-intrusive */}
+        <Subtitle
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          style={{ marginTop: '-1.5rem', marginBottom: '2rem' }}
+        >
+          {t('faq.freemiumNote', { defaultValue: 'YAGA is free to use. You can upgrade to Pro anytime.' })}
+        </Subtitle>
+
         <FAQList
           initial="hidden"
           whileInView="visible"

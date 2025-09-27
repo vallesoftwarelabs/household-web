@@ -395,33 +395,84 @@
                     }
                 ]
             }
+        },
+        "recipes": {
+            "title": "AI-powered recipes",
+            "description": "Ask our AI to generate recipes for exactly what you want — or browse our extensive recipe database. Save favorites and add all ingredients to your grocery list in one tap.",
+            "feature1": "AI recipe generation & search with streaming results",
+            "feature2": "Quick meals, cuisines and ingredient collections",
+            "feature3": "One-tap add to grocery list; save to your household",
+            "downloadBadgesText": "Find exactly what you want to cook. Download Yet Another Grocery App for AI-powered recipes.",
+            "images": {
+                "savedAlt": "Saved recipes and quick meals",
+                "exploreAlt": "Explore cuisines and collections"
+            }
+        },
+        "analyticsCarousel": {
+            "title": "Powerful spending insights",
+            "prev": "Previous",
+            "next": "Next",
+            "aria": "Analytics previews",
+            "heading": {
+                "overview": "Your spending insights",
+                "categories": "Category breakdown",
+                "categoryDetail": "Statistics for fresh produce",
+                "tagDetail": "Tag details"
+            },
+            "alt": {
+                "overview": "Analytics overview: trips and total spent",
+                "categories": "Category breakdown",
+                "categoryDetail": "Category details with tag highlights",
+                "tagDetail": "Spending by tag details"
+            }
+        },
+        "mealPlanning": {
+            "title": "Meal Planning",
+            "description": "Plan your week and add all ingredients in one tap—smartly merging identical or similar items from multiple meals into a single list item.",
+            "feature1": "Week view (Mon–Sun) with meals per day",
+            "feature2": "Swap meals quickly; pull from saved recipes",
+            "feature3": "One-tap add with smart merging: duplicate or similar items become a single list item",
+            "downloadBadgesText": "Plan your week and shop smarter. Download Yet Another Grocery App for effortless meal planning.",
+            "ctaAddWeek": "Add week's ingredients to list",
+            "listTitle": "Shopping list",
+            "listSubtitle": "Ingredients pulled from your weekly plan",
+            "ariaPlanner": "Meal planning demo",
+            "addedCount": "Added {{count}} ingredients",
+            "weekTitle": "Week 39",
+            "currentWeek": "Current week",
+            "weekRange": "Sep 8 – Sep 14",
+            "prev": "Previous",
+            "next": "Next",
+            "today": "Today",
+            "noMeals": "No meals planned"
         }
     },
     "ourPromise": {
-        "title": "Our Promise to You",
-        "subtitle": "Try risk-free and experience smarter grocery shopping with complete confidence.",
+        "title": "Free to use",
+        "subtitle": "Start for free. No credit card required.",
         "promises": [
             {
-                "title": "2-Week Free Trial",
-                "description": "Try all features completely free for 14 days. No commitments, no hidden fees."
+                "title": "Free to Use",
+                "description": "Create your account and start shopping smarter at no cost."
             },
             {
-                "title": "Cancel Anytime",
-                "description": "Unsubscribe during your trial period and you won't be charged. No questions asked."
+                "title": "Upgrade Anytime",
+                "description": "Keep the free plan as long as you like; upgrade only if you want more."
             },
             {
                 "title": "Transparent Pricing",
-                "description": "Multiple plans to choose from. What you see is what you pay—no surprise charges."
+                "description": "Simple pricing if you ever choose to upgrade — no hidden fees."
             }
         ],
         "banner": {
-            "title": "Ready to Transform Your Shopping?",
-            "description": "Download the app and choose from our <highlight>flexible subscription plans</highlight>. Start your <highlight>14-day free trial</highlight> instantly—no payment required upfront. If you're not completely satisfied, simply cancel before the trial ends."
+            "title": "The smart shopping app that’s free to use",
+            "description": "Download the app — it's <highlight>free</highlight>. Use it as long as you like. Upgrade anytime."
         }
     },
     "faq": {
         "title": "Frequently Asked Questions",
         "subtitle": "Everything you need to know about getting started with YAGA - Yet Another Grocery App.",
+        "freemiumNote": "YAGA is free to use. You can upgrade anytime for additional features.",
         "questions": [
             {
                 "id": 1,
@@ -430,13 +481,13 @@
             },
             {
                 "id": 2,
-                "question": "How do I join a household for free?",
-                "answer": "You can use YAGA for free if you get an invite code from another subscriber. Download the app, create your account, and select <strong>\"Join Existing Household\"</strong> instead of buying a subscription. Enter your invite code, and voila!"
+                "question": "How do I start for free?",
+                "answer": "Just download the app and create your account — no payment required. You can create a new household or join an existing one with an invite code."
             },
             {
                 "id": 3,
                 "question": "How many members can I invite to my household?",
-                "answer": "Depending on your subscription plan, you can invite either <strong>4 or 8 other members</strong>. There is no limit to total members in a household—if other household members also have a subscription, they can invite people to the household too (provided they are made admin for the household)."
+                "answer": "You can invite multiple members to your household. Exact limits are shown in the app and may change over time."
             },
             {
                 "id": 4,

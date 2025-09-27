@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
-import { useTranslation, Trans } from 'gatsby-plugin-react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { StaticImage } from 'gatsby-plugin-image';
 import { 
   FeatureSection, 
   FeatureContainer, 
@@ -19,6 +20,7 @@ import {
   iconVariants
 } from './StyledFeatureComponents';
 import DownloadBadges from '../DownloadBadges';
+import { useTheme } from '../../context/ThemeContext';
 
 // Styled components for the analytics mockup
 const AnalyticsContainer = styled(motion.div)`
@@ -224,397 +226,188 @@ const DownloadText = styled.p`
   }
 `;
 
-const ItemDetailsMockup = ({ startAnimation }) => {
+// --- Analytics Carousel (replaces legacy animated mock) ---
+const CarouselControls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+`;
+
+const DotButton = styled.button`
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: ${props => (props.$active ? 'var(--color-accent, #E89031)' : 'rgba(0, 0, 0, 0.25)')};
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  body.dark-mode & {
+    background: ${props => (props.$active ? 'rgba(237, 165, 74, 1)' : 'rgba(255, 255, 255, 0.35)')};
+  }
+`;
+
+const ArrowButton = styled.button`
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--color-text);
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  line-height: 1;
+  body.dark-mode & {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+  }
+`;
+
+const SlideFigure = styled.div`
+  border-radius: 16px;
+  overflow: hidden;
+`;
+
+const AnalyticsCarousel = () => {
   const { t } = useTranslation();
-  const itemData = t('features.analytics.itemDetails', { returnObjects: true });
-  const months = itemData?.months || [];
-  const [animatedBars, setAnimatedBars] = useState(new Set());
+  const shouldReduceMotion = useReducedMotion();
+  const { isDarkMode } = useTheme();
+  const slides = [
+    {
+      key: 'overview',
+      title: t('features.analyticsCarousel.heading.overview', 'Your spending insights'),
+      alt: t('features.analyticsCarousel.alt.overview', 'Analytics overview: trips and total spent'),
+      Img: () => (
+        isDarkMode ? <StaticImage
+        src="../../images/stats1-dark-portrait.png"
+        alt={t('features.analyticsCarousel.alt.overview', 'Analytics overview: trips and total spent')}
+        placeholder="blurred"
+        loading="eager"
+        style={{ width: '100%', height: 'auto' }}
+      /> : <StaticImage
+      src="../../images/stats1-light-portrait.png"
+      alt={t('features.analyticsCarousel.alt.overview', 'Analytics overview: trips and total spent')}
+      placeholder="blurred"
+      loading="eager"
+      style={{ width: '100%', height: 'auto' }}
+    />
+      )
+    },
+    {
+      key: 'categories',
+      title: t('features.analyticsCarousel.heading.categories', 'Category breakdown'),
+      alt: t('features.analyticsCarousel.alt.categories', 'Category breakdown'),
+      Img: () => (
+        isDarkMode ? <StaticImage
+        src="../../images/stats2-dark-portrait.png"
+        alt={t('features.analyticsCarousel.alt.categories', 'Category breakdown')}
+        placeholder="blurred"
+        loading="lazy"
+        style={{ width: '100%', height: 'auto' }}
+      /> : <StaticImage
+      src="../../images/stats2-light-portrait.png"
+      alt={t('features.analyticsCarousel.alt.categories', 'Category breakdown')}
+      placeholder="blurred"
+      loading="lazy"
+      style={{ width: '100%', height: 'auto' }}
+    />
+      )
+    },
+    {
+      key: 'categoryDetail',
+      title: t('features.analyticsCarousel.heading.categoryDetail', 'Statistics for fresh produce'),
+      alt: t('features.analyticsCarousel.alt.categoryDetail', 'Category details with tag highlights'),
+      Img: () => (
+        isDarkMode ? <StaticImage
+        src="../../images/tagstats1-dark-portrait.png"
+        alt={t('features.analyticsCarousel.alt.categoryDetail', 'Category details with tag highlights')}
+        placeholder="blurred"
+        loading="lazy"
+        style={{ width: '100%', height: 'auto' }}
+      /> : <StaticImage
+      src="../../images/tagstats1-light-portrait.png"
+      alt={t('features.analyticsCarousel.alt.categoryDetail', 'Category details with tag highlights')}
+      placeholder="blurred"
+      loading="lazy"
+      style={{ width: '100%', height: 'auto' }}
+    />
+      )
+    },
+    {
+      key: 'tagDetail',
+      title: t('features.analyticsCarousel.heading.tagDetail', 'Tag details'),
+      alt: t('features.analyticsCarousel.alt.tagDetail', 'Spending by tag details'),
+      Img: () => (
+        isDarkMode ? <StaticImage
+        src="../../images/tagstats2-dark-portrait.png"
+        alt={t('features.analyticsCarousel.alt.tagDetail', 'Spending by tag details')}
+        placeholder="blurred"
+        loading="lazy"
+        style={{ width: '100%', height: 'auto' }}
+      /> : <StaticImage
+      src="../../images/tagstats2-light-portrait.png"
+      alt={t('features.analyticsCarousel.alt.tagDetail', 'Spending by tag details')}
+      placeholder="blurred"
+      loading="lazy"
+      style={{ width: '100%', height: 'auto' }}
+    />
+      )
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (!startAnimation) return;
+    if (shouldReduceMotion) return;
+    const id = setInterval(() => {
+      setIndex(prev => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [shouldReduceMotion]);
 
-    // Animate bars appearing one by one
-    months.forEach((_, index) => {
-      setTimeout(() => {
-        setAnimatedBars(prev => new Set([...prev, index]));
-      }, index * 80 + 1000);
-    });
-  }, [startAnimation]);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.5, 
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.05
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
-  };
+  const goPrev = () => setIndex(prev => (prev - 1 + slides.length) % slides.length);
+  const goNext = () => setIndex(prev => (prev + 1) % slides.length);
 
   return (
-    <AnalyticsContainer
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <Header>
-        <Title>{itemData?.title || 'Item Details'}</Title>
-      </Header>
-
-      <motion.div
-        variants={itemVariants}
-        style={{ marginBottom: '24px' }}
-      >
-        <SectionTitle style={{ fontSize: '20px', fontWeight: '700', marginBottom: '16px' }}>
-          {itemData?.spendingHistory || 'Spending History'}
-        </SectionTitle>
-        
-        <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-          <div style={{ 
-            flex: 1, 
-            background: 'var(--color-card-bg)', 
-            borderRadius: '16px', 
-            padding: '16px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-            border: '1px solid rgba(0, 0, 0, 0.05)'
-          }}>
-            <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-              {itemData?.spentPastYear || 'Spent past year'}
-            </div>
-            <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text)' }}>
-              {itemData?.totalYearAmount || '$3,338.20'}
-            </div>
-          </div>
-          <div style={{ 
-            flex: 1, 
-            background: 'var(--color-card-bg)', 
-            borderRadius: '16px', 
-            padding: '16px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-            border: '1px solid rgba(0, 0, 0, 0.05)'
-          }}>
-            <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-              {itemData?.spentPast30Days || 'Spent past 30 days'}
-            </div>
-            <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text)' }}>
-              {itemData?.total30DayAmount || '$308.70'}
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginBottom: '16px' }}>
-          <h4 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--color-text)', margin: '0 0 16px 0' }}>
-            {itemData?.last12Months || 'Last 12 months'}
-          </h4>
-        </div>
-      </motion.div>
-
-      <CategoriesContainer>
-        {months.map((month, index) => (
-          <CategoryItem
-            key={month?.id || index}
-            variants={itemVariants}
-          >
-            <div style={{ width: '36px', fontSize: '14px', fontWeight: '500', color: 'var(--color-text-secondary)' }}>
-              {month?.name || 'Month'}
-            </div>
-            <BarContainer>
-              <BarFill
-                style={{ width: `${month?.percentage || 0}%` }}
-                initial={{ width: 0 }}
-                animate={{ 
-                  width: animatedBars.has(index) ? `${month?.percentage || 0}%` : 0 
-                }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-              />
-              <CategoryLabel>
-                <CategoryAmount style={{ fontSize: '14px', left: '12px' }}>
-                  {month?.amount || '$0'}
-                </CategoryAmount>
-              </CategoryLabel>
-            </BarContainer>
-          </CategoryItem>
-        ))}
-      </CategoriesContainer>
-    </AnalyticsContainer>
-  );
-};
-
-const DrillDownMockup = ({ startAnimation }) => {
-  const { t } = useTranslation();
-  const drilldownData = t('features.analytics.drilldown', { returnObjects: true });
-  const categories = drilldownData?.categories || [];
-  const [animatedBars, setAnimatedBars] = useState(new Set());
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    // Animate bars appearing one by one
-    categories.forEach((_, index) => {
-      setTimeout(() => {
-        setAnimatedBars(prev => new Set([...prev, index]));
-      }, index * 100 + 1000);
-    });
-  }, [startAnimation]);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.5, 
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.05
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
-  };
-
-  return (
-    <AnalyticsContainer
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <Header>
-        <Title>{drilldownData?.title || 'Drilldown Statistics'}</Title>
-      </Header>
-
-      <CategoriesContainer>
-        {categories.map((category, index) => (
-          <CategoryItem
-            key={category?.id || index}
-            variants={itemVariants}
-          >
-            <CategoryIcon>{category?.emoji || '📊'}</CategoryIcon>
-            <BarContainer>
-              <BarFill
-                style={{ width: `${category?.percentage || 0}%` }}
-                initial={{ width: 0 }}
-                animate={{ 
-                  width: animatedBars.has(index) ? `${category?.percentage || 0}%` : 0 
-                }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-              />
-              <CategoryLabel>
-                <CategoryName>{category?.name || 'Unknown'}</CategoryName>
-                <CategoryAmount>({category?.amount || '$0'})</CategoryAmount>
-              </CategoryLabel>
-            </BarContainer>
-          </CategoryItem>
-        ))}
-      </CategoriesContainer>
-
-      <SummaryText
-        variants={itemVariants}
-      >
-        <Trans 
-          i18nKey="features.analytics.drilldown.summary" 
-          components={{ highlight: <HighlightText /> }} 
-        />
-      </SummaryText>
-    </AnalyticsContainer>
-  );
-};
-
-const AnalyticsMockup = ({ startAnimation }) => {
-  const { t } = useTranslation();
-  const overviewData = t('features.analytics.overview', { returnObjects: true });
-  const categories = overviewData?.categories || [];
-  const [animatedBars, setAnimatedBars] = useState(new Set());
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    // Animate bars appearing one by one
-    categories.forEach((_, index) => {
-      setTimeout(() => {
-        setAnimatedBars(prev => new Set([...prev, index]));
-      }, index * 100 + 1000);
-    });
-  }, [startAnimation]);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.5, 
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.05
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
-  };
-
-  const barVariants = {
-    hidden: { width: 0 },
-    visible: { 
-      width: '100%',
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  return (
-    <AnalyticsContainer
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <Header>
-        <Title>{overviewData?.title || 'Category Statistics'}</Title>
-      </Header>
-
-      <CategoriesContainer>
-        {categories.map((category, index) => (
-          <CategoryItem
-            key={category?.id || index}
-            variants={itemVariants}
-          >
-            <CategoryIcon>{category?.emoji || '📊'}</CategoryIcon>
-            <BarContainer>
-              <BarFill
-                style={{ width: `${category?.percentage || 0}%` }}
-                initial={{ width: 0 }}
-                animate={{ 
-                  width: animatedBars.has(index) ? `${category?.percentage || 0}%` : 0 
-                }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-              />
-              <CategoryLabel>
-                <CategoryName>{category?.name || 'Unknown'}</CategoryName>
-                <CategoryAmount>({category?.amount || '$0'})</CategoryAmount>
-              </CategoryLabel>
-            </BarContainer>
-          </CategoryItem>
-        ))}
-      </CategoriesContainer>
-
-      <SummaryText
-        variants={itemVariants}
-      >
-        <Trans 
-          i18nKey="features.analytics.overview.summary" 
-          components={{ highlight: <HighlightText /> }} 
-        />
-      </SummaryText>
-    </AnalyticsContainer>
-  );
-};
-
-const AnalyticsWithTransition = ({ startAnimation }) => {
-  const [currentView, setCurrentView] = useState('overview'); // 'overview', 'drilldown', or 'itemdetails'
-  const [animationKey, setAnimationKey] = useState(0);
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    const runAnimationCycle = () => {
-      // First, show overview and let it animate
-      // After bars finish animating (9 categories * 100ms + 1000ms initial delay = 1900ms)
-      // Wait 5 seconds, then switch to drilldown
-      setTimeout(() => {
-        setCurrentView('drilldown');
-        setAnimationKey(prev => prev + 1);
-      }, 1900 + 5000);
-
-      // After drilldown animates (6 categories * 100ms + 1000ms = 1600ms)
-      // Wait 5 seconds, then switch to item details
-      setTimeout(() => {
-        setCurrentView('itemdetails');
-        setAnimationKey(prev => prev + 1);
-      }, 1900 + 5000 + 1600 + 5000);
-
-      // After item details animates (12 months * 80ms + 1000ms = 1960ms)
-      // Wait 6 seconds, then switch back to overview and repeat
-      setTimeout(() => {
-        setCurrentView('overview');
-        setAnimationKey(prev => prev + 1);
-        // Recursively call to create the loop
-        runAnimationCycle();
-      }, 1900 + 5000 + 1600 + 5000 + 1960 + 6000);
-    };
-
-    runAnimationCycle();
-  }, [startAnimation]); // Only depend on startAnimation
-
-  return (
-    <div style={{ position: 'relative', width: '400px', height: '600px' }}>
+    <div style={{ position: 'relative', width: '420px', maxWidth: '100%' }} aria-label={t('features.analyticsCarousel.aria', 'Analytics previews')}>
       <AnimatePresence mode="wait">
-        {currentView === 'overview' && (
-          <motion.div
-            key={`overview-${animationKey}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <AnalyticsMockup startAnimation={true} />
-          </motion.div>
-        )}
-        {currentView === 'drilldown' && (
-          <motion.div
-            key={`drilldown-${animationKey}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <DrillDownMockup startAnimation={true} />
-          </motion.div>
-        )}
-        {currentView === 'itemdetails' && (
-          <motion.div
-            key={`itemdetails-${animationKey}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <ItemDetailsMockup startAnimation={true} />
-          </motion.div>
-        )}
+        <motion.div
+          key={slides[index].key}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -30 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+        >
+          <div>
+            <Header>
+              <Title>{slides[index].title}</Title>
+            </Header>
+            <SlideFigure>
+              {slides[index].Img()}
+            </SlideFigure>
+          </div>
+        </motion.div>
       </AnimatePresence>
+
+      <CarouselControls>
+        <ArrowButton aria-label={t('features.analyticsCarousel.prev', 'Previous')} onClick={goPrev}>‹</ArrowButton>
+        {slides.map((s, i) => (
+          <DotButton
+            key={s.key}
+            aria-label={s.alt}
+            aria-pressed={index === i}
+            $active={index === i}
+            onClick={() => setIndex(i)}
+          />
+        ))}
+        <ArrowButton aria-label={t('features.analyticsCarousel.next', 'Next')} onClick={goNext}>›</ArrowButton>
+      </CarouselControls>
     </div>
   );
 };
 
 const AnalyticsFeature = () => {
   const { t } = useTranslation();
-  const [startComplexAnimation, setStartComplexAnimation] = useState(false);
 
   return (
     <FeatureSection>
@@ -653,9 +446,8 @@ const AnalyticsFeature = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={slideInRight}
-          onAnimationComplete={() => setStartComplexAnimation(true)}
         >
-          <AnalyticsWithTransition startAnimation={startComplexAnimation} />
+          <AnalyticsCarousel />
         </GraphicSide>
       </FeatureContainer>
     </FeatureSection>

@@ -134,7 +134,7 @@ const Hero = () => {
       <ImageContent>
         {isDarkMode ? (
           <StaticImage
-            src="../images/iphonemockup-dark.png" // Dark mode image path
+            src="../images/list1-dark-left.png" // Dark mode image path
             alt={t('hero.phoneAltDark')} // Using translation for alt text
             placeholder="blurred"
             layout="constrained"
@@ -142,7 +142,7 @@ const Hero = () => {
           />
         ) : (
           <StaticImage
-            src="../images/iphonemockup.png" // Light mode image path
+            src="../images/list1-light-left.png" // Light mode image path
             alt={t('hero.phoneAltLight')} // Using translation for alt text
             placeholder="blurred"
             layout="constrained"

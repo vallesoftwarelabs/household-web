@@ -383,9 +383,9 @@ const OurPromise = () => {
                 <IconContainer className="icon-container">
                   <FreeTrialIcon />
                 </IconContainer>
-                <PromiseTitle>2-Week Free Trial</PromiseTitle>
+                <PromiseTitle>Free to Use</PromiseTitle>
                 <PromiseDescription>
-                  Try all features completely free for 14 days. No commitments, no hidden fees.
+                  Get started for free. No credit card required.
                 </PromiseDescription>
               </PromiseCard>
 
@@ -393,9 +393,9 @@ const OurPromise = () => {
                 <IconContainer className="icon-container">
                   <FlexibleIcon />
                 </IconContainer>
-                <PromiseTitle>Cancel Anytime</PromiseTitle>
+                <PromiseTitle>Upgrade Anytime</PromiseTitle>
                 <PromiseDescription>
-                  Unsubscribe during your trial period and you won't be charged. No questions asked.
+                  Keep using the free plan or upgrade to Pro when you need more.
                 </PromiseDescription>
               </PromiseCard>
 
@@ -405,7 +405,7 @@ const OurPromise = () => {
                 </IconContainer>
                 <PromiseTitle>Transparent Pricing</PromiseTitle>
                 <PromiseDescription>
-                  Multiple plans to choose from. What you see is what you pay—no surprise charges.
+                  Simple plans, no hidden fees.
                 </PromiseDescription>
               </PromiseCard>
             </>
@@ -418,12 +418,12 @@ const OurPromise = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <h3>{t('ourPromise.banner.title') || 'Ready to Transform Your Shopping?'}</h3>
+          <h3>{t('ourPromise.banner.title') || 'Free to use. Upgrade anytime.'}</h3>
           <p>
             <Trans 
               i18nKey="ourPromise.banner.description" 
               components={{ highlight: <span className="highlight" /> }}
-              defaults="Download the app and choose from our <highlight>flexible subscription plans</highlight>. Start your <highlight>14-day free trial</highlight> instantly—no payment required upfront. If you're not completely satisfied, simply cancel before the trial ends."
+              defaults="Download the app — it's free to use. Upgrade to <highlight>Pro</highlight> anytime for more features."
             />
           </p>
         </TrialBanner>

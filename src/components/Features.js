@@ -5,6 +5,8 @@ import SmartSortingFeature from './features/SmartSortingFeature';
 import PurchaseMemoryFeature from './features/PurchaseMemoryFeature';
 import AnalyticsFeature from './features/AnalyticsFeature';
 import AiRecognitionFeature from './features/AiRecognitionFeature';
+import RecipesFeature from './features/RecipesFeature';
+import MealPlanningFeature from './features/MealPlanningFeature';
 
 // Main wrapper
 const FeaturesWrapper = styled.section`
@@ -18,6 +20,8 @@ const Features = () => {
       <SmartSortingFeature />
       <PurchaseMemoryFeature />
       <AnalyticsFeature />
+      <RecipesFeature />
+      <MealPlanningFeature />
       <AiRecognitionFeature />
     </FeaturesWrapper>
   );
